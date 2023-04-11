@@ -12,4 +12,10 @@
   }
   
 
-  
+  html,
+body {
+    height: 100%;
+    position: 'absolute';
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
