@@ -23,15 +23,15 @@ import { RegisterComponent } from './login/register/register.component';
 import { AuthComponent } from './login/auth/auth.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatTabsModule} from '@angular/material/tabs'; 
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatExpansionModule } from '@angular/material/expansion';
 
-import {MatTableModule} from '@angular/material/table'; 
+import { MatTableModule } from '@angular/material/table';
 
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
-
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 @NgModule({
   declarations: [
@@ -43,10 +43,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     HomehComponent,
     LoginComponent,
     RegisterComponent,
-    AuthComponent
+    AuthComponent,
   ],
   imports: [
-   
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -68,10 +67,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatDialogModule,
     MatNativeDateModule,
     ReactiveFormsModule,
-    MatProgressSpinnerModule
-
+    MatProgressSpinnerModule,
+    MatExpansionModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

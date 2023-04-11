@@ -34,11 +34,11 @@
     }
   }
   .list-item-active {
-    // background: blue !important;
-    // border-radius: 0 2rem 2rem 0;
-    // &:hover {
-    //   background: blue;
-    // }
+     background: rgb(133, 133, 159) !important;
+     border-radius: 0 2rem 2rem 0;
+    &:hover {
+      background: rgb(46, 46, 49);
+     }
   
     color: #f2f5f7 !important;
     ::ng-deep {
@@ -56,4 +56,6 @@
     font-weight: 100;
     letter-spacing: 1px;
   }
+  
+
   

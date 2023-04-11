@@ -1,28 +1,30 @@
 <form (ngSubmit)="login()">
+  <div
+    style="
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: flex-start;
+    "
+  >
+    <div style="width: 100%">
+      <mat-form-field style="width: 100%" appearance="outline">
+        <mat-label>Enter your email</mat-label>
+        <input formControlName="username" ngModel matInput />
+      </mat-form-field>
+    </div>
 
-  <div style="margin-top: 32px;display: flex;flex-direction: column;justify-content: space-evenly;align-items: flex-start;">
-      <div style="width: 100%;">
-          <mat-form-field style="width: 100%;" appearance="outline">
-              <mat-label>Enter your email</mat-label>
-              <input formControlName="username" ngModel matInput>
-    
-          </mat-form-field>
-      </div>
+    <div style="width: 100%">
+      <mat-form-field style="width: 100%" appearance="outline">
+        <mat-label>Enter your password</mat-label>
+        <input formControlName="password" type="password" ngModel matInput />
+      </mat-form-field>
+    </div>
 
-      <div style="width: 100%;">
-          <mat-form-field style="width: 100%;" appearance="outline">
-              <mat-label>Enter your password</mat-label>
-              <input formControlName="password" type="password" ngModel matInput>
-              
-          </mat-form-field>
-      </div>
-
-      <div style="align-self: flex-end;width: 30%;">
-          <button mat-flat-button style="width: 100%;" color="primary">Login</button>
-          <div style="width: 100%;display: flex;justify-content: center;">
-          </div>
-      </div>
+    <div style="align-self: flex-end; width: 30%">
+      <button mat-flat-button style="width: 100%" color="primary">Login</button>
+      <div style="width: 100%; display: flex; justify-content: center"></div>
+    </div>
   </div>
-
-
 </form>
