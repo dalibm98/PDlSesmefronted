@@ -1,10 +1,39 @@
 <app-homeh>
 <div class="container-fluid page">
-    <div class="d-flex page__box p-3 mt-2">Dashboard</div>
-    <div class="page__content shadow p-3 position-relative">
-      <div class="page__content-data position-absolute text-center">
-        Dashboard Content Goes Here
-      </div>
+  <div class="d-flex page__box p-3 mt-2"></div>
+  <div class="page__content shadow p-3 position-relative">
+    <div>
+      <button mat-raised-button color="primary" (click)="openDialog()" class="button-right"  >Add</button>
     </div>
+    <mat-grid-list cols="4" rowHeight="300px" gutterSize="15px">
+      <mat-grid-tile *ngFor="let question of questions">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{question.auteur?.firstname}}</mat-card-title>
+        <mat-card-subtitle>{{question.auteur?.status}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content [ngClass]="'card-content'">
+        {{question.contenu}}
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="openDialog()">Read More</button>
+        <button mat-button>Comments</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
+    <ng-template #dialogContentTemplate *ngFor="let question of questions" >
+      <h2 mat-dialog-title>Dialog Title</h2>
+      <mat-dialog-content>
+        {{question.domaine?.nom_domaine_question}}
+
+      </mat-dialog-content>
+      <mat-dialog-actions>
+        <button mat-button mat-dialog-close>Close</button>
+      </mat-dialog-actions>
+    </ng-template>
+
   </div>
+</div>
 </app-homeh>

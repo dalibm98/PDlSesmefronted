@@ -3,8 +3,8 @@
     padding: 0 1rem;
     background: #f1f5f9;
     &__box {
-      min-height: 120px;
-      background: #1e293b;
+      min-height: px;
+      background: #4477ef;
       margin: 0 -1rem;
       font-size: 36px;
     }
@@ -36,3 +36,51 @@
   .mat-radio-button~.mat-radio-button {
     margin-left: 16px;
   }
+
+  .page__content {
+    background-image: url('../../assets/sesame.jpg');
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.5s ease-in-out;
+    opacity: 1;
+    filter: brightness(90%) saturate(100%) contrast(120%);
+    -webkit-filter: brightness(90%) saturate(100%) contrast(120%);
+}
+  
+  .page__content:hover {
+    background-image: url('../../assets/sesame.jpg');
+    filter: brightness(90%) saturate(100%) contrast(120%);
+    -webkit-filter: brightness(90%) saturate(100%) contrast(120%);
+}
+  
+  .page__content-text {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    color: white;
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  .page__content:hover .page__content-text {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .title {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 60px;
+    margin: 0;
+  }
+  
+  .page__content:hover .title {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  

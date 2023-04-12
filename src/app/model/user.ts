@@ -11,6 +11,9 @@ export class User {
     lastname?: string;
     email?: string;
     password?: string;
+
+    status?: string;
+    description?: string;
     role?: RoleEnum;
     tokens?: Token[];
     notifications?: Notification[];

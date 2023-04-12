@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomehComponent } from './homeh/homeh.component';
 import { LoginComponent } from './login/login.component';
 import { AuthComponent } from './login/auth/auth.component';
+import { ListeusersComponent } from './listeusers/listeusers.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'homeh', component: HomehComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'listeuser', component: ListeusersComponent },
 ];
 
 @NgModule({
