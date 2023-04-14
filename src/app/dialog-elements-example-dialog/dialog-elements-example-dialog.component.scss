@@ -1,0 +1,24 @@
+.dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px;
+    background-color: #000;
+    color: #fff;
+  }
+  
+  .dialog-title {
+    font-size: 36px;
+    margin: 0;
+  }
+  
+  
+  .mat-dialog-content {
+    padding: 24px;
+  }
+  .dialog-content p {
+    color: #444;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  

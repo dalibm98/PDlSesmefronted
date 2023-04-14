@@ -1,1 +1,61 @@
-@import "../home/home.component.scss";
+.page {
+  color: rgb(190, 186, 225);
+  padding: 0 1rem;
+  background: rgb(190, 186, 225);
+  &__box {
+    min-height: px;
+    background:rgb(190, 186, 225);
+    margin: 0 -1rem;
+    font-size: 36px;
+  }
+  &__content {
+    min-height: calc(100vh - 178px);
+    border-radius: 10px;
+    margin-top: -2rem;
+    background: rgb(190, 186, 225);
+    color: black;
+    font-size: 2rem;
+    &-data {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 16px;
+}
+.button {
+  margin: 8px;
+}
+
+.mat-radio-button~.mat-radio-button {
+  margin-left: 16px;
+}
+.example-card {
+    max-width: 400px;
+  }
+
+  .example-header-image {
+    background-image: url('../../assets/user.jpg');
+    background-size: cover;
+  }
+  .button-right {
+    float: right;
+  }
+
+
+  .card-content {
+    font-size: 9px;
+  }
+  .mat-card {
+    transition: transform .2s;
+  }
+  .mat-card:hover {
+    transform: scale(1.05);
+  }
+  

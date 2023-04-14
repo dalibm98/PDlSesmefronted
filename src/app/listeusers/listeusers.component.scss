@@ -1,0 +1,149 @@
+.page {
+  color: rgb(190, 186, 225);
+  padding: 0 1rem;
+  background: rgb(190, 186, 225);
+  &__box {
+    min-height: px;
+    background:rgb(190, 186, 225);
+    margin: 0 -1rem;
+    font-size: 36px;
+  }
+  &__content {
+    min-height: calc(100vh - 178px);
+    border-radius: 10px;
+    margin-top: -2rem;
+    background: rgb(190, 186, 225);
+    color: black;
+    font-size: 2rem;
+    &-data {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+  .flex-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 16px;
+  }
+  .button {
+    margin: 8px;
+  }
+  
+  .mat-radio-button~.mat-radio-button {
+    margin-left: 16px;
+  }
+
+.example-card {
+    max-width: 400px;
+  }
+  .card-content {
+    font-size: 9px;
+  }
+  .example-header-image {
+    background-image: url('../../assets/user.jpg');
+    background-size: cover;
+  }@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e3f2fd;
+  }
+  ::-webkit-scrollbar {
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 25px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #6e93f7;
+    border-radius: 25px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #4070f4;
+  }
+ 
+
+
+
+  .container {
+    max-width: 10100px;
+    margin: 0 auto;
+    padding: 30px;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Modifier de 3 à 5 */
+    grid-gap: 24px;
+  }
+  
+  
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out; /* Ajouter une transition */
+  }
+  
+  .card:hover {
+    transform: scale(1.1); /* Ajouter un zoom de 10% */
+  }
+  
+  
+  .card .image {
+    height: 100px;
+    width: 100px;
+    padding: 4px;
+    background: #4070f4;
+    border-radius: 50%;
+  }
+  
+  .image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid #fff;
+  }
+  
+  .card h2 {
+    margin-top: 25px;
+    color: #333;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  
+  .card p {
+    margin-top: 4px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #333;
+    text-align: center;
+  }
+  .icon-text {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+  }
+  
+  .icon-text i {
+    margin-right: 8px;
+    font-size: 24px;
+  }
+  

@@ -12,6 +12,6 @@ export class LoginComponent {
   login(): void {
     // Code to handle login logic
     // Assuming login is successful, navigate to home page
-    this.router.navigate(['/homeh']);
+    this.router.navigate(['/home']);
   }
 }

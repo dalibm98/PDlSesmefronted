@@ -1,0 +1,48 @@
+
+<form>
+
+    <div style="display: flex;flex-direction: column;justify-content: start;align-items: flex-start;margin-top: 32px;">
+
+        <div style="width: 100%;">
+            <mat-form-field style="width: 100%;" appearance="outline">
+                <mat-label>Enter your email</mat-label>
+                <input formControlName="email" ngModel matInput>
+          
+
+            </mat-form-field>
+        </div>
+
+        <div style="width: 100%;">
+            <mat-form-field style="width: 100%;" appearance="outline">
+                <mat-label>Enter your password</mat-label>
+                <input formControlName="password" type="password" ngModel matInput>
+                
+
+            </mat-form-field>
+        </div>
+
+        <div style="width: 100%;">
+            <mat-form-field style="width: 100%;" appearance="outline">
+                <mat-label>Enter your firstname</mat-label>
+                <input formControlName="firstname" ngModel matInput placeholder="Firstname">
+             
+            </mat-form-field>
+        </div>
+
+        <div style="width: 100%;">
+            <mat-form-field style="width: 100%;" appearance="outline">
+                <mat-label>Enter your lastname</mat-label>
+                <input formControlName="lastname" ngModel matInput placeholder="Lastname">
+             
+
+            </mat-form-field>
+        </div>
+
+        <div style="align-self: flex-end;width: 30%;">
+            <button  mat-flat-button style="width: 100%;" color="primary">Register</button>
+         
+        </div>
+    </div>
+
+
+</form>

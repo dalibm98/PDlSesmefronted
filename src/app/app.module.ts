@@ -18,7 +18,24 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { HomehComponent } from './homeh/homeh.component';
 import { LoginComponent } from './login/login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponent } from './login/register/register.component';
+import { AuthComponent } from './login/auth/auth.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatExpansionModule } from '@angular/material/expansion';
+import {MatGridListModule} from '@angular/material/grid-list' ;
+import { MatTableModule } from '@angular/material/table';
+
+import { MatPaginatorModule } from '@angular/material/paginator';
+
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { HttpClientModule } from '@angular/common/http';
+import { ListeusersComponent } from './listeusers/listeusers.component';
+import { DialogElementsExampleDialogComponent } from './dialog-elements-example-dialog/dialog-elements-example-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +44,11 @@ import { FormsModule } from '@angular/forms';
     SidenavComponent,
     DashboardComponent,
     HomehComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent,
+    AuthComponent,
+    ListeusersComponent,
+    DialogElementsExampleDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,10 +63,21 @@ import { FormsModule } from '@angular/forms';
     MatCardModule,
     MatButtonModule,
     FormsModule,
-    MatInputModule
-
+    MatInputModule,
+    MatTabsModule,
+    MatFormFieldModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
+    MatProgressSpinnerModule,
+    MatExpansionModule,
+    HttpClientModule,
+    MatGridListModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

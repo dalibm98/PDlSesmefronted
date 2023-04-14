@@ -1,13 +1,30 @@
-<!-- login.component.html -->
 <form (ngSubmit)="login()">
-    <mat-form-field>
-      <mat-label>Email</mat-label>
-      <input matInput type="email"  name="email" required>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Password</mat-label>
-      <input matInput type="password"  name="password" required>
-    </mat-form-field>
-    <button mat-raised-button color="primary" type="submit">Login</button>
-  </form>
-  
+  <div
+    style="
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: flex-start;
+    "
+  >
+    <div style="width: 100%">
+      <mat-form-field style="width: 100%" appearance="outline">
+        <mat-label>Enter your email</mat-label>
+        <input formControlName="username" ngModel matInput />
+      </mat-form-field>
+    </div>
+
+    <div style="width: 100%">
+      <mat-form-field style="width: 100%" appearance="outline">
+        <mat-label>Enter your password</mat-label>
+        <input formControlName="password" type="password" ngModel matInput />
+      </mat-form-field>
+    </div>
+
+    <div style="align-self: flex-end; width: 30%">
+      <button mat-flat-button style="width: 100%" color="primary">Login</button>
+      <div style="width: 100%; display: flex; justify-content: center"></div>
+    </div>
+  </div>
+</form>
