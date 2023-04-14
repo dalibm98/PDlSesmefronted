@@ -7,6 +7,7 @@ import { AuthenticationRequest } from '../model/authentication-request';
 import { User } from '../model/user';
 import { Question } from '../model/question';
 import { Reponse } from '../model/reponse';
+import { UserStats } from '../model/user-stats';
 
 
 @Injectable({
@@ -65,4 +66,9 @@ export class AuthenticationService {
   getQuestionsWithReponses(): Observable<Question[]> {
     return this.http.get<Question[]>(`${this.apiUrl}/questions-with-reponses`);
   }
+
+  getStats(): Observable<UserStats[]> {
+    return this.http.get<UserStats[]>(`${this.apiUrl}/users/stats`);
+  }
+  
 }

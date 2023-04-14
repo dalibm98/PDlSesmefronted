@@ -1,0 +1,13 @@
+<div class="dialog-header">
+    <h1 class="dialog-title">Welcome to Community SESAME</h1>
+  </div>
+  
+  <div mat-dialog-content class="dialog-content"  [@fadeInOut] = "true">
+    <p color="primary">Please login or sign up to continue.</p>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button color="primary" routerLink="/auth" >Login</button>
+    <button mat-button color="accent" routerLink="/auth">Sign Up</button>
+  </div>
+  

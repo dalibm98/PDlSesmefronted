@@ -35,6 +35,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HttpClientModule } from '@angular/common/http';
 import { ListeusersComponent } from './listeusers/listeusers.component';
+import { DialogElementsExampleDialogComponent } from './dialog-elements-example-dialog/dialog-elements-example-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +48,7 @@ import { ListeusersComponent } from './listeusers/listeusers.component';
     RegisterComponent,
     AuthComponent,
     ListeusersComponent,
+    DialogElementsExampleDialogComponent,
   ],
   imports: [
     BrowserModule,
