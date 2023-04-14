@@ -52,4 +52,10 @@
   .card-content {
     font-size: 9px;
   }
+  .mat-card {
+    transition: transform .2s;
+  }
+  .mat-card:hover {
+    transform: scale(1.05);
+  }
   
