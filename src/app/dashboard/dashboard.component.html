@@ -5,9 +5,9 @@
     <div>
       <button mat-raised-button color="primary" class="button-right"  (click)="openDialogg()" >Add</button>
     </div>
-    <mat-grid-list cols="3" rowHeight="250px" gutterSize="10px">
+    <mat-grid-list  cols="3" rowHeight="250px" gutterSize="10px">
       <mat-grid-tile *ngFor="let question of questions">
-    <mat-card class="example-card">
+    <mat-card class="example-card" class="mat-card">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title>{{question.auteur.firstname}}</mat-card-title>

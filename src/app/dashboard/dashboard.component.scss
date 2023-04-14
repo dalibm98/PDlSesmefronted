@@ -1,10 +1,10 @@
 .page {
-  color: white;
+  color: rgb(190, 186, 225);
   padding: 0 1rem;
-  background: #f1f5f9;
+  background: rgb(190, 186, 225);
   &__box {
     min-height: px;
-    background: #4477ef;
+    background:rgb(190, 186, 225);
     margin: 0 -1rem;
     font-size: 36px;
   }
@@ -12,7 +12,7 @@
     min-height: calc(100vh - 178px);
     border-radius: 10px;
     margin-top: -2rem;
-    background: white;
+    background: rgb(190, 186, 225);
     color: black;
     font-size: 2rem;
     &-data {
