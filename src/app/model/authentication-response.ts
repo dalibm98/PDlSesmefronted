@@ -1,4 +1,4 @@
-export class AuthenticationResponse {
-    token?: string;
+export interface AuthenticationResponse {
+    token: string;
 
 }
