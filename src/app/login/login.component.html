@@ -1,5 +1,15 @@
 <form [formGroup]="loginForm" (ngSubmit)="login()">
-  <div style="margin-top: 32px; display: flex; flex-direction: column; justify-content: space-evenly; align-items: flex-start;">
+  <div *ngIf="error" style="color: red">{{ error }}</div>
+
+  <div
+    style="
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: flex-start;
+    "
+  >
     <div style="width: 100%">
       <mat-form-field style="width: 100%" appearance="outline">
         <mat-label>Enter your email</mat-label>
@@ -14,20 +24,24 @@
       </mat-form-field>
     </div>
 
-
     <div style="align-self: flex-end; width: 30%">
-      <button mat-flat-button style="width: 100%" color="primary" [disabled]="loading" >
+      <button
+        mat-flat-button
+        style="width: 100%"
+        color="primary"
+        [disabled]="loading"
+      >
         <span *ngIf="!loading">Login</span>
-        <mat-spinner *ngIf="loading" diameter="20" color="accent" [strokeWidth]="3" style="margin-right: 10px;"  style="animation-duration: 3s"></mat-spinner>
+        <mat-spinner
+          *ngIf="loading"
+          diameter="20"
+          color="accent"
+          [strokeWidth]="3"
+          style="margin-right: 10px"
+          style="animation-duration: 3s"
+        ></mat-spinner>
       </button>
       <div style="width: 100%; display: flex; justify-content: center"></div>
     </div>
   </div>
-
-
-
-
-
-
-
 </form>
