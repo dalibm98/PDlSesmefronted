@@ -36,6 +36,15 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HttpClientModule } from '@angular/common/http';
 import { ListeusersComponent } from './listeusers/listeusers.component';
 import { DialogElementsExampleDialogComponent } from './dialog-elements-example-dialog/dialog-elements-example-dialog.component';
+import { ProfileuserComponent } from './users/profileuser/profileuser.component';
+import { ListeQuestionComponent } from './users/liste-question/liste-question.component';
+import { NavbaruserComponent } from './users/navbaruser/navbaruser.component';
+import { HeaderuserComponent } from './users/headeruser/headeruser.component';
+import { AppcComponent } from './users/appc/appc.component';
+import { DialogcommentComponent } from './users/dialogcomment/dialogcomment.component';
+import { ListedesusersComponent } from './users/listedesusers/listedesusers.component';
+import { AccountusersComponent } from './users/accountusers/accountusers.component';
+import { DialogsComponent } from './users/dialogs/dialogs.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +58,15 @@ import { DialogElementsExampleDialogComponent } from './dialog-elements-example-
     AuthComponent,
     ListeusersComponent,
     DialogElementsExampleDialogComponent,
+    ProfileuserComponent,
+    ListeQuestionComponent,
+    NavbaruserComponent,
+    HeaderuserComponent,
+    AppcComponent,
+    DialogcommentComponent,
+    ListedesusersComponent,
+    AccountusersComponent,
+    DialogsComponent,
   ],
   imports: [
     BrowserModule,

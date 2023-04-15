@@ -4,19 +4,19 @@ import { Token } from "./token";
 import { Notification } from "./notification";
 import { RoleEnum } from "./role-enum";
 
-export class User {
+export interface User {
 
-     id?: number;
-    firstname?: string;
-    lastname?: string;
-    email?: string;
-    password?: string;
+     id: number;
+    firstname: string;
+    lastname: string;
+    email: string;
+    password: string;
 
-    status?: string;
-    description?: string;
-    role?: RoleEnum;
-    tokens?: Token[];
-    notifications?: Notification[];
-    questions?: Question[];
-    reponses?: Reponse[];
+    status: string;
+    description: string;
+    role: RoleEnum;
+    tokens: Token[];
+    notifications: Notification[];
+    questions: Question[];
+    reponses: Reponse[];
 }

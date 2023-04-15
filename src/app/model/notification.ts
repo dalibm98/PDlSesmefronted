@@ -1,9 +1,9 @@
 import { User } from "./user";
 
-export class Notification {
-    id_notification: number = 0;
-    message: string = '';
-    estLu: boolean = false;
-    creationDate: Date = new Date();
-    destinataire: User = new User();
+export interface Notification {
+    id_notification: number ;
+    message: string ;
+    estLu: boolean ;
+    creationDate: Date ;
+    destinataire: User ;
 }

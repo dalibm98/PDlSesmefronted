@@ -14,8 +14,6 @@ export class AuthComponent implements OnInit {
 
   ngOnInit(): void {
 
-
-
   }
 
   accountDidCreated()
@@ -23,6 +21,4 @@ export class AuthComponent implements OnInit {
     console.log("qdsdsddsds")
 this.selectedIndex = 0
   }
-
-
 }
