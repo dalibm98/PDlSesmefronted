@@ -26,7 +26,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
-import {MatGridListModule} from '@angular/material/grid-list' ;
+import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTableModule } from '@angular/material/table';
 
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -93,7 +93,7 @@ import { DialogsComponent } from './users/dialogs/dialogs.component';
     MatProgressSpinnerModule,
     MatExpansionModule,
     HttpClientModule,
-    MatGridListModule
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
