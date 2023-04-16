@@ -66,7 +66,26 @@ export class AuthenticationService {
   getQuestionsWithReponses(): Observable<Question[]> {
     return this.http.get<Question[]>(`${this.apiUrl}/questions-with-reponses`);
   }
-  getStats(): Observable<UserStats[]> {
-    return this.http.get<UserStats[]>(`${this.apiUrl}/users/stats`);
+
+  getUserStats(userId: number): Observable<UserStats> {
+    const url = `${this.apiUrl}/${userId}/stats`;
+    return this.http.get<UserStats>(url);
+  }
+
+  modifyQuestion(questionId: number, question: any): Observable<any> {
+    const url = `${this.apiUrl}/questions/${questionId}`;
+    return this.http.put(url, question);
+  }
+
+  modifyReponse(reponseId: number, reponse: any): Observable<any> {
+    const url = `${this.apiUrl}/reponses/${reponseId}`;
+    return this.http.put(url, reponse);
+  }
+
+  modifyUser(userId: number, user: any): Observable<any> {
+    const url = `${this.apiUrl}/users/${userId}`;
+    return this.http.put(url, user);
   }
 }
+
+

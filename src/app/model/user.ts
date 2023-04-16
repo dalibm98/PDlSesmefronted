@@ -3,6 +3,7 @@ import { Reponse } from "./reponse";
 import { Token } from "./token";
 import { Notification } from "./notification";
 import { RoleEnum } from "./role-enum";
+import { UserStats } from "./user-stats";
 
 export interface User {
 
@@ -19,4 +20,6 @@ export interface User {
     notifications: Notification[];
     questions: Question[];
     reponses: Reponse[];
+    stats?: UserStats; // l'opérateur '?' signifie que la propriété est facultative
+
 }

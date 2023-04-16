@@ -11,57 +11,29 @@ import { UserStats } from '../model/user-stats';
   templateUrl: './listeusers.component.html',
   styleUrls: ['./listeusers.component.scss']
 })
+
+
 export class ListeusersComponent implements OnInit {
-  stats: UserStats[] = [];
+  
+  users: User[] = [];
 
-  questionCount = this.stats.find((s: UserStats) => s.firstname === this.users[0]?.firstname)?.questionCount || 0;
-  reponseCount = this.stats.find((s: UserStats) => s.firstname === this.users[0]?.firstname)?.reponseCount || 0;
-
-  users: User[] = []; // initialize the users property
-
-  constructor(private  userService: UserService, private authService: AuthenticationService) { }
+  constructor(private authService: AuthenticationService, private userService: UserService) { }
 
   ngOnInit(): void {
-    this.getAllUsers();
-    this.getUsersStats();
+    this.userService.getAllUsers().subscribe(users => {
+      this.users = users;
 
-
-  }
-
-  getAllUsers(): void {
-    this.userService.getAllUsers()
-      .subscribe(
-        data => {
-          this.users = data;
-        },
-        error => {
-          console.log(error);
+      for (const user of this.users) {
+        this.authService.getUserStats(user.id).subscribe(stats => {
+          user.stats = {
+            questionCount: stats.questionCount,
+            reponseCount: stats.reponseCount
+          };
         });
-  }
-
-  getUsersStats(): void {
-    this.userService.getAllUsers().pipe(
-      concatMap(users => {
-        const requests = users.map(user => this.authService.getStats());
-  
-        return forkJoin(requests).pipe(
-          map((results: any[]) => {
-            return results.map((result, index) => ({
-              firstname: users[index].firstname || '',
-              questionCount: result.questionCount || 0,
-              reponseCount: result.reponseCount || 0
-            }));
-          })
-        );
-      })
-    ).subscribe(
-      (stats: UserStats[]) => {
-        this.stats = stats;
-      },
-      error => {
-        console.log(error);
       }
-    );
+    });
   }
-
 }
+
+
+
