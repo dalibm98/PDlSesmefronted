@@ -94,6 +94,7 @@ import { DialogsComponent } from './users/dialogs/dialogs.component';
     MatExpansionModule,
     HttpClientModule,
     MatGridListModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],
