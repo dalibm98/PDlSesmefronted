@@ -1,41 +1,45 @@
-
 <app-homeh>
-    <div class="container-fluid page">
-      <div class="d-flex page__box p-3 mt-2"></div>
-      <div class="page__content shadow p-3 position-relative" >
-  
-        <!-- Content of the page here -->
-  
-        <head>
-          <meta charset="UTF-8" />
-          <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        </head>
-        <section class="container">
-          <div class="grid">
-            <div class="card" *ngFor="let user of users">
-              <div class="image">
-                <img src="../assets/user.jpg" alt="" />
-              </div>
-              <h2>{{user.firstname}}</h2>
-              <p>{{user.status}}</p>
+  <div class="container-fluid page" style="border: 10px solid #ece9e9">
+    <div class="d-flex page__box p-3 mt-2"></div>
+    <div
+      class="page__content shadow p-3 position-relative"
+      style="border: 3px solid #ece9e9"
+    >
+      <!-- Content of the page here -->
 
-              <p><mat-icon>help_outline</mat-icon> {{ questionCount }} Questions</p>
-              <p><mat-icon>comment</mat-icon> {{ reponseCount }} Answers</p>
-              
-              
-              
+      <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet"
+        />
+      </head>
+      <section class="container">
+        <div class="grid">
+          <div class="card" *ngFor="let user of users">
+            <div class="image">
+              <img src="../assets/user.jpg" alt="" />
             </div>
-          </div>
-        </section>
+            <h2>{{ user.firstname }}</h2>
+            <p>{{ user.status }}</p>
 
-        <mat-paginator [length]="100"
-              [pageSize]="10"
-              [pageSizeOptions]="[5, 10, 25, 100]"
-              aria-label="Select page">
-</mat-paginator>
+            <p>
+              <mat-icon>help_outline</mat-icon> {{ questionCount }} Questions
+            </p>
+            <p><mat-icon>comment</mat-icon> {{ reponseCount }} Answers</p>
           </div>
+        </div>
+      </section>
+
+      <mat-paginator
+        [length]="100"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        aria-label="Select page"
+      >
+      </mat-paginator>
     </div>
-  </app-homeh>
-
+  </div>
+</app-homeh>

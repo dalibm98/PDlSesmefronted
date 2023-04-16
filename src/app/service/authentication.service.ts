@@ -66,9 +66,7 @@ export class AuthenticationService {
   getQuestionsWithReponses(): Observable<Question[]> {
     return this.http.get<Question[]>(`${this.apiUrl}/questions-with-reponses`);
   }
-
   getStats(): Observable<UserStats[]> {
     return this.http.get<UserStats[]>(`${this.apiUrl}/users/stats`);
   }
-  
 }

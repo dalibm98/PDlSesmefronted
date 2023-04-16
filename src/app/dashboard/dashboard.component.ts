@@ -12,7 +12,7 @@ import { DialogElementsExampleDialogComponent } from '../dialog-elements-example
 })
 export class DashboardComponent implements OnInit {
   questions: Question[] = [];
-  reponses : Reponse [] = [] ; 
+  reponses: Reponse[] = [];
   selectedQuestion: Question | undefined;
   @ViewChild('dialogContentTemplate') dialogContentTemplate!: TemplateRef<any>;
 
@@ -51,13 +51,10 @@ export class DashboardComponent implements OnInit {
       }
     );
   }
-  
-  
+
   getFirstName(user: User): string {
     return user?.firstname || '';
   }
-
-
 
   openDialogg(): void {
     const dialogRef = this.dialog.open(DialogElementsExampleDialogComponent, {
@@ -65,5 +62,4 @@ export class DashboardComponent implements OnInit {
       height: '250px',
     });
   }
-  
 }

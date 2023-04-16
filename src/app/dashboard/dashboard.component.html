@@ -1,51 +1,122 @@
 <app-homeh>
-<div class="container-fluid page">
-  <div class="d-flex page__box p-3 mt-2"></div>
-  <div class="page__content shadow p-3 position-relative">
-    <div>
-      <button mat-raised-button color="primary" class="button-right"  (click)="openDialogg()" >Add</button>
+  <div class="container-fluid page" style="border: 10px solid #ece9e9">
+    <div class="d-flex page__box p-3 mt-2"></div>
+    <div
+      class="page__content shadow p-3 position-relative"
+      style="border: 3px solid #ece9e9"
+    >
+      <div>
+        <button
+          mat-raised-button
+          color="primary"
+          class="button-right"
+          (click)="openDialogg()"
+        >
+          Add
+        </button>
+      </div>
+      <br />
+      <br />
+      <mat-grid-list cols="3" rowHeight="250px" gutterSize="10px">
+        <mat-grid-tile *ngFor="let question of questions">
+          <mat-card class="example-card" class="mat-card">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title>{{ question.auteur.firstname }}</mat-card-title>
+              <mat-card-subtitle>{{
+                question.auteur.status
+              }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content [ngClass]="'card-content'">
+              <h6>Sujet:{{ question.sujet }}</h6>
+              <h6>Contenu:</h6>
+              <p>{{ question.contenu }}</p>
+              <p class="question-date">
+                <strong>Date:</strong> {{ question.date | date }}
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button (click)="openDialog(question)">
+                Comments
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <ng-template #dialogContentTemplate let-selectedQuestion>
+        <div class="question-card" style="border: 10px solid #ece9e9">
+          <div class="question-card-header">
+            <div class="question-card-avatar">
+              <img src="../../assets/profile.png" alt="avatar-image" />
+            </div>
+            <div class="question-card-titlee">
+              {{ selectedQuestion.auteur.firstname }}
+            </div>
+
+            <div class="question-card-close">
+              <button mat-icon-button mat-dialog-close>
+                <mat-icon>close</mat-icon>
+              </button>
+            </div>
+          </div>
+          <div class="question-card-content" style="border: 6px solid #ece9e9">
+            <div class="question-card-meta">
+              <p>
+                <strong>Domaine:</strong>
+                {{ selectedQuestion?.domaine.nom_domaine_question }}
+              </p>
+
+              <p>
+                <strong>Nature:</strong>
+                {{ selectedQuestion?.nature.nom_nature_question }}
+              </p>
+            </div>
+            <h2 class="question-card-content-title">
+              {{ selectedQuestion?.contenu }}
+            </h2>
+            <div
+              class="question-card-comments-container"
+              style="text-align: right"
+            >
+              <h4 class="question-card-comments-title">Comments</h4>
+              <div
+                class="question-card-comments"
+                *ngFor="let reponse of selectedQuestion?.reponses"
+                style="border: 3px solid #ece9e9"
+              >
+                <div>
+                  <div class="question-card-avatar">
+                    <img src="../../assets/profile.png" alt="avatar-image" />
+                  </div>
+
+                  <small class="question-card-comment-author"
+                    >by : {{ reponse.auteur.firstname }}</small
+                  >
+                  <br />
+
+                  <p class="question-date">
+                    <strong>Date:</strong> {{ reponse.dateCreation | date }}
+                  </p>
+                  <p class="question-card-comment">{{ reponse.contenu }}</p>
+                </div>
+              </div>
+
+              <div class="question-card-new-comment">
+                <input type="text" placeholder="Add a comment" />
+                <button>Post</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+
+      <mat-paginator
+        [length]="100"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        aria-label="Select page"
+      >
+      </mat-paginator>
     </div>
-    <mat-grid-list  cols="3" rowHeight="250px" gutterSize="10px">
-      <mat-grid-tile *ngFor="let question of questions">
-    <mat-card class="example-card" class="mat-card">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{question.auteur.firstname}}</mat-card-title>
-        <mat-card-subtitle>{{question.auteur.status}}</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content [ngClass]="'card-content'">
-        {{question.contenu}}
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button (click)="openDialog(question)">Read More</button>
-
-        <button mat-button  (click)="openDialog(question)"   >Comments</button>
-      </mat-card-actions>
-    </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>
-<ng-template #dialogContentTemplate let-selectedQuestion>
-  <h2 mat-dialog-title>{{selectedQuestion?.contenu}}</h2>
-  <mat-dialog-content>
-    <p>{{selectedQuestion?.domaine?.nom_domaine_question}}</p>
-    <div *ngFor="let reponse of selectedQuestion?.reponses">
-      <p>{{reponse?.contenu}}</p>
-    </div>
-  </mat-dialog-content>
-  <mat-dialog-actions>
-    <button mat-button mat-dialog-close>Close</button>
-  </mat-dialog-actions>
-</ng-template>
-
-
-
-
-
-    <mat-paginator [length]="100"
-    [pageSize]="10"
-    [pageSizeOptions]="[5, 10, 25, 100]"
-    aria-label="Select page">
-</mat-paginator>
   </div>
-</div>
 </app-homeh>

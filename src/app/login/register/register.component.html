@@ -1,31 +1,42 @@
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" style="display: flex; flex-direction: column;">
+<form
+  [formGroup]="registerForm"
+  (ngSubmit)="onSubmit()"
+  style="display: flex; flex-direction: column"
+>
   <mat-form-field appearance="outline">
     <mat-label>First Name</mat-label>
-    <input matInput formControlName="firstname" required>
+    <input matInput formControlName="firstname" required />
   </mat-form-field>
 
   <mat-form-field appearance="outline">
     <mat-label>Last Name</mat-label>
-    <input matInput formControlName="lastname" required>
+    <input matInput formControlName="lastname" required />
   </mat-form-field>
 
   <mat-form-field appearance="outline">
     <mat-label>Email</mat-label>
-    <input matInput formControlName="email" required>
+    <input matInput formControlName="email" required />
   </mat-form-field>
 
   <mat-form-field appearance="outline">
     <mat-label>Password</mat-label>
-    <input matInput formControlName="password" type="password" required>
+    <input matInput formControlName="password" type="password" required />
   </mat-form-field>
   <div style="align-self: flex-end; width: 30%">
-    <button mat-flat-button color="primary" style="width: 100%" type="submit" [disabled]="!registerForm.valid || loading">
+    <button
+      mat-flat-button
+      color="primary"
+      style="width: 100%"
+      type="submit"
+      [disabled]="!registerForm.valid || loading"
+    >
       Register
     </button>
 
     <mat-spinner *ngIf="loading"></mat-spinner>
   </div>
 
-  <div *ngIf="showSuccessMessage" class="success-message">Inscription réussie !</div>
-
-  </form>
+  <div *ngIf="showSuccessMessage" class="success-message">
+    Inscription réussie !
+  </div>
+</form>
