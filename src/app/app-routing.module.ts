@@ -8,6 +8,7 @@ import { AuthComponent } from './login/auth/auth.component';
 import { ListeusersComponent } from './listeusers/listeusers.component';
 import { ListeQuestionComponent } from './users/liste-question/liste-question.component';
 import { AppcComponent } from './users/appc/appc.component';
+import { PostsComponent } from './users/posts/posts.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
@@ -20,6 +21,8 @@ const routes: Routes = [
   { path: 'listeuser', component: ListeusersComponent },
   { path: 'listequestion', component: ListeQuestionComponent },
   { path: 'appc', component: AppcComponent },
+  { path: 'posts', component: PostsComponent }
+
   
 ];
 
