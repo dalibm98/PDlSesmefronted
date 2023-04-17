@@ -16,7 +16,8 @@ export class LoginComponent {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private router : Router
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -34,6 +35,8 @@ export class LoginComponent {
     this.authService.authenticate(authenticationRequest).subscribe(
       (response) => {
         this.authService.storeAuthToken(response.token);
+        this.router.navigate(['/listequestion']);
+
         // rediriger vers la page suivante ici
         this.loading = false; // on désactive le spinner
       },

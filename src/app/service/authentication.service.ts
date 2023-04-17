@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
 import { RegisterRequest } from '../model/register-request';
 import { AuthenticationResponse } from '../model/authentication-response';
 import { AuthenticationRequest } from '../model/authentication-request';
@@ -18,8 +18,6 @@ export class AuthenticationService {
   private authTokenKey = 'authToken';
 
   private baseUrl = '/api/v1/auth';
-
-
   constructor(private http: HttpClient) {}
 
   register(registerRequest: RegisterRequest): Observable<any> {
@@ -41,22 +39,42 @@ export class AuthenticationService {
   removeAuthToken(): void {
     localStorage.removeItem(this.authTokenKey);
   }
-
+  getCurrentUser(authToken: string | null): Observable<User> {
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + authToken);
+    return this.http.get<User>(`${this.apiUrl}/current-user`, { headers });
+  }
 
   addQuestion(question: Question): Observable<User> {
-    return this.http.post<User>(`${this.apiUrl}/questions`, question);
+    const authToken = this.getAuthToken();
+    if (authToken) {
+      const headers = new HttpHeaders().set('Authorization', 'Bearer ' + authToken);
+      return this.http.post<User>(`${this.apiUrl}/questions`, question, { headers });
+    }
+    return throwError('Authentication required to add a question');
   }
+  
 
   addReponse(questionId: number, reponse: Reponse): Observable<User> {
+
+
+    const authToken = this.getAuthToken();
+    if (authToken) {
+      const headers = new HttpHeaders().set('Authorization', 'Bearer ' + authToken);
+
     return this.http.post<User>(`${this.apiUrl}/questions/${questionId}/reponses`, reponse);
   }
-
-  getCurrentUser(): Observable<User> {
-    return this.http.get<User>(`${this.apiUrl}/current-user`);
+  return throwError('Authentication required to add a question');
   }
 
+
+
   markNotificationAsRead(notificationId: number): Observable<Notification> {
+    const authToken = this.getAuthToken();
+    if (authToken) {
+      const headers = new HttpHeaders().set('Authorization', 'Bearer ' + authToken);
     return this.http.put<Notification>(`${this.apiUrl}/notifications/${notificationId}`, null);
+  }
+  return throwError('Authentication required to add a question');
   }
 
   getNotifications(): Observable<Notification[]> {
