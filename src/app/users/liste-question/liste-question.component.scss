@@ -23,8 +23,6 @@
       }
     }
   }
-  
-
 
   .page__content {
     background-image: url('../../../assets/sesame.jpg');
@@ -37,7 +35,7 @@
 }
   
   .page__content:hover {
-    background-image: url('../../../assets/sesame.jpg');
+    background-image: url('../../../assets/s2.jpg');
     filter: brightness(90%) saturate(100%) contrast(120%);
     -webkit-filter: brightness(90%) saturate(100%) contrast(120%);
 }

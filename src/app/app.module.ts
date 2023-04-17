@@ -45,6 +45,10 @@ import { DialogcommentComponent } from './users/dialogcomment/dialogcomment.comp
 import { ListedesusersComponent } from './users/listedesusers/listedesusers.component';
 import { AccountusersComponent } from './users/accountusers/accountusers.component';
 import { DialogsComponent } from './users/dialogs/dialogs.component';
+import { PostsComponent } from './users/posts/posts.component';
+import { ModifpostComponent } from './users/modifpost/modifpost.component';
+import { AnswersComponent } from './users/answers/answers.component';
+import { EditanswersComponent } from './users/editanswers/editanswers.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,6 +71,10 @@ import { DialogsComponent } from './users/dialogs/dialogs.component';
     ListedesusersComponent,
     AccountusersComponent,
     DialogsComponent,
+    PostsComponent,
+    ModifpostComponent,
+    AnswersComponent,
+    EditanswersComponent,
   ],
   imports: [
     BrowserModule,

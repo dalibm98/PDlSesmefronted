@@ -49,9 +49,11 @@
             <div class="question-card-avatar">
               <img src="../../assets/profile.png" alt="avatar-image" />
             </div>
-            <div class="question-card-titlee">
-              {{ selectedQuestion.auteur.firstname }}
-            </div>
+            <div class="author-info text-left-parent">
+              <span class="author-name text-left">{{ selectedQuestion.auteur.firstname }} {{ selectedQuestion.auteur.lastname }}</span>
+          </div>
+          
+            
 
             <div class="question-card-close">
               <button mat-icon-button mat-dialog-close>

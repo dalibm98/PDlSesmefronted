@@ -23,21 +23,21 @@
 }
 
 .list-item-active {
- // background: rgb(120, 120, 157) !important;
-  //border-radius: 0 2rem 2rem 0;
+  background: rgb(216, 216, 255) !important;
+  border-radius: 0 2rem 2rem 0;
 
- // &:hover {
-   // background: rgb(46, 46, 49);
- // }
+  &:hover {
+    background: rgb(155, 155, 170);
+ }
 
-  color: #f2f5f7 !important;
+  color: #000000 !important;
 
   ::ng-deep {
     .mat-list-item-content {
-      background: #2c3344 !important;
+      background: #1d2129 !important;
 
       &:hover {
-        background: #2c3344 !important;
+        background: #0b0d11 !important;
       }
     }
   }

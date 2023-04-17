@@ -13,4 +13,6 @@ export interface Question {
     nature: NatureQuestion;
     domaine: DomaineQuestion;
     isAnswered: boolean;
+
+    showReponses: boolean; // Add this line
 }

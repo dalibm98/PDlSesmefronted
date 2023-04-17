@@ -38,17 +38,21 @@
   }
 
   .page__content {
-    background-image: url('../../assets/sesame.jpg');
+    background-image: url('../../assets/s2.jpg');
     background-size: cover;
     background-position: center;
     transition: background-image 0.5s ease-in-out;
     opacity: 1;
     filter: brightness(90%) saturate(100%) contrast(120%);
     -webkit-filter: brightness(90%) saturate(100%) contrast(120%);
+    -webkit-transition: background-image 0.5s ease-in-out;
+    -moz-transition: background-image 0.5s ease-in-out;
+    -ms-transition: background-image 0.5s ease-in-out;
+    -o-transition: background-image 0.5s ease-in-out;
 }
   
   .page__content:hover {
-    background-image: url('../../assets/sesame.jpg');
+    background-image: url('../../assets/s3.jpg');
     filter: brightness(90%) saturate(100%) contrast(120%);
     -webkit-filter: brightness(90%) saturate(100%) contrast(120%);
 }
