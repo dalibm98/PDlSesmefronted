@@ -27,8 +27,9 @@
   }
 }
 
+/*
 .question-card {
-  border: 10px solid #ece9e9;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -55,7 +56,7 @@
   background-color: #f1f1f1;
   height: 50px;
   width: 50px;
-  border-radius: 50%;
+
   margin-right: 10px;
 }
 
@@ -74,7 +75,7 @@
 }
 
 .question-card-content {
-  border: 6px solid #ece9e9;
+
   margin-top: 20px;
   width: 100%;
   background-color: #fff;
@@ -102,12 +103,12 @@
   font-size: 2rem;
   margin-bottom: 20px;
 
-  color: #333;
+  color: #a39494;
 }
 
 .question-card-comments-container {
   margin-top: 20px;
-  border-top: 6px solid #ece9e9;
+
   padding-top: 20px;
 }
 
@@ -133,12 +134,12 @@
   margin-right: 10px;
 
   background-color: #f2f2f2;
-  color: #333;
+  color: #fff7f7;
 }
 
 .question-card-new-comment button {
   background-color: #0226ef;
-  border: none;
+
   color: white;
   padding: 8px 16px;
   text-align: center;
@@ -185,7 +186,7 @@
   opacity: 0.8;
   }
   .comment-author {
-    color: #666;
+    color: #a29292;
   }
 
   .voir {
@@ -194,4 +195,108 @@
     text-align: right;
     font-size: small;
   }
-  
+  */
+  /* Style pour le titre */
+.page__box-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Style pour les cards des questions */
+.question-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+/* Style pour l'avatar */
+.question-card-avatar img {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+}
+
+/* Style pour l'auteur */
+.author-name {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Style pour les commentaires */
+.question-card-comments-container {
+  margin-top: 20px;
+}
+
+.question-card-comments-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.comment-avatar {
+  margin-right: 10px;
+}
+
+.comment-author {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.comment-date {
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+.comment-text {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* Style pour le bouton "Voir les réponses" */
+.voir {
+  text-align: right;
+}
+
+.voir i {
+  color: #0d6efd;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.voir i:hover {
+  text-decoration: underline;
+}
+
+
+.question-card-new-comment {
+  display: flex;
+  align-items: center;
+  //margin-top: 20px;
+}
+
+.question-card-new-comment input[type="text"] {
+  flex-grow: 1;
+  margin-right: 10px;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.question-card-new-comment button {
+  background-color: #0d6efd;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 8px;
+  transition: background-color 0.2s;
+}
+
+.question-card-new-comment button:hover {
+  background-color: #0b5ed7;
+}

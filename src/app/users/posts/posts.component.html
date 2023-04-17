@@ -1,7 +1,7 @@
 <app-appc>
   <div class="container-fluid page">
     <div class="d-flex page__box p-3 mt-2">
-      <span class="page__box-title"  style="color: aliceblue">Posts</span>
+      <span class="page__box-title"  style="color: rgb(243, 243, 243)">Posts</span>
     </div>
 
     <div class="page__content shadow p-3">
@@ -12,13 +12,20 @@
             <img src="../../assets/profile.png" alt="avatar-image" />
           </div>
           <div class="author-info">
-            <span class="author-name">{{question.auteur.firstname}}</span>
+            <span class="author-name">{{question.auteur.firstname}}
+              {{question.auteur.lastname}}
+              {{question.date |date}}
+            </span>
+           
           </div>
         </div>
+      
         <div class="question-card-content">
           <div class="question-card-meta">
+            <!--
             <p><small>Domaine: {{question.domaine.nom_domaine_question}}</small></p>
             <p><small>Nature: {{question.nature.nom_nature_question}}</small></p>
+            -->
           </div>
           <h2 class="question-card-content-title">{{ question.contenu }}</h2>
           <br>
