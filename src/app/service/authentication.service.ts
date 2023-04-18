@@ -44,6 +44,21 @@ export class AuthenticationService {
     return this.http.get<User>(`${this.apiUrl}/current-user`, { headers });
   }
 
+
+  addReponse(questionId: number, reponse: Reponse): Observable<Reponse> {
+    const url = `${this.apiUrl}/questions/${questionId}/reponses`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.getAuthToken()}`
+      })
+    };
+    return this.http.post<Reponse>(url, reponse, httpOptions);
+  }
+
+
+
+
   addQuestion(question: Question): Observable<User> {
     const authToken = this.getAuthToken();
     if (authToken) {
@@ -54,17 +69,6 @@ export class AuthenticationService {
   }
   
 
-  addReponse(questionId: number, reponse: Reponse): Observable<User> {
-
-
-    const authToken = this.getAuthToken();
-    if (authToken) {
-      const headers = new HttpHeaders().set('Authorization', 'Bearer ' + authToken);
-
-    return this.http.post<User>(`${this.apiUrl}/questions/${questionId}/reponses`, reponse);
-  }
-  return throwError('Authentication required to add a question');
-  }
 
 
 

@@ -1,1 +1,19 @@
-<p>editanswers works!</p>
+<div class="chat-container">
+  <div class="user-list">
+    <div *ngFor="let user of users" (click)="selectUser(user)" [ngClass]="{'selected-user': selectedUser === user}">
+      {{ user }}
+    </div>
+  </div>
+  <div class="chat-messages" *ngIf="selectedUser">
+    <div *ngFor="let message of messages[selectedUser]" [ngClass]="{'user-message': message.user === currentUser, 'chatbot-message': message.user !== currentUser}">
+      <span class="message-user">{{ message.user }} :</span>
+      <span class="message-text">{{ message.text }}</span>
+    </div>
+  </div>
+  <div class="chat-input">
+    <mat-form-field>
+      <input matInput placeholder="Type your message...">
+      <mat-icon matSuffix>send</mat-icon>
+    </mat-form-field>
+  </div>
+</div>
