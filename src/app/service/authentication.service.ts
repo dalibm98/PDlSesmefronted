@@ -109,6 +109,12 @@ export class AuthenticationService {
     return this.http.put<User>(url, user, { headers });
   }
   
+  getMyReponses(): Observable<Reponse[]> {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+    });
+    return this.http.get<Reponse[]>(this.apiUrl + '/my-reponses', { headers: headers });
+  }
   
 }
 

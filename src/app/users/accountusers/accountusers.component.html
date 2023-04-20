@@ -16,8 +16,8 @@
             <div class="col-md-8">
               <mat-card>
                 <mat-card-header class="mat-card-header-danger">
-                  <mat-card-title style="color: rgb(46, 15, 201)" >Edit Profile</mat-card-title>
-                  <mat-card-subtitle style="color: rgb(82, 77, 77)">Complete your profile</mat-card-subtitle>
+                  <mat-card-title style="color: rgb(86, 58, 210)" >Edit Profile</mat-card-title>
+                  <mat-card-subtitle style="color: rgb(143, 139, 139)">Complete your profile</mat-card-subtitle>
                 </mat-card-header>
             <br>
                <div *ngIf="showSuccessMessage" class="success-message">
@@ -114,23 +114,30 @@
               </mat-card>
             </div>
 
-            <div class="col-md-4">
-              <mat-card>
-                <mat-card-header>
-                  <div mat-card-avatar>
-                    <img src="/assets/profile.png" style="width: 50px; height: 50px;" />
-
+            <div class="col-md-4" >
+              <mat-card class =" color">
+                <mat-card-header  style="display:flex; justify-content:center;">
+                  <div mat-card-avatar style="display:flex; justify-content:center; align-items:center;">
+                    <img src="/assets/profile.png" style="width: 150px; height: 150px; margin:auto;" class="mx-auto" />
                   </div>
-                  <mat-card-title style="color: rgb(43, 29, 233)" >{{currentUser.firstname }}{{currentUser.lastname }}</mat-card-title>
-                  <mat-card-subtitle> {{currentUser.status }}</mat-card-subtitle>
+                <br>
+                <br>
+                <br>
+                <br>
                 </mat-card-header>
+              
+                <mat-card-subtitle style="text-align: center;"> {{currentUser.status }}</mat-card-subtitle>
+                <mat-card-title style="color: rgb(46, 34, 205)" style="text-align: center; margin-top: 10px;" >{{currentUser.firstname }}{{currentUser.lastname }}</mat-card-title>
+            
                 <mat-card-content>
-                  <h5>
+                  <h5 style="text-align: center;">
                     {{currentUser.description }}
                   </h5>
                 </mat-card-content>
+                <br>
+                <br>
                 <mat-card-actions>
-                  <button mat-button color="warn"> Message</button>
+                  <button mat-button color="warn"  > Message</button>
                 </mat-card-actions>
               </mat-card>
             </div>

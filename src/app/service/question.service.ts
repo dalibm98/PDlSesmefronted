@@ -28,4 +28,8 @@ export class QuestionService {
   consulterReponses(questionId: number): Observable<Reponse[]> {
     return this.http.get<Reponse[]>(`${this.baseUrl}/${questionId}/reponses`);
   }
+
+  consulterQuestionss(userId: number): Observable<Question[]> {
+    return this.http.get<Question[]>(`${this.baseUrl}?userId=${userId}`);
+  }
 }

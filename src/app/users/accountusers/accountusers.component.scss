@@ -3,21 +3,24 @@
     padding: 0 1rem;
     background: #f1f5f9;
   
+  
     &__box {
       min-height: 150px;
       background-color: #0067ac;
       color: #004f83;
       margin: 0 -1rem;
       font-size: 36px;
+      
     }
   
     &__content {
       min-height: calc(100vh - 178px);
       border-radius: 10px;
       margin-top: -2rem;
-      background: white;
-      color: black;
+      background: rgb(231, 224, 224);
+      color: rgb(250, 239, 239);
       font-size: 2rem;
+    //  background: url("/assets/s2.jpg") center / cover;
   
       &-data {
         top: 50%;
@@ -36,13 +39,14 @@
 .mat-raised-button-danger {
   background-color: #4035dc;
   color: #ffffff;
+  left : 80%;
 }
 
 /* Style pour la carte de profil */
 mat-card {
   margin-top: 20px;
   border-radius: 10px;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 5px 10px rgba(115, 132, 242, 0.1);
 }
 
 /* Style pour le titre de la carte de profil */
@@ -50,12 +54,14 @@ mat-card-title {
   font-size: 1.2rem;
   font-weight: bold;
   font-family: 'Open Sans', sans-serif;
+  color: #4035dc;
 }
 
 /* Style pour le sous-titre de la carte de profil */
 mat-card-subtitle {
   font-size: 0.9rem;
   font-family: 'Open Sans', sans-serif;
+  color: #004f83;
 }
 .mat-raised-button-danger {
   background-color: #007bff;
@@ -73,17 +79,20 @@ mat-card-actions button:hover {
 
 /* Style pour le contenu de la carte de profil */
 mat-card-content {
-  padding: 20px;
+  color: #004f83;
+  left: 20%;
 }
 mat-card-avatar img {
   width: 70px;
   height: 70px;
+
 }
 
 /* Style pour le bouton "Follow" de la carte de profil */
 mat-card-actions button {
   background-color: #afd6ef;
   color: #ffffff;
+  left:40%
 }
 
 .success-message {
@@ -93,3 +102,13 @@ mat-card-actions button {
   border: 1px solid rgb(158, 229, 174);
   border-radius: 4px;
 }
+
+
+.mat-card-header-danger {
+  background-color: rgb(239, 163, 87);
+}
+ .color{
+  background-color: rgb(236, 217, 193);
+ }
+
+ 

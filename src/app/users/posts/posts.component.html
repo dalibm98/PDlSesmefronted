@@ -5,20 +5,19 @@
         >Posts</span
       >
     </div>
-   
+
     <div class="page__content shadow p-3">
       <div class="question-card" *ngFor="let question of questions">
         <button
-        mat-raised-button
-        color="primary"
-        class="button-right"
-        (click)="openDialog()"
-        
-      >
-        Add
-      </button>
+          mat-raised-button
+          color="primary"
+          class="button-right"
+          (click)="openDialog()"
+        >
+          Add
+        </button>
         <div class="question-card-header">
-          <div class="question-card-avatar author-name" >
+          <div class="question-card-avatar author-name">
             <img src="../../assets/profile.png" alt="avatar-image" />
           </div>
           <div class="author-info">
@@ -32,12 +31,14 @@
 
         <div class="question-card-content">
           <div class="question-card-meta">
-            <!--
-            <p><small>Domaine: {{question.domaine.nom_domaine_question}}</small></p>
-            <p><small>Nature: {{question.nature.nom_nature_question}}</small></p>
-            -->
+            <br>
+            <h4>Sujet: {{ question.sujet }}</h4>
+            <br />
           </div>
-          <h2 class="question-card-content-title">{{ question.contenu }}</h2>
+
+          <span><h5>Continu:</h5></span>
+          
+          <h4 class="question-card-content-title"><{{ question.contenu }}</h4>
           <br />
           <div class="voir">
             <i
@@ -57,7 +58,7 @@
             >
               <div class="comment">
                 <div class="comment-avatar">
-                  <div class="question-card-avatar author-name" >
+                  <div class="question-card-avatar author-name">
                     <img src="../../assets/profile.png" alt="avatar-image" />
                   </div>
                 </div>
@@ -75,13 +76,33 @@
               </div>
             </div>
             <div class="question-card-new-comment">
-                <input type="text" placeholder="Add a comment" #responseContent required />
-                <button type="button" (click)="addReponse(question.id_question, responseContent.value)">Post</button>
+              <input
+                type="text"
+                placeholder="Add a comment"
+                #responseContent
+                required
+              />
+              <button
+                type="button"
+                (click)="
+                  addReponse(question.id_question, responseContent.value)
+                "
+              >
+                Post
+              </button>
+
+              
             </div>
-            
           </div>
         </div>
       </div>
+      <mat-paginator
+      [length]="100"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page"
+    >
+    </mat-paginator>
     </div>
   </div>
 </app-appc>
