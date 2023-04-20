@@ -10,6 +10,8 @@ import { ListeQuestionComponent } from './users/liste-question/liste-question.co
 import { AppcComponent } from './users/appc/appc.component';
 import { PostsComponent } from './users/posts/posts.component';
 import { AccountusersComponent } from './users/accountusers/accountusers.component';
+import { AnswersComponent } from './users/answers/answers.component';
+import { ModifpostComponent } from './users/modifpost/modifpost.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
@@ -22,9 +24,12 @@ const routes: Routes = [
   { path: 'listequestion', component: ListeQuestionComponent },
   { path: 'appc', component: AppcComponent },
   { path: 'posts', component: PostsComponent },
-  { path: 'account', component: AccountusersComponent }
+  { path: 'account', component: AccountusersComponent },
 
-  
+  { path: 'answ', component: AnswersComponent },
+  { path: 'listepost', component: ModifpostComponent }
+
+
 ];
 
 @NgModule({

@@ -1,6 +1,6 @@
 <form class="form-container" (submit)="addQuestion()">
   <div *ngIf="showSuccessMessage" class="success-message">
-    Inscription réussie !
+    La question a été ajoutée avec succès
   </div>
   <div class="form-group">
     <label for="sujet">Sujet:</label>
@@ -32,7 +32,5 @@
   </div>
   <button type="submit">Post</button>
   
-  <div *ngIf="showSuccessMessage" class="success-message">
-    La question a été ajoutée avec succès
-  </div>
+
 </form>

@@ -19,8 +19,19 @@ export class AccountusersComponent  implements OnInit{
     adresse: '',
     description: '',
     status: '',
+  
+  };
+  showSuccessMessage: boolean = false;
+  modifiedUserr: User = { 
+    id : 0,// create a new object to store modified user info
+    firstname: '',
+    lastname: '',
+    adresse: '',
+    description: '',
+    status: '',
    
   };
+
 
   constructor(private authService: AuthenticationService ,     private http: HttpClient,) { }
 
@@ -29,23 +40,38 @@ export class AccountusersComponent  implements OnInit{
     const authToken = localStorage.getItem('authToken');
     this.authService.getCurrentUser(authToken).subscribe((user: User) => {
       this.currentUser = user;
-      this.modifiedUser = {...user}; 
+      this.modifiedUserr = {...user}; 
     });
   }
   
 
-
   onUpdateProfile() {
+    const authToken = this.authService.getAuthToken();
+    if (!authToken) {
+      // Gérer le cas où le jeton d'authentification est nul ou indéfini
+      return;
+    }
+  
     const url = `${this.apiUrl}/users/${this.currentUser.id}`;
-    const authToken = localStorage.getItem('authToken');
     const headers = new HttpHeaders().set(
       'Authorization',
       `Bearer ${authToken}`
     );
     this.http.put<User>(url, this.modifiedUser, { headers })
-      .subscribe((user: User) => {
-        this.currentUser = user;
-        this.modifiedUser = {...user}; // update modified user with updated user info
+      .subscribe((updatedUser: User) => {
+        this.currentUser = updatedUser;
+        this.modifiedUser = {...updatedUser};
+  
+        setTimeout(() => {
+          this.showSuccessMessage = true;
+          // Recharger la page après 2 secondes
+          setTimeout(() => {
+            location.reload();
+          }, 2000);
+        }, 2000);
+      }, () => {
         console.log('User updated successfully');
-      })}
+      });
+  }
+  
 }
