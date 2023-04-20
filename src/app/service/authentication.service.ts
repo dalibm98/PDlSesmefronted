@@ -103,11 +103,13 @@ export class AuthenticationService {
     const url = `${this.apiUrl}/reponses/${reponseId}`;
     return this.http.put(url, reponse);
   }
-
-  modifyUser(userId: number, user: any): Observable<any> {
+  modifyUser(userId: number, user: User, options: { headers?: HttpHeaders } = {}): Observable<User> {
     const url = `${this.apiUrl}/users/${userId}`;
-    return this.http.put(url, user);
+    const headers = options.headers ?? new HttpHeaders();
+    return this.http.put<User>(url, user, { headers });
   }
+  
+  
 }
 
 

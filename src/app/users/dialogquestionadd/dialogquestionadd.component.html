@@ -1,0 +1,38 @@
+<form class="form-container" (submit)="addQuestion()">
+  <div *ngIf="showSuccessMessage" class="success-message">
+    Inscription réussie !
+  </div>
+  <div class="form-group">
+    <label for="sujet">Sujet:</label>
+    <input type="text" id="sujet" name="sujet" [(ngModel)]="question.sujet" required>
+  </div>
+  <div class="form-group">
+    <label for="contenu">Contenu:</label>
+    <textarea id="contenu" name="contenu" rows="5" [(ngModel)]="question.contenu" required></textarea>
+  </div>
+  <div class="form-group">
+    <label for="nature">Nature:</label>
+    <select id="nature" name="nature" [(ngModel)]="question.id_nature_question" required>
+      <option value="">--Choisir--</option>
+      <option *ngFor="let option of natures" [value]="option.id">{{ option.nom_nature_question }}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="domaine">Domaine:</label>
+    <select id="domaine" name="domaine" [(ngModel)]="question.id_domaine_question" required>
+      <option value="">--Choisir--</option>
+      <option *ngFor="let option of domaines" [value]="option.id">{{ option.nom_domaine_question }}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="date">Date:</label>
+    <input [matDatepicker]="picker" type="text" id="date" name="date" [(ngModel)]="question.date" required>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </div>
+  <button type="submit">Post</button>
+  
+  <div *ngIf="showSuccessMessage" class="success-message">
+    La question a été ajoutée avec succès
+  </div>
+</form>

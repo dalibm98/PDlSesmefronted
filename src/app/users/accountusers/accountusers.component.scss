@@ -1,0 +1,87 @@
+.page {
+    color: white;
+    padding: 0 1rem;
+    background: #f1f5f9;
+  
+    &__box {
+      min-height: 150px;
+      background-color: #0067ac;
+      color: #004f83;
+      margin: 0 -1rem;
+      font-size: 36px;
+    }
+  
+    &__content {
+      min-height: calc(100vh - 178px);
+      border-radius: 10px;
+      margin-top: -2rem;
+      background: white;
+      color: black;
+      font-size: 2rem;
+  
+      &-data {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+
+  /* Style pour les champs de formulaire */
+.example-full-width {
+  width: 100%;
+}
+
+/* Style pour le bouton "Update Profile" */
+.mat-raised-button-danger {
+  background-color: #4035dc;
+  color: #ffffff;
+}
+
+/* Style pour la carte de profil */
+mat-card {
+  margin-top: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style pour le titre de la carte de profil */
+mat-card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Style pour le sous-titre de la carte de profil */
+mat-card-subtitle {
+  font-size: 0.9rem;
+  font-family: 'Open Sans', sans-serif;
+}
+.mat-raised-button-danger {
+  background-color: #007bff;
+  color: #fff;
+}
+
+
+.mat-raised-button-danger:hover {
+  background-color: #0069d9;
+}
+
+mat-card-actions button:hover {
+  background-color: #0069d9;
+}
+
+/* Style pour le contenu de la carte de profil */
+mat-card-content {
+  padding: 20px;
+}
+mat-card-avatar img {
+  width: 70px;
+  height: 70px;
+}
+
+/* Style pour le bouton "Follow" de la carte de profil */
+mat-card-actions button {
+  background-color: #afd6ef;
+  color: #ffffff;
+}

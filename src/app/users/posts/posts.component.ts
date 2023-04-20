@@ -3,11 +3,10 @@ import { Question } from 'src/app/model/question';
 import { Reponse } from 'src/app/model/reponse';
 import { User } from 'src/app/model/user';
 import { QuestionService } from 'src/app/service/question.service';
-
 import { AuthenticationService } from 'src/app/service/authentication.service';
-import { Token } from '@angular/compiler';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { DialogquestionaddComponent } from '../dialogquestionadd/dialogquestionadd.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
@@ -21,7 +20,8 @@ users : User [] = [] ;
   constructor(
     private questionService: QuestionService,
     private authservice: AuthenticationService ,
-    private http: HttpClient
+    private http: HttpClient,
+    public dialog: MatDialog,
   ) {}
 
   ngOnInit(): void {
@@ -78,6 +78,13 @@ addReponse(questionId: number, responseContent: string) {
       console.log(error);
     }
   );
+}
+
+openDialog(): void {
+  const dialogRef = this.dialog.open(DialogquestionaddComponent, {
+    width: '650px',
+    height: '800px',
+  });
 }
 
 }
