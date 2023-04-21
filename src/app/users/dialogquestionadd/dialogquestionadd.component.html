@@ -11,17 +11,17 @@
     <textarea id="contenu" name="contenu" rows="5" [(ngModel)]="question.contenu" required></textarea>
   </div>
   <div class="form-group">
-    <label for="nature">Nature:</label>
-    <select id="nature" name="nature" [(ngModel)]="question.id_nature_question" required>
+    <label for="id_nature_question">Nature:</label>
+    <select id="id_nature_question" name="id_nature_question" [(ngModel)]="question.nature.id_nature_question" required>
       <option value="">--Choisir--</option>
-      <option *ngFor="let option of natures" [value]="option.id">{{ option.nom_nature_question }}</option>
+      <option *ngFor="let option of natures" [value]="option.id_nature_question">{{ option.id_nature_question }}</option>
     </select>
   </div>
   <div class="form-group">
-    <label for="domaine">Domaine:</label>
-    <select id="domaine" name="domaine" [(ngModel)]="question.id_domaine_question" required>
+    <label for="id_domaine_question">Domaine:</label>
+    <select id="id_domaine_question" name="id_domaine_question" [(ngModel)]="question.domaine.id_domaine_question" required>
       <option value="">--Choisir--</option>
-      <option *ngFor="let option of domaines" [value]="option.id">{{ option.nom_domaine_question }}</option>
+      <option *ngFor="let option of domaines" [value]="option.id_domaine_question">{{ option.id_domaine_question }}</option>
     </select>
   </div>
   <div class="form-group">
@@ -31,6 +31,6 @@
     <mat-datepicker #picker></mat-datepicker>
   </div>
   <button type="submit">Post</button>
-  
+
 
 </form>

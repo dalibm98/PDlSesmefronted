@@ -22,9 +22,9 @@
           <mat-card class="example-card" class="mat-card">
             <mat-card-header>
               <div mat-card-avatar class="example-header-image"></div>
-              <mat-card-title>{{ question.auteur }}</mat-card-title>
+              <mat-card-title>{{ question.auteur.firstname }}</mat-card-title>
               <mat-card-subtitle>{{
-                question.auteur
+                question.auteur.lastname
               }}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content [ngClass]="'card-content'">
@@ -50,7 +50,7 @@
               <img src="../../assets/profile.png" alt="avatar-image" />
             </div>
             <div class="author-info text-left-parent">
-              <span class="author-name text-left">{{ selectedQuestion.auteur.firstname }} {{ selectedQuestion.auteur.lastname }}</span>
+              <span class="author-name text-left">{{ selectedQuestion.auteur.lastname }} {{ selectedQuestion.auteur.lastname }}</span>
           </div>
           
             

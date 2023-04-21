@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Question } from 'src/app/model/question';
 import { AuthenticationService } from 'src/app/service/authentication.service';
 import { QuestionService } from 'src/app/service/question.service';
@@ -11,10 +12,14 @@ import { QuestionService } from 'src/app/service/question.service';
 export class ModifpostComponent implements OnInit {
   userId!: number;
   userQuestions: Question[] = [];
+  questionId!: number;
+
 
   constructor(
     private authService: AuthenticationService,
-    private questionService: QuestionService
+    private questionService: QuestionService,
+    private route: ActivatedRoute, 
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -26,6 +31,13 @@ export class ModifpostComponent implements OnInit {
         this.loadQuestions();
       });
     }
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      const questionIdParam = params.get('questionId');
+      if (questionIdParam !== null) {
+        this.questionId = parseInt(questionIdParam);
+      }
+    });
+    
   }
 
   loadQuestions() {
@@ -36,5 +48,17 @@ export class ModifpostComponent implements OnInit {
       );
     });
   }
+
+  onDeleteQuestion(questionId: number) {
+    this.authService.deleteQuestion(questionId).subscribe(
+      () => {
+        // Handle success case
+      },
+      (error) => {
+        // Handle error case
+      }
+    );
+  }
+  
 }
 

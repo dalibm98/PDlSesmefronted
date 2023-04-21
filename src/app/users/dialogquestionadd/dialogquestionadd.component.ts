@@ -19,19 +19,17 @@ export class DialogquestionaddComponent implements OnInit {
 
   addingQuestionMessage: string = '';
   showSuccessMessage: boolean = false;
-
   question = {
     sujet: '',
     contenu: '',
     date: null,
     auteur: null,
     reponses: [],
-    id_nature_question: null,
-    id_domaine_question: null,
+    nature: {id_nature_question:null}, // <-- initialiser comme un objet vide
+    domaine: {id_domaine_question: null},
     isAnswered: false,
     showReponses: false,
   };
-
   constructor(
     private authservice: AuthenticationService,
     private http: HttpClient,
@@ -51,21 +49,7 @@ export class DialogquestionaddComponent implements OnInit {
   }
 
   addQuestion() {
-    // Vérifiez si la valeur de la nature est définie
-    if (!this.question.id_nature_question) {
-      alert('Veuillez sélectionner la nature de la question');
-      return;
-    }
-
-    // Vérifiez si la valeur du domaine est définie
-    if (!this.question.id_domaine_question) {
-      alert('Veuillez sélectionner le domaine de la question');
-      return;
-    }
-
-    // Afficher un message indiquant que la question est en train d'être ajoutée
-    this.addingQuestionMessage = "La question est en train d'être ajoutée...";
-
+  
     // Continuer avec l'ajout de la question
     const url = `${this.apiUrl}/questions`;
     const authToken = this.authservice.getAuthToken();
@@ -82,8 +66,8 @@ export class DialogquestionaddComponent implements OnInit {
           // Recharger la page après 2 secondes
           setTimeout(() => {
             location.reload();
-          }, 2000);
-        }, 2000);
+          }, 1500);
+        }, 1500);
       },
       (error) => {
         this.addingQuestionMessage = '';

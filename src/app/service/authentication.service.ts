@@ -57,7 +57,16 @@ export class AuthenticationService {
   }
 
 
-
+  deleteQuestion(questionId: number): Observable<any> {
+    const authToken = this.getAuthToken();
+    if (authToken) {
+      const headers = new HttpHeaders().set('Authorization', 'Bearer ' + authToken);
+      const url = `${this.apiUrl}/questions/${questionId}`;
+      return this.http.delete(url, { headers });
+    }
+    return throwError('Authentication required to delete a question');
+  }
+  
 
   addQuestion(question: Question): Observable<User> {
     const authToken = this.getAuthToken();
@@ -116,6 +125,29 @@ export class AuthenticationService {
     return this.http.get<Reponse[]>(this.apiUrl + '/my-reponses', { headers: headers });
   }
   
+
+
+
+
+
+
+
+
+
+    
+    /*
+    deleteAnswer(questionId: number, answerId: number): Observable<any> {
+    const authToken = this.authService.getAuthToken();
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + authToken);
+    return this.http.delete(${this.apiUrl}/questions/${questionId}/reponses/${answerId}, { headers });
+    } 
+    */
+  
+    
+  
+
+
+
 }
 
 

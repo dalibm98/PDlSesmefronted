@@ -53,7 +53,7 @@
                   <td>{{ question.nature.nom_nature_question }}</td>
                   <td>{{ question.domaine.nom_domaine_question }}</td>
                   <td>
-                    <button mat-icon-button color="warn">
+                    <button mat-icon-button color="warn"(click)="onDeleteQuestion(question.id_question)">
                       <mat-icon>delete</mat-icon>
                     </button>
                     <button mat-icon-button color="primary">
