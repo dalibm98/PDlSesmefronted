@@ -37,3 +37,34 @@
 
 
 
+.delete-confirmation {
+  border: 1px solid #ccc;
+  background-color: #ffffff;
+  padding: 16px;
+  border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+  font-size: 18px; /* add this line to change the font size */
+}
+
+
+.delete-confirmation__buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px; /* increase this value to add more space */
+}
+
+
+.delete-confirmation__button {
+  margin-left: 8px;
+}
+.delete-confirmation__button mat-icon {
+  margin-right: 8px;
+}
+
+
+::ng-deep ng-template {
+  font-size: 16px;
+}

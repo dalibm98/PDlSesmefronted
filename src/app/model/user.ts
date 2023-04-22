@@ -20,6 +20,7 @@ export interface User {
     notifications?: Notification[];
     questions?: Question[];
     reponses?: Reponse[];
-    stats?: UserStats; // l'opérateur '?' signifie que la propriété est facultative
-
+    stats?: UserStats; 
+    // l'opérateur '?' signifie que la propriété est facultative
+    image_url: string ; 
 }

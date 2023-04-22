@@ -43,7 +43,9 @@
                 <tr *ngFor="let question of userQuestions">
                   <td>{{ question.id_question }}</td>
                   <td>{{ question.sujet }}</td>
-                  <td><small>{{ question.contenu }} </small></td>
+                  <td>
+                    <small>{{ question.contenu }} </small>
+                  </td>
                   <td>{{ question.date | date }}</td>
 
                   <td>
@@ -53,7 +55,11 @@
                   <td>{{ question.nature.nom_nature_question }}</td>
                   <td>{{ question.domaine.nom_domaine_question }}</td>
                   <td>
-                    <button mat-icon-button color="warn"(click)="onDeleteQuestion(question.id_question)">
+                    <button
+                      mat-icon-button
+                      color="warn"
+                      (click)="openDeleteConfirmation(question.id_question)"
+                    >
                       <mat-icon>delete</mat-icon>
                     </button>
                     <button mat-icon-button color="primary">
@@ -63,16 +69,45 @@
                 </tr>
               </tbody>
             </table>
+            <!-- Confirmation dialog template -->
+            <ng-template
+              #deleteConfirmation
+              let-dialogRef="dialogRef"
+              let-questionId="questionId"
+            >
+              <div class="delete-confirmation">
+                <p>Êtes-vous sûr de vouloir supprimer cette question ?</p>
+                <div class="delete-confirmation__buttons">
+                  <button
+                    mat-button
+                    color="primary"
+                    (click)="dialogRef.close('yes')"
+                    class="delete-confirmation__button"
+                  >
+                    <mat-icon>done</mat-icon>
+                    Oui
+                  </button>
+                  <button
+                    mat-button
+                    (click)="dialogRef.close('no')"
+                    class="delete-confirmation__button"
+                  >
+                    <mat-icon>close</mat-icon>
+                    Non
+                  </button>
+                </div>
+              </div>
+            </ng-template>
           </section>
         </main>
       </body>
       <mat-paginator
-      [length]="100"
-      [pageSize]="10"
-      [pageSizeOptions]="[5, 10, 25, 100]"
-      aria-label="Select page"
-    >
-    </mat-paginator>
+        [length]="100"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        aria-label="Select page"
+      >
+      </mat-paginator>
     </div>
   </div>
 </app-appc>

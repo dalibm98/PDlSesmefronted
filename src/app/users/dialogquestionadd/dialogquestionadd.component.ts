@@ -25,8 +25,8 @@ export class DialogquestionaddComponent implements OnInit {
     date: null,
     auteur: null,
     reponses: [],
-    nature: {id_nature_question:null}, // <-- initialiser comme un objet vide
-    domaine: {id_domaine_question: null},
+    nature: { id_nature_question: null }, // <-- initialiser comme un objet vide
+    domaine: { id_domaine_question: null },
     isAnswered: false,
     showReponses: false,
   };
@@ -49,7 +49,6 @@ export class DialogquestionaddComponent implements OnInit {
   }
 
   addQuestion() {
-  
     // Continuer avec l'ajout de la question
     const url = `${this.apiUrl}/questions`;
     const authToken = this.authservice.getAuthToken();

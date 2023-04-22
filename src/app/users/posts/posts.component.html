@@ -18,7 +18,12 @@
         </button>
         <div class="question-card-header">
           <div class="question-card-avatar author-name">
-            <img src="../../assets/profile.png" alt="avatar-image" />
+            <ng-container *ngIf="question.auteur.image_url">
+              <img [src]="question.auteur.image_url" alt="avatar-image" />
+            </ng-container>
+            <ng-container *ngIf="!question.auteur.image_url">
+              <img src="../../assets/profile.png" alt="avatar-image" />
+            </ng-container>
           </div>
           <div class="author-info">
             <span class="author-name"
@@ -31,13 +36,13 @@
 
         <div class="question-card-content">
           <div class="question-card-meta">
-            <br>
+            <br />
             <h4>Sujet: {{ question.sujet }}</h4>
             <br />
           </div>
 
           <span><h5>Continu:</h5></span>
-          
+
           <h4 class="question-card-content-title"><{{ question.contenu }}</h4>
           <br />
           <div class="voir">
@@ -90,19 +95,17 @@
               >
                 Post
               </button>
-
-              
             </div>
           </div>
         </div>
       </div>
       <mat-paginator
-      [length]="100"
-      [pageSize]="10"
-      [pageSizeOptions]="[5, 10, 25, 100]"
-      aria-label="Select page"
-    >
-    </mat-paginator>
+        [length]="100"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        aria-label="Select page"
+      >
+      </mat-paginator>
     </div>
   </div>
 </app-appc>
