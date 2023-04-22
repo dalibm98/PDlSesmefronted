@@ -15,7 +15,7 @@ import { UserStats } from '../model/user-stats';
 
 export class ListeusersComponent implements OnInit {
   
-  users: User[] = [];
+    users: User[] = [];
 
   constructor(private authService: AuthenticationService, private userService: UserService) { }
 

@@ -1,0 +1,115 @@
+/* Style pour le formulaire */
+.main-content {
+    margin-top: 30px;
+  }
+  
+  .card {
+    border-radius: 6px;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.14), 0 3px 1px rgba(0,0,0,0.12), 0 1px 5px rgba(0,0,0,0.2);
+  }
+  
+  .card-header {
+    background-color: #f44336;
+    color: #fff;
+    padding: 15px;
+    border-radius: 6px 6px 0 0;
+  }
+  
+  .card-title {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 22px;
+  }
+  
+  .card-category {
+    font-size: 14px;
+    margin-bottom: 0;
+  }
+  
+  .card-body {
+    padding: 30px;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  /* Style pour le profil */
+  .card-avatar img {
+    width: 100%;
+    border-radius: 50%;
+  }
+  
+  .card-profile {
+    border-radius: 6px;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.14), 0 3px 1px rgba(0,0,0,0.12), 0 1px 5px rgba(0,0,0,0.2);
+  }
+  
+  .card-profile .card-body {
+    padding: 30px;
+  }
+  
+  .card-profile .card-category {
+    font-size: 16px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    color: #999;
+  }
+  
+  .card-profile .card-title {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 28px;
+  }
+  
+  .card-profile .card-description {
+    font-size: 16px;
+    margin-bottom: 15px;
+    line-height: 1.5;
+  }
+  
+  .btn-round {
+    border-radius: 30px !important;
+  }
+  
+  /* Style pour les boutons */
+  .btn {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px 25px;
+    border-radius: 30px;
+    letter-spacing: 1px;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+  
+  .btn-danger {
+    background-color: #f44336;
+    border-color: #f44336;
+    color: #fff;
+  }
+  
+  .btn-danger:hover {
+    background-color: #ff5252;
+    border-color: #ff5252;
+    color: #fff;
+  }
+  
+  /* Style pour les champs de formulaire */
+  .mat-input-element {
+    font-size: 16px;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  
+  textarea.mat-input-element {
+    resize: vertical;
+    min-height: 100px;
+  }
+  

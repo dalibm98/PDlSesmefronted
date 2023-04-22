@@ -28,12 +28,13 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTableModule } from '@angular/material/table';
+import { MatSelectModule } from '@angular/material/select';
 
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ListeusersComponent } from './listeusers/listeusers.component';
 import { DialogElementsExampleDialogComponent } from './dialog-elements-example-dialog/dialog-elements-example-dialog.component';
 import { ProfileuserComponent } from './users/profileuser/profileuser.component';
@@ -49,6 +50,10 @@ import { PostsComponent } from './users/posts/posts.component';
 import { ModifpostComponent } from './users/modifpost/modifpost.component';
 import { AnswersComponent } from './users/answers/answers.component';
 import { EditanswersComponent } from './users/editanswers/editanswers.component';
+import { DialogquestionaddComponent } from './users/dialogquestionadd/dialogquestionadd.component';
+import { AuthInterceptorService } from './auth-interceptor.service';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,6 +80,8 @@ import { EditanswersComponent } from './users/editanswers/editanswers.component'
     ModifpostComponent,
     AnswersComponent,
     EditanswersComponent,
+    DialogquestionaddComponent,
+  
   ],
   imports: [
     BrowserModule,
@@ -102,9 +109,13 @@ import { EditanswersComponent } from './users/editanswers/editanswers.component'
     MatExpansionModule,
     HttpClientModule,
     MatGridListModule,
+    MatSelectModule,
+
+   
 
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

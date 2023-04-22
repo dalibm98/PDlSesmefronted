@@ -44,6 +44,30 @@ export class AuthenticationService {
     return this.http.get<User>(`${this.apiUrl}/current-user`, { headers });
   }
 
+
+  addReponse(questionId: number, reponse: Reponse): Observable<Reponse> {
+    const url = `${this.apiUrl}/questions/${questionId}/reponses`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.getAuthToken()}`
+      })
+    };
+    return this.http.post<Reponse>(url, reponse, httpOptions);
+  }
+
+
+  deleteQuestion(questionId: number): Observable<any> {
+    const authToken = this.getAuthToken();
+    if (authToken) {
+      const headers = new HttpHeaders().set('Authorization', 'Bearer ' + authToken);
+      const url = `${this.apiUrl}/questions/${questionId}`;
+      return this.http.delete(url, { headers });
+    }
+    return throwError('Authentication required to delete a question');
+  }
+  
+
   addQuestion(question: Question): Observable<User> {
     const authToken = this.getAuthToken();
     if (authToken) {
@@ -54,17 +78,6 @@ export class AuthenticationService {
   }
   
 
-  addReponse(questionId: number, reponse: Reponse): Observable<User> {
-
-
-    const authToken = this.getAuthToken();
-    if (authToken) {
-      const headers = new HttpHeaders().set('Authorization', 'Bearer ' + authToken);
-
-    return this.http.post<User>(`${this.apiUrl}/questions/${questionId}/reponses`, reponse);
-  }
-  return throwError('Authentication required to add a question');
-  }
 
 
 
@@ -99,11 +112,42 @@ export class AuthenticationService {
     const url = `${this.apiUrl}/reponses/${reponseId}`;
     return this.http.put(url, reponse);
   }
-
-  modifyUser(userId: number, user: any): Observable<any> {
+  modifyUser(userId: number, user: User, options: { headers?: HttpHeaders } = {}): Observable<User> {
     const url = `${this.apiUrl}/users/${userId}`;
-    return this.http.put(url, user);
+    const headers = options.headers ?? new HttpHeaders();
+    return this.http.put<User>(url, user, { headers });
   }
+  
+  getMyReponses(): Observable<Reponse[]> {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+    });
+    return this.http.get<Reponse[]>(this.apiUrl + '/my-reponses', { headers: headers });
+  }
+  
+
+
+
+
+
+
+
+
+
+    
+    /*
+    deleteAnswer(questionId: number, answerId: number): Observable<any> {
+    const authToken = this.authService.getAuthToken();
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + authToken);
+    return this.http.delete(${this.apiUrl}/questions/${questionId}/reponses/${answerId}, { headers });
+    } 
+    */
+  
+    
+  
+
+
+
 }
 
 
