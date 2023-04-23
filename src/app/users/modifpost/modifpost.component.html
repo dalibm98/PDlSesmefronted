@@ -1,9 +1,9 @@
 <app-appc>
   <div class="container-fluid page" style="border: 10px solid #ece9e9">
-    <div class="d-flex page__box p-3 mt-2"></div>
+    <div class="d-flex page__box p-3 mt-2"    style="border: 3px solid #ffa500" ></div>
     <div
       class="page__content shadow p-3 position-relative"
-      style="border: 3px solid #ece9e9"
+      style="border: 3px solid #ffa500"
     >
       <head>
         <meta charset="UTF-8" />
@@ -62,13 +62,50 @@
                     >
                       <mat-icon>delete</mat-icon>
                     </button>
-                    <button mat-icon-button color="primary">
+                    <button mat-icon-button color="primary" (click)="openEditDialog(question.id_question)">
                       <mat-icon>edit</mat-icon>
                     </button>
                   </td>
                 </tr>
               </tbody>
             </table>
+
+
+
+            <ng-template #editDialog let-data>
+              <br>
+              <br>
+             
+              <h2>Edit Question</h2>
+              <br>
+              <br>
+              <div *ngIf="showSuccessMessage" class="success-message">
+                La question a été modifier avec succès
+              </div>
+              <form #editForm="ngForm" (ngSubmit)="updateQuestion(data.questionId, editForm.value)">
+                <label for="sujet">Sujet:</label>
+                <input type="text" id="sujet" name="sujet" [(ngModel)]="data.question.sujet" required>
+            
+                <label for="contenu">Contenu:</label>
+                <textarea id="contenu" name="contenu" [(ngModel)]="data.question.contenu" required></textarea>
+            
+                <label for="domaine">Domaine:</label>
+                <select id="domaine" name="domaine" [(ngModel)]="data.question.domaine.id_domaine_question" required>
+                  <option *ngFor="let domaine of domaines" [value]="domaine.id_domaine_question">{{domaine.nom_domaine_question }}</option>
+                </select>
+            
+                <label for="nature">nature:</label>
+                <select id="nature" name="nature" [(ngModel)]="data.question.nature.id_nature_question" required>
+                  <option *ngFor="let nature of natures" [value]="nature.id_nature_question">{{ nature.nom_nature_question }}</option>
+                </select>
+            
+                <button type="submit">Update Question</button>
+              </form>
+            </ng-template>
+            
+            
+
+
             <!-- Confirmation dialog template -->
             <ng-template
               #deleteConfirmation

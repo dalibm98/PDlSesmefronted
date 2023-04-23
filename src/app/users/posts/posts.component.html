@@ -1,12 +1,12 @@
 <app-appc>
-  <div class="container-fluid page">
-    <div class="d-flex page__box p-3 mt-2">
+  <div class="container-fluid page" style="border: 3px solid #ece9e9">
+    <div class="d-flex page__box p-3 mt-2" style="border: 3px solid #ffa500">
       <span class="page__box-title" style="color: rgb(243, 243, 243)"
         >Posts</span
       >
     </div>
 
-    <div class="page__content shadow p-3">
+    <div class="page__content shadow p-3" style="border: 3px solid #ffa500">
       <div class="question-card" *ngFor="let question of questions">
         <button
           mat-raised-button
@@ -64,6 +64,7 @@
               <div class="comment">
                 <div class="comment-avatar">
                   <div class="question-card-avatar author-name">
+                    
                     <img src="../../assets/profile.png" alt="avatar-image" />
                   </div>
                 </div>

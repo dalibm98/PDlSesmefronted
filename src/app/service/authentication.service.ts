@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { RegisterRequest } from '../model/register-request';
 import { AuthenticationResponse } from '../model/authentication-response';
 import { AuthenticationRequest } from '../model/authentication-request';
@@ -57,6 +57,38 @@ export class AuthenticationService {
   }
 
 
+
+  modifyQuestion(questionId: number, question: any): Observable<any> {
+    const url = `${this.apiUrl}/questions/${questionId}`;
+    const authToken = this.getAuthToken();
+    
+    if (!authToken) {
+      console.error('Authentication token is undefined');
+      return throwError('Authentication token is undefined');
+    }
+    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${authToken}`,
+      }),
+    };
+    
+    return this.http.put(url, question, httpOptions).pipe(
+      catchError((error) => {
+        console.error(error);
+        return throwError(error);
+      })
+    );
+  }
+  
+
+
+
+
+
+
+
   deleteQuestion(questionId: number): Observable<any> {
     const authToken = this.getAuthToken();
     if (authToken) {
@@ -103,10 +135,7 @@ export class AuthenticationService {
     return this.http.get<UserStats>(url);
   }
 
-  modifyQuestion(questionId: number, question: any): Observable<any> {
-    const url = `${this.apiUrl}/questions/${questionId}`;
-    return this.http.put(url, question);
-  }
+
 
   modifyReponse(reponseId: number, reponse: any): Observable<any> {
     const url = `${this.apiUrl}/reponses/${reponseId}`;

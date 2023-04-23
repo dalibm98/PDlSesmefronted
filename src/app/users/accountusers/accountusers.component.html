@@ -1,12 +1,12 @@
 <app-appc>
-  <div class="container-fluid page">
-    <div class="d-flex page__box p-3 mt-2">
+  <div class="container-fluid page" style="border: 3px solid #ebece9">
+    <div class="d-flex page__box p-3 mt-2" style="border: 3px solid #ffa500">
       <span class="page__box-title" style="color: rgb(243, 243, 243)"
         >Profile</span
       >
     </div>
 
-    <div class="page__content shadow p-3">
+    <div class="page__content shadow p-3" style="border: 3px solid #ffa500">
       <div class="main-content">
         <div class="container-fluid">
           <div class="row">
@@ -173,13 +173,13 @@
                     <img
                       *ngIf="currentUser.image_url"
                       [src]="currentUser.image_url"
-                      style="width: 150px; height: 150px; margin: auto"
-                      class="mx-auto"
+                      style="width: 150px; height: 150px; margin: auto; border-radius: 50%;"
+                      class="mx-auto" 
                     />
                     <img
                       *ngIf="!currentUser.image_url"
                       src="/assets/profile.png"
-                      style="width: 150px; height: 150px; margin: auto"
+                      style="width: 150px; height: 150px; margin: auto ;border-radius: 50%;"
                       class="mx-auto"
                     />
                   </div>
