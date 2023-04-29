@@ -1,107 +1,133 @@
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Snippet - BBBootstrap</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
 
-<div class="main-content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header card-header-danger">
-                        <h4 class="card-title">Edit Profile</h4>
-                        <p class="card-category">Complete your profile</p>
-                    </div>
-                    <div class="card-body">
-                        <form>
-                            <div class="row">
-                                <div class="col-md-5">
-                                  <mat-form-field class="example-full-width">
-                                      <input matInput placeholder="Company (disabled)" disabled>
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-md-3">
-                                    <mat-form-field class="example-full-width">
-                                      <input matInput placeholder="Username">
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-md-4">
-                                    <mat-form-field class="example-full-width">
-                                      <input matInput placeholder="Email address" type="email">
-                                    </mat-form-field>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Fist Name" type="text">
-                                  </mat-form-field>
-                                </div>
-                                <div class="col-md-6">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Last Name" type="text">
-                                  </mat-form-field>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Adress" type="text">
-                                  </mat-form-field>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="City" type="text">
-                                  </mat-form-field>
-                                </div>
-                                <div class="col-md-4">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Country" type="text">
-                                  </mat-form-field>
-                                </div>
-                                <div class="col-md-4">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Postal Code" type="text">
-                                  </mat-form-field>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                  <label>About Me</label>
-                                  <mat-form-field class="example-full-width">
-                                     <textarea matInput placeholder="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."></textarea>
-                                   </mat-form-field>
-                                    <!-- <div class="form-group">
-  
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
-                                            <textarea class="form-control" rows="5"></textarea>
-                                        </div>
-                                    </div> -->
-                                </div>
-                            </div>
-                            <button mat-raised-button type="submit" class="btn btn-danger pull-right">Update Profile</button>
-                            <div class="clearfix"></div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card card-profile">
-                    <div class="card-avatar">
-                        <a href="javascript:void(0)">
-                            <img class="img" src="./assets/img/faces/marc.jpg" />
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <h6 class="card-category text-gray">CEO / Co-Founder</h6>
-                        <h4 class="card-title">Alec Thompson</h4>
-                        <p class="card-description">
-                            Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-                        </p>
-                        <a href="javascript:void(0)" class="btn btn-danger btn-round">Follow</a>
-                    </div>
-                </div>
-            </div>
+  <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+  ></script>
+  <style>
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    /* Handle */
+
+    body {
+      background: rgb(99, 39, 120);
+    }
+
+    .form-control:focus {
+      box-shadow: none;
+      border-color: #ba68c8;
+    }
+
+    .profile-button {
+      background: rgb(99, 39, 120);
+      box-shadow: none;
+      border: none;
+    }
+
+    .profile-button:hover {
+      background: #682773;
+    }
+
+    .profile-button:focus {
+      background: #682773;
+      box-shadow: none;
+    }
+
+    .profile-button:active {
+      background: #682773;
+      box-shadow: none;
+    }
+
+    .back:hover {
+      color: #682773;
+      cursor: pointer;
+    }
+
+    .labels {
+      font-size: 11px;
+    }
+  </style>
+</head>
+<body className="snippet-body">
+  <div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+      <div class="col-md-3 border-right">
+        <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+          <img class="rounded-circle mt-5" width="150px"  [src]="data.image_url || '../assets/profile.png'" alt="" /><span
+            class="font-weight-bold"
+            >{{ data.firstname }} {{ data.lastname }}</span
+          ><span class="text-black-50">{{ data.status }}</span><span> </span>
         </div>
+      </div>
+      <div class="col-md-5 border-right">
+        <div class="p-3 py-5">
+          <div
+            class="d-flex justify-content-between align-items-center mb-3"
+          ></div>
+          <div class="row mt-2">
+            <div class="col-md-6">
+              
+              <label class="labels">fisrtname</label
+              ><input type="text" class="form-control" value="{{ data.firstname }}" />
+            </div>
+            <div class="col-md-6">
+              <label class="labels">lastname</label
+              ><input type="text" class="form-control"value ="{{ data.lastname }}" />
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <label class="labels">Address</label
+              ><input type="text" class="form-control" value="{{ data.adresse }}" />
+            </div>
+            <div class="col-md-12">
+              <label class="labels">Email ID</label
+              ><input type="text" class="form-control" value="{{ data.email }}" />
+            </div>
+            <div class="col-md-12">
+              <label class="labels">status</label
+              ><input type="text" class="form-control" value="{{ data.status }}" />
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <label class="labels">description</label
+              ><input type="text" class="form-control" value="{{ data.description }}" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-3 py-5">
+          <div
+            class="d-flex justify-content-between align-items-center experience"
+          >
+            <span>Posts</span
+            >
+          </div>
+          <br />
+          <div class="col-md-12">
+            <p><mat-icon>help_outline</mat-icon> Questions:{{ data.stats?.questionCount || 0 }}</p>
+          </div>
+          <br />
+          <div class="col-md-12">
+            <p><mat-icon>comment</mat-icon> Answers: {{ data.stats?.reponseCount || 0 }}</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  
+</body>

@@ -1,0 +1,57 @@
+<app-appc>
+  <div class="container-fluid page" style="border: 3px solid #ebece9">
+    <div class="d-flex page__box p-3 mt-2" style="border: 3px solid #ffa500">
+      <span class="page__box-title" style="color: rgb(243, 243, 243)"
+        >All users</span
+      >
+    </div>
+    <div
+      class="page__content shadow p-3 position-relative"
+      style="border: 3px solid #ffa500"
+    >
+      <!-- Content of the page here -->
+      <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet"
+        />
+      </head>
+      <section class="container">
+        <div class="grid">
+        
+          <div class="card" *ngFor="let user of users">
+          
+            <mat-icon class="icon" (click)="openUserDialog(user)">aspect_ratio</mat-icon>
+
+            
+            <div class="image">
+              <img [src]="user.image_url || '../assets/profile.png'" alt="" />
+            </div>
+            <h2>{{ user.firstname }}</h2>
+            <p>{{ user.status }}</p>
+
+            <p>
+              <mat-icon>help_outline</mat-icon> Questions:
+              {{ user.stats?.questionCount || 0 }}
+            </p>
+            <p>
+              <mat-icon>comment</mat-icon> Answers:
+              {{ user.stats?.reponseCount || 0 }}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <mat-paginator
+        [length]="100"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        aria-label="Select page"
+      >
+      </mat-paginator>
+    </div>
+  </div>
+</app-appc>

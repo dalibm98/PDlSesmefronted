@@ -1,6 +1,9 @@
 <app-appc>
   <div class="container-fluid page" style="border: 10px solid #ece9e9">
-    <div class="d-flex page__box p-3 mt-2" style="border: 3px solid #ffa500"> </div>
+    <div
+      class="d-flex page__box p-3 mt-2"
+      style="border: 3px solid #ffa500"
+    ></div>
     <div
       class="page__content shadow p-3 position-relative"
       style="border: 3px solid #ffa500"
@@ -33,7 +36,6 @@
                   <th>
                     Auteur Question <span class="icon-arrow">&UpArrow;</span>
                   </th>
-               
 
                   <th>Action<span class="icon-arrow">&UpArrow;</span></th>
                 </tr>
@@ -47,30 +49,33 @@
                   </td>
                   <td>{{ reponse.dateCreation | date }}</td>
 
-                  <td>{{ reponse.question.auteur.email }}</td>
-                
+                  <td>{{ reponse.question.auteur.firstname }}</td>
+
                   <td>
-                    <button mat-icon-button color="warn">
+                    <button mat-icon-button color="warn" (click)="deleteReponse(reponse.id_reponse)">
                       <mat-icon>delete</mat-icon>
                     </button>
+
                     <button mat-icon-button color="primary">
                       <mat-icon>edit</mat-icon>
                     </button>
                   </td>
+                </tr>
               </tbody>
             </table>
+            
+    
           </section>
         </main>
-     
       </body>
 
       <mat-paginator
-      [length]="100"
-      [pageSize]="10"
-      [pageSizeOptions]="[5, 10, 25, 100]"
-      aria-label="Select page"
-    >
-    </mat-paginator>
+        [length]="100"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        aria-label="Select page"
+      >
+      </mat-paginator>
     </div>
   </div>
 </app-appc>

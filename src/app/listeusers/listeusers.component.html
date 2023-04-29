@@ -6,7 +6,6 @@
       style="border: 3px solid #ece9e9"
     >
       <!-- Content of the page here -->
-
       <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -19,8 +18,10 @@
       <section class="container">
         <div class="grid">
           <div class="card" *ngFor="let user of users">
+
+            <mat-icon class="icon" (click)="openUserDialog(user)">aspect_ratio</mat-icon>
             <div class="image">
-              <img src="../assets/profile.png" alt="" />
+              <img [src]="user.image_url || '../assets/profile.png'" alt="" />
             </div>
             <h2>{{ user.firstname }}</h2>
             <p>{{ user.status }}</p>
@@ -43,6 +44,8 @@
         aria-label="Select page"
       >
       </mat-paginator>
+
+
     </div>
   </div>
 </app-homeh>
