@@ -21,14 +21,14 @@ export class MessageService {
     return this.http.get<Message[]>(`${this.apiBaseUrl}`, { headers });
   }
 
-  public getMessagesWithRecipient(recipientUsername: string): Observable<Message[]> {
+  public getMessagesWithRecipient(recipientUsername: number): Observable<Message[]> {
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.getAuthToken());
     return this.http.get<Message[]>(`${this.apiBaseUrl}/messages/${recipientUsername}`, { headers });
   }
 
   sendMessage(message :Message): Observable<Message> {
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('authToken'));
-    return this.http.post<Message>(this.apiBaseUrl,  { headers });
+    const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getAuthToken());
+    return this.http.post<Message>(`${this.apiBaseUrl}`, { headers });
   }
   
 

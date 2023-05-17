@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/model/user';
 import { AuthenticationService } from 'src/app/service/authentication.service';
 import { UserService } from 'src/app/service/user.service';
@@ -11,7 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './usr.component.html',
   styleUrls: ['./usr.component.scss'],
 })
-export class UsrComponent {
+export class UsrComponent implements OnInit {
   users: User[] = [];
   private apiUrl = 'http://localhost:8081/api/v1/auth';
   constructor(

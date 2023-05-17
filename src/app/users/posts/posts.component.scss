@@ -154,17 +154,34 @@
 
 
 .question-card-new-comment input[type="text"] {
-  height: 38px; /* modifier la hauteur selon vos besoins */
+  height: 25px; /* modifier la hauteur selon vos besoins */
   resize: none; /* empêcher le redimensionnement */
   /* autres styles */
 }
-/*
-  .question-card:hover {
-    transform: scale(0.95);
-    -webkit-transform: scale(0.95);
-    -moz-transform: scale(0.95);
-    -ms-transform: scale(0.95);
-    -o-transform: scale(0.95);
-    
+
+
+
+.comment-votes {
+  display: flex;
+  justify-content: flex-end; /* Aligner le contenu à droite */
+  align-items: center; /* Centrer verticalement */
+  margin-top: 10px; /* Ajouter un peu d'espace en haut */
 }
-*/
+
+.comment-votes button {
+  border: 1px solid #ccc;
+  background-color: #fff;
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.comment-votes button.voted {
+  background-color: #0d6efd;
+  color: #fff;
+}
+
+.voted {
+  color: red;
+}

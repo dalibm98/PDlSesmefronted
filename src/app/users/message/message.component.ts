@@ -14,15 +14,13 @@ import { WebSocketSubject } from 'rxjs/webSocket';
   styleUrls: ['./message.component.scss'],
 })
 export class MessageComponent implements OnInit, OnDestroy {
-  currentUser!: User;
+  currentUser: User | undefined;
+  selectedUser: User | undefined;
+  selectedRecipientId: number | undefined;
   users: User[] = [];
-  selectedUser!: User;
   messages: Message[] = [];
-  messageContent = '';
-  webSocket!: WebSocketSubject<any>;
-  newMessageContent!: string;
+  webSocket: WebSocketSubject<any> | undefined;
   messageForm!: FormGroup;
-  selectedRecipientId!: number;
 
   constructor(
     private messageService: MessageService,
@@ -50,32 +48,35 @@ export class MessageComponent implements OnInit, OnDestroy {
       );
 
       const url = 'ws://localhost:8081/ws';
-      this.webSocket = this.webSocketService.connect(
-        url
-      ) as WebSocketSubject<any>;
+      this.webSocket = this.webSocketService.connect(url) as WebSocketSubject<any>;
+    }
 
-  
     this.messageForm = this.formBuilder.group({
       recipientId: ['', Validators.required],
       content: ['', Validators.required],
     });
   }
-  }
-  loadMessages(): void {
-    this.messageService.getMessages().subscribe(
-      (messages) => {
-        this.messages = messages;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
 
+  loadMessages(): void {
+    if (this.currentUser) {
+      this.messageService.getMessagesWithRecipient(this.currentUser.id)
+        .subscribe(
+          (messages) => {
+            this.messages = messages;
+            if (messages.length > 0) {
+              this.selectedRecipientId = messages[0].recipientId;
+            }
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+    }
+  }
   onUserSelect(user: User): void {
     this.selectedUser = user;
     if (this.selectedUser && this.selectedUser.email) {
-      this.messageService.getMessagesWithRecipient(this.selectedUser.email)
+      this.messageService.getMessagesWithRecipient(this.selectedUser.id)
         .subscribe((messages) => {
           this.messages = messages;
           if (messages.length > 0) {
@@ -84,53 +85,27 @@ export class MessageComponent implements OnInit, OnDestroy {
         });
     }
   }
-  
-
   ngOnDestroy(): void {
-    this.webSocket.complete();
-  }
-
-
-  onSubmit() {
-    if (!this.selectedRecipientId) {
-      console.log('No recipient selected!');
-      return;
+    if (this.webSocket) {
+      this.webSocket.complete();
     }
-    const message: Message = {
-      id: this.currentUser.id,
-      senderUsername: this.currentUser.firstname,
-      recipientId: this.selectedRecipientId,
-      content: this.messageForm.value.content,
-      createdAt: new Date(),
-      recipientUsername: this.selectedUser && this.selectedUser.email ? this.selectedUser.email : '',
-    };
-  
-    // Envoi du message à l'aide du service MessageService
-    this.messageService.sendMessage(message).subscribe(
-      (response: Message) => {
-        console.log('Message sent successfully: ', response);
-  
-        // Ajouter le nouveau message à la liste des messages
-        const newMessage: Message = {
-          id: response.id,
-          senderUsername: response.senderUsername,
-          recipientId: response.recipientId,
-          content: response.content,
-          createdAt: response.createdAt,
-          recipientUsername: response.recipientUsername,
-        };
-        this.messages.push(newMessage);
-  
-        // Effacer le formulaire
-        this.messageForm.reset();
-  
-        // Envoyer le message via le webSocket
-        this.webSocket.next(response);
-      },
-      (error) => {
-        console.error('Failed to send message: ', error);
-      }
-    );
   }
-  
+  onSubmit() {
+    if (this.currentUser && this.selectedRecipientId) {
+      const message: Message = {
+        id: 0,
+        recipientId: this.selectedRecipientId,
+        content: this.messageForm.get('content')?.value ?? '',
+      };
+      this.messageService.sendMessage(message).subscribe(
+        (message) => {
+          this.messages.push(message);
+          this.messageForm.reset();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
+  }
 }

@@ -1,1 +1,45 @@
-<p>board-admin works!</p>
+<app-home-a>
+    <div class="container-fluid page" style="border: 10px solid #ece9e9">
+      <div
+        class="d-flex page__box p-3 mt-2"
+        style="border: 3px solid #ffa500"
+      ></div>
+      <div
+        class="page__content shadow p-3 position-relative"
+        style="border: 3px solid #ffa500"
+      >
+      <mat-card>
+        <h2>Statistiques des utilisateurs</h2>
+        <div class="cards-container">
+          <mat-card class="my-card mat-elevation-z4" *ngFor="let user of users">
+            <mat-card-header>
+              <mat-card-title>{{user.firstname}} {{user.lastname}}</mat-card-title>
+              <mat-card-subtitle>{{user.status}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p>Posts : {{user.stats?.questionCount}}</p>
+              <p>Answers : {{user.stats?.reponseCount}}</p>
+            </mat-card-content>
+          </mat-card>
+        <div>
+          <h4>Domiane Question</h4>
+          <mat-card class="my-card mat-elevation-z4" *ngFor="let domaine of domaineQuestions">
+            <mat-card-title>{{domaine.nom_domaine_question}}</mat-card-title>
+          </mat-card>
+        </div>
+        <div>
+          <h4>Nature Question</h4>
+          <mat-card class="my-card mat-elevation-z4" *ngFor="let nature of natureQuestions">
+            <mat-card-title>{{nature.nom_nature_question}}</mat-card-title>
+          </mat-card>
+        </div>
+        </div>
+      </mat-card>
+      
+    
+      
+      
+  
+</div>
+</div>
+</app-home-a>

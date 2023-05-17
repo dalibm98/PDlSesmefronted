@@ -8,6 +8,7 @@ import { User } from '../model/user';
 import { Question } from '../model/question';
 import { Reponse } from '../model/reponse';
 import { UserStats } from '../model/user-stats';
+import { Notif } from '../model/notif';
 
 @Injectable({
   providedIn: 'root',
@@ -113,14 +114,14 @@ export class AuthenticationService {
     return throwError('Authentication required to add a question');
   }
 
-  markNotificationAsRead(notificationId: number): Observable<Notification> {
+  markNotificationAsRead(notificationId: number): Observable<Notif> {
     const authToken = this.getAuthToken();
     if (authToken) {
       const headers = new HttpHeaders().set(
         'Authorization',
         'Bearer ' + authToken
       );
-      return this.http.put<Notification>(
+      return this.http.put<Notif>(
         `${this.apiUrl}/notifications/${notificationId}`,
         null
       );
@@ -128,8 +129,8 @@ export class AuthenticationService {
     return throwError('Authentication required to add a question');
   }
 
-  getNotifications(): Observable<Notification[]> {
-    return this.http.get<Notification[]>(`${this.apiUrl}/notifications`);
+  getNotifications(): Observable<Notif[]> {
+    return this.http.get<Notif[]>(`${this.apiUrl}/notifications`);
   }
 
   getQuestionsWithReponses(): Observable<Question[]> {
@@ -185,6 +186,20 @@ export class AuthenticationService {
       { headers }
     );
   }
+
+  voteForReponse(reponseId: number): Observable<void> {
+    const url = `${this.apiUrl}/${reponseId}/vote`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.getAuthToken()}`
+      })
+    };
+
+    return this.http.put<void>(url, null, httpOptions);
+  }
+
+  // ...
+
   /*
     deleteAnswer(questionId: number, answerId: number): Observable<any> {
     const authToken = this.authService.getAuthToken();

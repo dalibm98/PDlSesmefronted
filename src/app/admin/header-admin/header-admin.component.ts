@@ -12,7 +12,7 @@ export class HeaderAdminComponent implements OnInit{
 
   currentUser: User | null = null;
 
-  @Output() toggleSidebarForMe: EventEmitter<any> = new EventEmitter();
+  @Output() toggleSidebarForMee: EventEmitter<any> = new EventEmitter();
 
   constructor(private router: Router , private authService: AuthenticationService) {}
 
@@ -25,8 +25,8 @@ export class HeaderAdminComponent implements OnInit{
     }
   }
 
-  toggleSidebar() {
-    this.toggleSidebarForMe.emit();
+  toggleSidebarr() {
+    this.toggleSidebarForMee.emit();
   }
 
 

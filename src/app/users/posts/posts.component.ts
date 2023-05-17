@@ -128,4 +128,33 @@ export class PostsComponent implements OnInit {
         }
       });
   }
+  voteForReponse(reponseId: number) {
+    const url = `${this.apiUrl}/${reponseId}/vote`;
+    const authToken = this.authservice.getAuthToken();
+    const headers = new HttpHeaders().set(
+      'Authorization',
+      `Bearer ${authToken}`
+    );
+  
+
+    this.http.put(url, null, { headers }).subscribe(
+      () => {
+        // Vote réussi, mettez à jour le nombre de votes localement
+        const reponse = this.questions
+          .flatMap((q) => q.reponses)
+          .find((r) => r.id_reponse === reponseId);
+        if (reponse) {
+          if (!isNaN(reponse.votes)) {
+            reponse.votes++;
+          } else {
+            reponse.votes = 1;
+          }
+          reponse.isVoted = true; // Définir isVoted sur true
+        }
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+    }    
 }

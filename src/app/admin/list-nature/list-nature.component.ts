@@ -19,6 +19,8 @@ export class ListNatureComponent implements OnInit {
   isDialogOpen = false;
   dialogRef!: MatDialogRef<any>;
   showSuccessMessage = false;
+showErreurMessage = false ;
+ showSuccessMessagee = false;
 
   constructor(private natureQuestionService: NatureQuestionService, private dialog: MatDialog) { }
 
@@ -48,6 +50,9 @@ export class ListNatureComponent implements OnInit {
       this.closeDialog();
       this.getAllnatureQuestions();
       this.showSuccessMessage = true;
+      setTimeout(() => {
+        this.showSuccessMessage = false;
+      }, 3000);
     }, error => {
       console.log(error);
     });
@@ -57,7 +62,10 @@ export class ListNatureComponent implements OnInit {
     this.natureQuestionService.updateNatureQuestion(id, natureQuestion).subscribe(() => {
       this.closeDialog();
       this.getAllnatureQuestions();
-      this.showSuccessMessage = true;
+      this.showSuccessMessagee = true;
+      setTimeout(() => {
+        this.showSuccessMessagee = false;
+      }, 1500);
     }, error => {
       console.log(error);
     });
@@ -66,9 +74,14 @@ export class ListNatureComponent implements OnInit {
   deletenatureQuestion(id: number) {
     this.natureQuestionService.deleteNatureQuestion(id).subscribe(() => {
       this.getAllnatureQuestions();
-      this.showSuccessMessage = true;
+   
     }, error => {
+      this.showErreurMessage = true;
+      setTimeout(() => {
+        this.showErreurMessage = false;
+      }, 3000);
       console.log(error);
+      
     });
   }
 

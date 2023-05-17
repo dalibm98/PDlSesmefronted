@@ -64,27 +64,29 @@
               <div class="comment">
                 <div class="comment-avatar">
                   <div class="question-card-avatar author-name">
-                    
                     <img src="../../assets/profile.png" alt="avatar-image" />
                   </div>
                 </div>
+           
                 <div class="comment-content">
                   <div class="comment-header">
-                    <span class="author-name">{{
-                      reponse.auteur.firstname
-                    }}</span>
-                    <span class="comment-date">{{
-                      reponse.dateCreation | date
-                    }}</span>
+                    <span class="author-name">{{ reponse.auteur.firstname }}</span>
+                    <span class="comment-date">{{ reponse.dateCreation | date }}</span>
                   </div>
                   <p class="comment-text">{{ reponse.contenu }}</p>
-                </div>
+                  <div class="comment-votes">
+                   
+                    <button mat-icon-button [class.voted]="reponse.isVoted" (click)="voteForReponse(reponse.id_reponse)">
+                      <mat-icon>thumb_up</mat-icon>
+                    </button>
+                  </div>
+                </div>                
               </div>
             </div>
             <div class="question-card-new-comment">
               <input
                 type="text"
-                placeholder="Add a comment"
+                style="height: 28px !important;"
                 #responseContent
                 required
               />

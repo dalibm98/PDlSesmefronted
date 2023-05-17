@@ -7,9 +7,9 @@ import { Component } from '@angular/core';
 })
 export class HomeAComponent {
 
-  sideBarOpen = true;
+  sideBarOpenn = true;
 
-  sideBarToggler() {
-    this.sideBarOpen = !this.sideBarOpen;
+  sideBarTogglerr() {
+    this.sideBarOpenn = !this.sideBarOpenn;
   }
 }

@@ -1,1 +1,120 @@
-<p>list-users works!</p>
+<app-home-a>
+  <div class="container-fluid page" style="border: 10px solid #ece9e9">
+    <div
+      class="d-flex page__box p-3 mt-2"
+      style="border: 3px solid #c0bdb9"
+    ></div>
+    <div
+      class="page__content shadow p-3 position-relative"
+      style="border: 3px solid #c0bdb9"
+    >
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+        <link rel="stylesheet" href="/assets/style.css" />
+      </head>
+
+      <body>
+        <main class="table">
+          <section class="table__header">
+            <h3>All users</h3>
+            <div class="input-group">
+              <input type="search" placeholder="Search Data..." />
+            </div>
+          </section>
+          <div *ngIf="showSuccessMessage" class="message">
+            la suppression est echoée, supprimez l'utilisateur de la liste des utilisateurs
+          </div>
+          <section class="table__body">
+            <table>
+              <thead>
+                <tr>
+                  <th>id <span class="icon-arrow">&UpArrow;</span></th>
+                  <th><span class="icon-arrow">&UpArrow;</span></th>
+                  <th>firstname<span class="icon-arrow">&UpArrow;</span></th>
+                  <th>lastname<span class="icon-arrow">&UpArrow;</span></th>
+                  <th>email<span class="icon-arrow">&UpArrow;</span></th>
+                  <th>adresse<span class="icon-arrow">&UpArrow;</span></th>
+                  <th>status<span class="icon-arrow">&UpArrow;</span></th>
+                  <th>description<span class="icon-arrow">&UpArrow;</span></th>
+                  <th>role<span class="icon-arrow">&UpArrow;</span></th>
+                  <th>Action<span class="icon-arrow">&UpArrow;</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of users">
+                  <td>{{ user.id }}</td>
+                  <td>
+                    <img
+                      [src]="user.image_url || '../assets/profile.png'"
+                      alt=""
+                    />
+                  </td>
+                  <td>{{ user.firstname }}</td>
+                  <td>{{ user.lastname }}</td>
+                  <td>{{ user.email }}</td>
+                  <td>{{ user.adresse }}</td>
+                  <td>{{ user.status }}</td>
+                  <td>{{ user.description }}</td>
+                  <td>{{ user.role }}</td>
+                  <td>
+                    <button
+                      mat-icon-button
+                      color="warn"
+                      (click)="deleteUser(user.id)"
+                    >
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="3">
+                    <button
+                      mat-raised-button
+                      color="primary"
+                      (click)="openDialog()"
+                    >
+                      <mat-icon>add</mat-icon>Add User
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <ng-template #dialogTemplate let-dialogRef="dialogRef" style="font-size: 1.2em">
+              <h5 style="color: blue;">Add User</h5>
+              <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+                  <mat-form-field>
+                      <input matInput [(ngModel)]="user.lastname" name="lastname" placeholder="lastname" required>
+                  </mat-form-field>
+                  <mat-form-field>
+                      <input matInput [(ngModel)]="user.firstname" name="firstname" placeholder="firstname" required>
+                  </mat-form-field>
+                  <mat-form-field>
+                      <input matInput [(ngModel)]="user.email" name="email" placeholder="email" required>
+                  </mat-form-field>
+                  <mat-form-field>
+                      <input  matInput [(ngModel)]="user.password" name="password" placeholder="password"   type="password" required>
+                  </mat-form-field>
+                  <br><br>
+                  <button mat-raised-button color="primary" type="submit">Add</button>
+                  <button mat-raised-button color="warn" type="button" (click)="dialogRef.close()">Cancel</button>
+              </form>
+          </ng-template>
+          </section>
+        </main>
+
+     
+      </body>
+
+      <mat-paginator
+        [length]="100"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        aria-label="Select page"
+      >
+      </mat-paginator>
+    </div>
+  </div>
+</app-home-a>

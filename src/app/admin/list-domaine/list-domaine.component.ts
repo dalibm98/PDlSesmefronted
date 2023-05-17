@@ -19,7 +19,8 @@ export class ListDomaineComponent implements OnInit {
   isDialogOpen = false;
   dialogRef!: MatDialogRef<any>;
   showSuccessMessage = false;
-
+showErreurMessage = false ;
+ showSuccessMessagee = false;
   constructor(private domaineQuestionService: DomaineQuestionService, private dialog: MatDialog) { }
 
   
@@ -48,6 +49,9 @@ export class ListDomaineComponent implements OnInit {
       this.closeDialog();
       this.getAllDomaineQuestions();
       this.showSuccessMessage = true;
+      setTimeout(() => {
+        this.showSuccessMessage = false;
+      }, 3000);
     }, error => {
       console.log(error);
     });
@@ -57,7 +61,10 @@ export class ListDomaineComponent implements OnInit {
     this.domaineQuestionService.updateDomaineQuestion(id, domaineQuestion).subscribe(() => {
       this.closeDialog();
       this.getAllDomaineQuestions();
-      this.showSuccessMessage = true;
+      this.showSuccessMessagee = true;
+      setTimeout(() => {
+        this.showSuccessMessagee = false;
+      }, 1500);
     }, error => {
       console.log(error);
     });
@@ -66,9 +73,14 @@ export class ListDomaineComponent implements OnInit {
   deleteDomaineQuestion(id: number) {
     this.domaineQuestionService.deleteDomaineQuestion(id).subscribe(() => {
       this.getAllDomaineQuestions();
-      this.showSuccessMessage = true;
+   
     }, error => {
+      this.showErreurMessage = true;
+      setTimeout(() => {
+        this.showErreurMessage = false;
+      }, 3000);
       console.log(error);
+      
     });
   }
 

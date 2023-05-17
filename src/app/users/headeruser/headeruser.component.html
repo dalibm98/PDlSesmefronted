@@ -1,37 +1,49 @@
 <mat-toolbar>
-  
-
-    <mat-toolbar-row class="justify-content-between">
-      <button mat-icon-button (click)="toggleSidebar()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <div class="logoo">
-        <img src="./assets/logoo.png" alt="Communité SESAME" /> 
-      </div>
-      <div class="row mr-2 ml-auto">
-        <ul class="row m-0 align-items-center">
-          <li>
-            <button
-              mat-button
-              [matMenuTriggerFor]="menu"
-              class="user mt-2 d-flex align-items-center"
-            >
-              <img src="./assets/profile.png" alt="" class="user-image mr-1 p-2" />
-  
-              <span class="username">{{ currentUser?.firstname }}</span>
-              <mat-icon class="user-image-icon ml-1"
-                >keyboard_arrow_down</mat-icon
-              >
+  <mat-toolbar-row class="justify-content-between">
+    <button mat-icon-button (click)="toggleSidebar()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div class="logoo">
+      <img src="./assets/logoo.png" alt="Communité SESAME" />
+    </div>
+    <div class="row mr-2 ml-auto">
+    
+        <div>
+          <button mat-button [matMenuTriggerFor]="menu" class="user mt-2 d-flex align-items-center">
+            <img src="./assets/profile.png" alt="" class="user-image mr-1 p-2" />
+            <span class="username">{{ currentUser?.firstname }}</span>
+            <mat-icon class="user-image-icon ml-1">keyboard_arrow_down</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="logout()">
+              <mat-icon>exit_to_app</mat-icon>
+              Logout
             </button>
-            <mat-menu #menu="matMenu">
-              <button mat-menu-item (click)="logout()">
-                <mat-icon>exit_to_app</mat-icon>
-                Logout
-              </button>
-              
+          </mat-menu>
+        </div>
+
+        <div>
+            <button mat-icon-button [matMenuTriggerFor]="notifMenu">
+              <mat-icon>notifications</mat-icon>
+              <span class="notif-count" *ngIf="notifications.length > 0">{{ notifications.length }}</span>
+            </button>
+            <mat-menu #notifMenu="matMenu">
+              <div *ngIf="notifications.length === 0" class="no-notif-message">
+                Aucune notification
+              </div>
+              <div *ngIf="notifications.length > 0">
+                <div *ngFor="let notif of notifications">
+                  <button mat-menu-item [disabled]="notif.estLu" (click)="markAsRead(notif.id_notification)">
+                    <mat-icon>done</mat-icon>
+                    <div class="notif-content">
+                      <div class="notif-message">{{ notif.message }}</div>
+                    </div>
+                  </button>
+                </div>
+              </div>
             </mat-menu>
-          </li>
-        </ul>
+          </div>
       </div>
-    </mat-toolbar-row>
-  </mat-toolbar>
+      
+  </mat-toolbar-row>
+</mat-toolbar>

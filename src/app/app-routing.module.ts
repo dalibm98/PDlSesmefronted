@@ -19,6 +19,9 @@ import { AccountAdminComponent } from './admin/account-admin/account-admin.compo
 import { ListDomaineComponent } from './admin/list-domaine/list-domaine.component';
 import { ListNatureComponent } from './admin/list-nature/list-nature.component';
 import { BoardAdminComponent } from './admin/board-admin/board-admin.component';
+import { ListUsersComponent } from './admin/list-users/list-users.component';
+import { ListPostAdminComponent } from './admin/list-post-admin/list-post-admin.component';
+import { ListAnswersAdminComponent } from './admin/list-answers-admin/list-answers-admin.component';
 
 
 const routes: Routes = [
@@ -33,7 +36,6 @@ const routes: Routes = [
   { path: 'appc', component: AppcComponent },
   { path: 'posts', component: PostsComponent },
   { path: 'account', component: AccountusersComponent },
-
   { path: 'answ', component: AnswersComponent },
   { path: 'listepost', component: ModifpostComponent },
   { path: 'usr', component: UsrComponent },
@@ -42,7 +44,10 @@ const routes: Routes = [
   { path: 'profileAdmin', component: AccountAdminComponent },
   { path: 'listdomaine', component: ListDomaineComponent },
   { path: 'listnature', component: ListNatureComponent },
-  { path: 'boardadmin', component: BoardAdminComponent }
+  { path: 'boardadmin', component: BoardAdminComponent },
+  { path: 'listeusers', component: ListUsersComponent },
+  { path: 'listepostadmin', component: ListPostAdminComponent },
+  { path: 'listanswersadmin', component: ListAnswersAdminComponent }
 ];
 
 @NgModule({

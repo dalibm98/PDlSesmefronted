@@ -2,11 +2,11 @@
   <div class="container-fluid page" style="border: 10px solid #ece9e9">
     <div
       class="d-flex page__box p-3 mt-2"
-      style="border: 3px solid #ffa500"
+      style="border: 3px solid #c0bdb9"
     ></div>
     <div
       class="page__content shadow p-3 position-relative"
-      style="border: 3px solid #ffa500"
+      style="border: 3px solid #c0bdb9"
     >
       <head>
         <meta charset="UTF-8" />
@@ -24,15 +24,32 @@
               <input type="search" placeholder="Search Data..." />
             </div>
           </section>
-          <section class="table__body">
-          
 
-       
+          <div *ngIf="showSuccessMessage" class="success-message">
+            La domaine question a été ajouter avec succès
+          </div>
+
+          <div *ngIf="showSuccessMessagee" class="success-message">
+            La domaine question a été modifier avec succès
+          </div>
+
+          <div *ngIf="showErreurMessage" class="message">
+          ce domaine question ne peut pas  étre suprimée avec succès
+          </div>
+
+
+          <section class="table__body">
             <table>
               <thead>
                 <tr>
-                  <th>id_domaine_question <span class="icon-arrow">&UpArrow;</span></th>
-                  <th>nom_domaine_question <span class="icon-arrow">&UpArrow;</span></th>
+                  <th>
+                    id_domaine_question
+                    <span class="icon-arrow">&UpArrow;</span>
+                  </th>
+                  <th>
+                    nom_domaine_question
+                    <span class="icon-arrow">&UpArrow;</span>
+                  </th>
                   <th>Action<span class="icon-arrow">&UpArrow;</span></th>
                 </tr>
               </thead>
@@ -41,38 +58,74 @@
                   <td>{{ domaineQuestion.id_domaine_question }}</td>
                   <td>{{ domaineQuestion.nom_domaine_question }}</td>
                   <td>
-                    <button mat-icon-button color="warn" (click)="deleteDomaineQuestion(domaineQuestion.id_domaine_question)">
+                    <button
+                      mat-icon-button
+                      color="warn"
+                      (click)="
+                        deleteDomaineQuestion(
+                          domaineQuestion.id_domaine_question
+                        )
+                      "
+                    >
                       <mat-icon>delete</mat-icon>
                     </button>
-                    <button mat-icon-button color="primary" (click)="editDomaineQuestion(domaineQuestion)">
+                    <button
+                      mat-icon-button
+                      color="primary"
+                      (click)="editDomaineQuestion(domaineQuestion)"
+                    >
                       <mat-icon>edit</mat-icon>
                     </button>
                   </td>
                 </tr>
                 <tr>
                   <td colspan="3">
-                    <button mat-raised-button color="primary" (click)="openDialog()">
+                    <button
+                      mat-raised-button
+                      color="primary"
+                      (click)="openDialog()"
+                    >
                       <mat-icon>add</mat-icon>Add Domaine Question
                     </button>
                   </td>
                 </tr>
               </tbody>
             </table>
-            
-            <ng-template #dialogTemplate let-dialogRef="dialogRef" style="font-size: 1.2em">
-              <h5 style="color: blue;">{{isEditing ? 'Edit Domaine Question' : 'Add Domaine Question'}}</h5>
+
+            <ng-template
+              #dialogTemplate
+              let-dialogRef="dialogRef"
+              style="font-size: 1.2em"
+            >
+              <h5 style="color: blue">
+                {{
+                  isEditing ? "Edit Domaine Question" : "Add Domaine Question"
+                }}
+              </h5>
               <form #domaineQuestionForm="ngForm" (ngSubmit)="onSubmit()">
                 <mat-form-field>
-                  <input matInput [(ngModel)]="domaineQuestion.nom_domaine_question" name="nom_domaine_question" placeholder="Domaine Question Name" required>
+                  <input
+                    matInput
+                    [(ngModel)]="domaineQuestion.nom_domaine_question"
+                    name="nom_domaine_question"
+                    placeholder="Domaine Question Name"
+                    required
+                  />
                 </mat-form-field>
-                <br><br>
-                <button mat-raised-button color="primary" type="submit">{{isEditing ? 'Save Changes' : 'Add'}}</button>
-                <button mat-raised-button color="warn" type="button" (click)="dialogRef.close()">Cancel</button>
+                <br /><br />
+                <button mat-raised-button color="primary" type="submit">
+                  {{ isEditing ? "Save Changes" : "Add" }}
+                </button>
+                <button
+                  mat-raised-button
+                  color="warn"
+                  type="button"
+                  (click)="dialogRef.close()"
+                >
+                  Cancel
+                </button>
               </form>
             </ng-template>
-           
-            
-            
           </section>
         </main>
       </body>

@@ -3,26 +3,31 @@
     <div class="card">
       <div class="card-header">Discussions</div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item"
-        *ngFor="let user of users"
-        (click)="onUserSelect(user)">
-      {{ user.firstname }} {{ user.lastname }}
-      <span class="user-id">({{ user.email }})</span>
-    </li>
-    
+        <li
+          class="list-group-item"
+          *ngFor="let user of users"
+          (click)="onUserSelect(user)"
+        >
+          {{ user.firstname }} {{ user.lastname }}
+          <span class="user-id">({{ user.email }})</span>
+        </li>
       </ul>
     </div>
   </div>
   <div class="col-md-8">
     <div class="card">
       <div class="card-header">
-        {{ currentUser.firstname }} {{ currentUser.lastname }}
+        {{ currentUser?.firstname }} {{ currentUser?.lastname }}
       </div>
       <div class="card-body" *ngIf="currentUser">
         <div class="messages">
-     
           <div *ngFor="let message of messages">
-            <div *ngIf="message.senderUsername === currentUser.email; else receiver">
+            <div
+              *ngIf="
+                message.senderUsername === currentUser.email;
+                else receiver
+              "
+            >
               <div class="sent-message">
                 {{ message.content }}
               </div>
@@ -33,20 +38,24 @@
               </div>
             </ng-template>
           </div>
-          
 
-    
-        <form (ngSubmit)="onSubmit()" class="form-inline">
-          <div class="form-group">
-            <input [(ngModel)]="messageContent"
-            type="text"
-            class="form-control"
-            placeholder="Type your message..."
-            name="content" />
-               </div>
-          <button type="submit" class="btn btn-primary">Send</button>
-        </form>
-        
+          <form [formGroup]="messageForm" (ngSubmit)="onSubmit()" class="form-inline">
+            <div class="form-group">
+              <input
+                formControlName="recipientId"
+                type="hidden"
+                [value]="selectedRecipientId"
+              />
+              <input
+                formControlName="content"
+                type="text"
+                class="form-control"
+                placeholder="Type your message..."
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Send</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>

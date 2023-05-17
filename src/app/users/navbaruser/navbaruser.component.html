@@ -69,19 +69,24 @@
 
 
   
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
 <mat-divider></mat-divider>
 
 <div class="logout-button">
-  <div>
-    <mat-icon>account_circle</mat-icon>
+  <div  routerLink="/account">
+    <mat-icon >account_circle</mat-icon>
   </div>
 
   <div>
-    <a mat-button>
+    <a mat-button (click)="logout()" >
       <mat-icon>exit_to_app</mat-icon>
-      <span style="margin-left:8px" >Logout</span>
+      <span style="margin-left:8px"  >Logout</span>
     </a>
   </div>
 </div>
