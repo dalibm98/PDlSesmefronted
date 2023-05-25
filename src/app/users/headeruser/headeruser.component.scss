@@ -45,22 +45,29 @@ mat-toolbar {
     }
   }
 
+.notification-button {
+  position: relative;
+}
 
-  .notif-count {
-    position: absolute;
-    top: 0;
-    right: -10px;
-    display: inline-block;
-    background-color: red;
-    color: rgb(207, 182, 182);
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    text-align: center;
-    font-size: 12px;
-    line-height: 20px;
-  }
-  
+.user {
+  font-size: 14px;
+}
+
+.notif-count {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
+  color: #fff;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+}
+
  
   .row {
     display: flex;
@@ -70,7 +77,7 @@ mat-toolbar {
   }
   
   .row > div {
-    margin-bottom: -50px;
+    margin-bottom: -30px;
     margin-top: -13.5px;
   }
   

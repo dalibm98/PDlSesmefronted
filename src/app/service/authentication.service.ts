@@ -63,6 +63,18 @@ export class AuthenticationService {
     return this.http.post<Reponse>(url, reponse, httpOptions);
   }
 
+  getMeilleuresReponsesTrieParVotes(): Observable<Reponse[]> {
+    const url = `${this.apiUrl}/reponses/meilleures`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${this.getAuthToken()}`,
+      }),
+    };
+    return this.http.get<Reponse[]>(url, httpOptions);
+  }
+
+
   modifyQuestion(questionId: number, question: any): Observable<any> {
     const url = `${this.apiUrl}/questions/${questionId}`;
     const authToken = this.getAuthToken();

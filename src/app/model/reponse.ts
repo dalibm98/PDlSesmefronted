@@ -10,5 +10,6 @@ export interface Reponse {
     question: Question;
     vote_utilisateur: User[];
     isVoted: boolean; // Nouvelle propriété pour représenter l'état du vote
-    votes : number
+    votes : number;
+    nombreVotes: number;
 }

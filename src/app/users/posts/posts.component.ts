@@ -19,6 +19,14 @@ export class PostsComponent implements OnInit {
   questions: Question[] = [];
   private apiUrl = 'http://localhost:8081/api/v1/auth';
   users: User[] = [];
+
+
+  searchDomain: string = '';
+searchNature: string = '';
+searchAuthor: string = '';
+searchSujet : string ='';
+filteredQuestions: Question[] = [];
+
   constructor(
     private questionService: QuestionService,
     private authservice: AuthenticationService,
@@ -30,7 +38,7 @@ export class PostsComponent implements OnInit {
     this.questionService.consulterQuestions().subscribe(
       (questions: Question[]) => {
         this.questions = questions;
-
+        this.filteredQuestions = questions;
         const userIds = this.questions.map((question) => question.auteur.id);
         const observables = userIds.map((userId) => this.getUserImage(userId));
 
@@ -135,7 +143,6 @@ export class PostsComponent implements OnInit {
       'Authorization',
       `Bearer ${authToken}`
     );
-  
 
     this.http.put(url, null, { headers }).subscribe(
       () => {
@@ -156,5 +163,53 @@ export class PostsComponent implements OnInit {
         console.log(error);
       }
     );
-    }    
+  }
+  getMeilleuresReponsesTrieParVotes() {
+
+
+    this.authservice.getMeilleuresReponsesTrieParVotes().subscribe(
+      (reponses) => {
+        this.questions.forEach((question) => {
+          // Find the corresponding question object in 'questions'
+          
+          const foundQuestion = this.questions.find((q) => q.id_question === question.id_question);
+          console.log(foundQuestion)
+          if (foundQuestion) {
+            // Sort the reponses array of the found question
+            console.log(foundQuestion.reponses)
+            foundQuestion.reponses.sort((a, b) => b.vote_utilisateur.length - a.vote_utilisateur.length);
+          }
+        });
+        this.refreshQuestionsList(); // Update the questions list
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+  refreshQuestionsList() {
+    this.questionService.consulterQuestions().subscribe(
+      (questions: Question[]) => {
+        this.questions = questions;
+        this.filteredQuestions = questions;
+        const userIds = this.questions.map((question) => question.auteur.id);
+        const observables = userIds.map((userId) => this.getUserImage(userId));
+        forkJoin(observables).subscribe();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  searchQuestions() {
+    // Filter questions based on the search criteria
+    this.filteredQuestions = this.questions.filter((question) => {
+      const isDomainMatch = question.domaine.nom_domaine_question.toLowerCase().includes(this.searchDomain.toLowerCase());
+      const isNatureMatch = question.nature.nom_nature_question.toLowerCase().includes(this.searchNature.toLowerCase());
+      const isAuthorMatch = question.auteur.firstname.toLowerCase().includes(this.searchAuthor.toLowerCase());
+      const searchSujet = question.sujet.toLowerCase().includes(this.searchSujet.toLowerCase());
+      return isDomainMatch && isNatureMatch && isAuthorMatch && searchSujet;
+    });
+  }
 }
