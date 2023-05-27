@@ -22,6 +22,8 @@ import { BoardAdminComponent } from './admin/board-admin/board-admin.component';
 import { ListUsersComponent } from './admin/list-users/list-users.component';
 import { ListPostAdminComponent } from './admin/list-post-admin/list-post-admin.component';
 import { ListAnswersAdminComponent } from './admin/list-answers-admin/list-answers-admin.component';
+import { ChangermotpasseuserComponent } from './users/changermotpasseuser/changermotpasseuser.component';
+import { ChangermotpasseadminComponent } from './admin/changermotpasseadmin/changermotpasseadmin.component';
 
 
 const routes: Routes = [
@@ -47,7 +49,10 @@ const routes: Routes = [
   { path: 'boardadmin', component: BoardAdminComponent },
   { path: 'listeusers', component: ListUsersComponent },
   { path: 'listepostadmin', component: ListPostAdminComponent },
-  { path: 'listanswersadmin', component: ListAnswersAdminComponent }
+  { path: 'listanswersadmin', component: ListAnswersAdminComponent },
+
+  { path: 'changermotuser', component: ChangermotpasseuserComponent },
+  { path: 'changermotadmin', component: ChangermotpasseadminComponent },
 ];
 
 @NgModule({

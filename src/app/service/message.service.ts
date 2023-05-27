@@ -28,7 +28,8 @@ export class MessageService {
 
   sendMessage(message :Message): Observable<Message> {
     const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getAuthToken());
-    return this.http.post<Message>('http://localhost:8081/api/messages', { headers });
+    console.log(this.getAuthToken())
+    return this.http.post<Message>('http://localhost:8081/api/messages',message, { headers });
   }
   
 

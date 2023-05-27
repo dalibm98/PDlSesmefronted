@@ -1,0 +1,36 @@
+.page {
+  color: white;
+  padding: 0 1rem;
+  background: #f1f5f9;
+
+  &__box {
+    min-height: 130px;
+    background-color: #0067ac;
+    color: #004f83;
+    margin: 0 -1rem;
+    font-size: 30px;
+  }
+
+  &__content {
+    min-height: calc(100vh - 178px);
+    border-radius: 10px;
+    margin-top: -2rem;
+    background: white;
+    color: black;
+    font-size: 1.5rem;
+
+    &-data {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+.success-message {
+  background-color: #dff0d8;
+  color: #3c763d;
+  border: 1px solid #d6e9c6;
+  padding: 10px;
+  margin-top: 10px;
+}

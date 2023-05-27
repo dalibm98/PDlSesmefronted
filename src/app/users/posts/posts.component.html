@@ -1,4 +1,11 @@
-<app-appc>
+<mat-drawer-container>
+  <mat-drawer mode="side" [opened]="sideBarOpen">
+    <!-- <mat-drawer mode="side" opened="true"> -->
+  <app-navbaruser></app-navbaruser>
+  </mat-drawer>
+  <mat-drawer-content>
+
+    <app-headeruser (toggleSidebarForMe)="sideBarToggler()"></app-headeruser>
   <div class="container-fluid page" style="border: 3px solid #ece9e9">
     <div class="d-flex page__box p-3 mt-2" style="border: 3px solid #ffa500">
       <span class="page__box-title" style="color: rgb(243, 243, 243)"
@@ -169,4 +176,5 @@
       </mat-paginator>
     </div>
   </div>
-</app-appc>
+</mat-drawer-content>
+</mat-drawer-container>

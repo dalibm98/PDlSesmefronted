@@ -39,6 +39,8 @@
   margin-bottom: 10px;
 }
 
+
+
 /* Style pour les cards des questions */
 .question-card {
   background-color: #f0dede;
@@ -178,6 +180,7 @@
   border-radius: 3px;
   font-size: 20px;
   margin-left: 10px;
+  width: 40px;
 }
 
 .comment-votes button.voted {
@@ -229,4 +232,32 @@
 .search-button:hover {
   background-color: #0056b3;
 }
+
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+mat-drawer {
+  width: 260px;
+}
+mat-drawer-container {
+  height: 100%;
+}
+
+
+mat-drawer {
+  background-color: #0067ac;
+  color: #004f83;
+}
+
+body {
+  --color-second: #0067ac;
+  --color-white: #fff;
+  --color-body: #e4e9f7;
+  --color-light: #e0e0e0;
+}
+
 

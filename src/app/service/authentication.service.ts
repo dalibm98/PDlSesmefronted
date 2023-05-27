@@ -33,6 +33,20 @@ export class AuthenticationService {
     );
   }
 
+
+  changePassword(newPassword: string): Observable<AuthenticationResponse> {
+    const authToken = this.getAuthToken();
+    if (!authToken) {
+      throw new Error('No auth token found');
+    }
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + authToken);
+    return this.http.post<AuthenticationResponse>(
+      `${this.apiUrl}/change-password`,
+      { newPassword: newPassword },
+      { headers }
+  );
+  }
+
   storeAuthToken(authToken: string): void {
     localStorage.setItem(this.authTokenKey, authToken);
   }

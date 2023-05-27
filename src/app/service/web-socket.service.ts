@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +9,17 @@ export class WebSocketService {
   private socket!: WebSocket;
   private subject!: Subject<MessageEvent>;
 
-  constructor() { }
+  constructor(private authService: AuthenticationService){ }
+  private authTokenKey = 'authToken';
+  private get authToken(): string | null {
+    return localStorage.getItem(this.authTokenKey);
+  }
 
   connect(url: string): Subject<MessageEvent> {
+    if (!this.authToken) {
+      throw new Error('Not authenticated');
+    }
+
     if (!this.subject) {
       this.subject = this.create(url);
     }

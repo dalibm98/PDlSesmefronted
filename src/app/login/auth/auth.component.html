@@ -7,11 +7,14 @@
     align-items: center;
   "
 >
+
+
   <div style="width: 48%" class="content">
     <mat-tab-group [(selectedIndex)]="selectedIndex" dynamicHeight>
       <mat-tab label="Login">
         <div class="header">
-          <img src="../../../assets/profile.png" alt="Logo de l'application" />
+          <img src="./assets/logoo.png" alt="Communité SESAME" />
+          <br>
           <h6>Hello Again</h6>
         </div>
 
@@ -20,7 +23,8 @@
 
       <mat-tab label="Register">
         <div class="header">
-          <img src="../../../assets/profile.png" alt="Logo de l'application" />
+          <img src="./assets/logoo.png" alt="Communité SESAME" />
+          <br>
           <h6>Happy to join you!</h6>
         </div>
 
@@ -29,12 +33,15 @@
         ></app-register>
       </mat-tab>
     </mat-tab-group>
+  
   </div>
+  <div class="bottom-right">
+    <img src="./assets/logoo.png" alt="Communité SESAME" />
+  </div>
+  <div style=" padding: 20px; display: inline-block; position: absolute; top: 20px; left: 20px;" class="logo-container">
+    <h1 class="title" style="font-family: 'Roboto', sans-serif; font-weight: bold; text-transform: uppercase; font-size: 60px; color: #0174a5; margin: 0;">SESAME</h1>
 
-  <div style=" padding: 20px; display: inline-block; position: absolute; top: 20px; left: 20px;">
-    <h1 style="font-family: 'Roboto', sans-serif; font-weight: bold; text-transform: uppercase; font-size: 60px; color: #0174a5; margin: 0;">SESAME</h1>
-
-    <h1 style="font-family: 'Roboto', sans-serif; font-weight: bold; text-transform: uppercase; font-size: 37px; color: #FFFFFF; margin: 0;">Community</h1>
+    <h1 class="title" style="font-family: 'Roboto', sans-serif; font-weight: bold; text-transform: uppercase; font-size: 37px; color: #FFFFFF; margin: 0;">Community</h1>
   </div>
   
   

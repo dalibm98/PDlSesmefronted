@@ -1,0 +1,43 @@
+.page {
+    color: white;
+    padding: 0 1rem;
+    background: #f1f5f9;
+  
+  
+    &__box {
+      min-height: 150px;
+      background-color: #0f1f2a;
+      color: #0f2b3d;
+      margin: 0 -1rem;
+      font-size: 36px;
+      
+    }
+  
+    &__content {
+      min-height: calc(100vh - 178px);
+      border-radius: 10px;
+      margin-top: -2rem;
+      background: rgb(255, 255, 255);
+      color: rgb(250, 239, 239);
+      font-size: 1.2rem;
+    //  background: url("/assets/s2.jpg") center / cover;
+  
+      &-data {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+
+
+
+
+  .success-message {
+    background-color: #dff0d8;
+    color: #3c763d;
+    border: 1px solid #d6e9c6;
+    padding: 10px;
+    margin-top: 10px;
+  }
+  

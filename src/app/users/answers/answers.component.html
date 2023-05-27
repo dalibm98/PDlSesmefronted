@@ -21,7 +21,7 @@
           <section class="table__header">
             <h3>All My Answers</h3>
             <div class="input-group">
-              <input type="search" placeholder="Search Data..." />
+              <input type="search" placeholder="Search Data..." [(ngModel)]="searchKeyword" (ngModelChange)="filterReponses()" />
             </div>
           </section>
           <section class="table__body">
@@ -41,7 +41,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let reponse of reponses">
+                <tr *ngFor="let reponse of filteredReponses">
                   <td>{{ reponse.id_reponse }}</td>
 
                   <td>
@@ -56,15 +56,18 @@
                       <mat-icon>delete</mat-icon>
                     </button>
 
-                    <button mat-icon-button color="primary">
+         <!--       <button mat-icon-button color="primary">
                       <mat-icon>edit</mat-icon>
                     </button>
+                    -->    
                   </td>
                 </tr>
               </tbody>
             </table>
             
     
+
+            
           </section>
         </main>
       </body>

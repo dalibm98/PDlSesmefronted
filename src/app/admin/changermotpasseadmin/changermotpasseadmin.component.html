@@ -1,0 +1,29 @@
+<app-home-a>
+    <div class="container-fluid page" style="border: 3px solid #ebece9">
+      <div class="d-flex page__box p-3 mt-2" style="border: 3px solid #c0bdb9">
+        <span class="page__box-title" style="color: rgb(243, 243, 243)"
+          > Update Password</span
+        >
+      </div>
+  
+      <div class="page__content shadow p-3" style="border: 3px solid #c0bdb9">
+     
+
+
+        
+    <form [formGroup]="changePasswordForm" (ngSubmit)="submitChangePasswordForm()">
+        <div class="form-group">
+          <label style="color: #ffa500" for="newPassword">New Password</label>
+          <input type="password" id="newPassword" formControlName="newPassword" class="form-control">
+          <div *ngIf="changePasswordForm.controls['newPassword'].touched && changePasswordForm.controls['newPassword'].errors" class="text-danger">
+            <div *ngIf="changePasswordForm.controls['newPassword'].errors['required']">Password is required</div>
+            <div *ngIf="changePasswordForm.controls['newPassword'].errors['minlength']">The password must contain at least 8 Characters</div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="changePasswordForm.invalid">Update Password</button>
+      </form>
+      
+      <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+      </div>
+    </div>
+</app-home-a>

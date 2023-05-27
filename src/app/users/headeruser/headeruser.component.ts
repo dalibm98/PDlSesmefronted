@@ -47,7 +47,7 @@ export class HeaderuserComponent  implements OnInit{
         // Mettre à jour la liste des notifications en supprimant la notification marquée comme lue
         this.notifications = this.notifications.filter(notif => notif.id_notification !== notificationId);
       });
-  }
+  } 
 }
 
 

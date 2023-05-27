@@ -21,11 +21,16 @@ export class PostsComponent implements OnInit {
   users: User[] = [];
 
 
+  sideBarOpen = true;
+
+  sideBarToggler() {
+    this.sideBarOpen = !this.sideBarOpen;
+  }
   searchDomain: string = '';
-searchNature: string = '';
-searchAuthor: string = '';
-searchSujet : string ='';
-filteredQuestions: Question[] = [];
+  searchNature: string = '';
+  searchAuthor: string = '';
+  searchSujet: string = '';
+  filteredQuestions: Question[] = [];
 
   constructor(
     private questionService: QuestionService,
@@ -165,19 +170,21 @@ filteredQuestions: Question[] = [];
     );
   }
   getMeilleuresReponsesTrieParVotes() {
-
-
     this.authservice.getMeilleuresReponsesTrieParVotes().subscribe(
       (reponses) => {
         this.questions.forEach((question) => {
           // Find the corresponding question object in 'questions'
-          
-          const foundQuestion = this.questions.find((q) => q.id_question === question.id_question);
-          console.log(foundQuestion)
+
+          const foundQuestion = this.questions.find(
+            (q) => q.id_question === question.id_question
+          );
+          console.log(foundQuestion);
           if (foundQuestion) {
             // Sort the reponses array of the found question
-            console.log(foundQuestion.reponses)
-            foundQuestion.reponses.sort((a, b) => b.vote_utilisateur.length - a.vote_utilisateur.length);
+            console.log(foundQuestion.reponses);
+            foundQuestion.reponses.sort(
+              (a, b) => b.vote_utilisateur.length - a.vote_utilisateur.length
+            );
           }
         });
         this.refreshQuestionsList(); // Update the questions list
@@ -205,10 +212,18 @@ filteredQuestions: Question[] = [];
   searchQuestions() {
     // Filter questions based on the search criteria
     this.filteredQuestions = this.questions.filter((question) => {
-      const isDomainMatch = question.domaine.nom_domaine_question.toLowerCase().includes(this.searchDomain.toLowerCase());
-      const isNatureMatch = question.nature.nom_nature_question.toLowerCase().includes(this.searchNature.toLowerCase());
-      const isAuthorMatch = question.auteur.firstname.toLowerCase().includes(this.searchAuthor.toLowerCase());
-      const searchSujet = question.sujet.toLowerCase().includes(this.searchSujet.toLowerCase());
+      const isDomainMatch = question.domaine.nom_domaine_question
+        .toLowerCase()
+        .includes(this.searchDomain.toLowerCase());
+      const isNatureMatch = question.nature.nom_nature_question
+        .toLowerCase()
+        .includes(this.searchNature.toLowerCase());
+      const isAuthorMatch = question.auteur.firstname
+        .toLowerCase()
+        .includes(this.searchAuthor.toLowerCase());
+      const searchSujet = question.sujet
+        .toLowerCase()
+        .includes(this.searchSujet.toLowerCase());
       return isDomainMatch && isNatureMatch && isAuthorMatch && searchSujet;
     });
   }

@@ -65,6 +65,8 @@ import { ListAnswersAdminComponent } from './admin/list-answers-admin/list-answe
 import { AccountAdminComponent } from './admin/account-admin/account-admin.component';
 import { SettingAdminComponent } from './admin/setting-admin/setting-admin.component';
 import { BoardAdminComponent } from './admin/board-admin/board-admin.component';
+import { ChangermotpasseuserComponent } from './users/changermotpasseuser/changermotpasseuser.component';
+import { ChangermotpasseadminComponent } from './admin/changermotpasseadmin/changermotpasseadmin.component';
 
 
 @NgModule({
@@ -107,6 +109,8 @@ import { BoardAdminComponent } from './admin/board-admin/board-admin.component';
     AccountAdminComponent,
     SettingAdminComponent,
     BoardAdminComponent,
+    ChangermotpasseuserComponent,
+    ChangermotpasseadminComponent,
   
   ],
   imports: [

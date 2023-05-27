@@ -80,6 +80,7 @@ export class MessageComponent implements OnInit, OnDestroy {
         .subscribe((messages) => {
           this.messages = messages;
           if (messages.length > 0) {
+            console.log(typeof messages[0].recipientId)
             this.selectedRecipientId = messages[0].recipientId;
           }
         });
@@ -92,11 +93,13 @@ export class MessageComponent implements OnInit, OnDestroy {
   }
   onSubmit() {
     if (this.currentUser && this.selectedRecipientId) {
+    
       const message: Message = {
-        id: 0,
+     
         recipientId: this.selectedRecipientId,
         content: this.messageForm.get('content')?.value ?? '',
       };
+      console.log(message)
       this.messageService.sendMessage(message).subscribe(
         (message) => {
           this.messages.push(message);

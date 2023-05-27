@@ -18,7 +18,7 @@
           <section class="table__header">
             <h3>All My Question</h3>
             <div class="input-group">
-              <input type="search" placeholder="Search Data..." />
+              <input type="search" placeholder="Search Data..." [(ngModel)]="searchKeyword" (ngModelChange)="filterQuestions()" />
             </div>
           </section>
           <section class="table__body">
@@ -40,7 +40,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let question of userQuestions">
+                <tr *ngFor="let question of filteredQuestions">
                   <td>{{ question.id_question }}</td>
                   <td>{{ question.sujet }}</td>
                   <td>

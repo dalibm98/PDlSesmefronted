@@ -21,15 +21,19 @@ export class ModifpostComponent implements OnInit {
   questionId!: number;
   natures!: any[];
   domaines!: any[];
-  onEditquestionId : number | null = null;
+  onEditquestionId: number | null = null;
   //formData :  Question[] = [];
   editForm!: FormGroup;
-    formData= {
+  formData = {
     sujet: '',
     contenu: '',
-    domaine:  null,
-    nature:  null,
+    domaine: null,
+    nature: null,
   };
+
+  searchKeyword: string = '';
+  filteredQuestions: Question[] = [];
+
   question = {
     sujet: '',
     contenu: '',
@@ -57,9 +61,7 @@ export class ModifpostComponent implements OnInit {
     private http: HttpClient,
     private domaine: DomaineQuestionService,
     private nature: NatureQuestionService
-  ) 
-    
-  {}
+  ) {}
 
   ngOnInit() {
     const authToken = this.authService.getAuthToken();
@@ -70,11 +72,10 @@ export class ModifpostComponent implements OnInit {
         this.loadQuestions();
       });
 
-
       this.nature.getAllNatureQuestions().subscribe((data: any[]) => {
         this.natures = data;
       });
-  
+
       this.domaine.getAllDomaineQuestions().subscribe((data: any[]) => {
         this.domaines = data;
       });
@@ -93,6 +94,7 @@ export class ModifpostComponent implements OnInit {
       this.userQuestions = questions.filter(
         (question) => question.auteur.id === this.userId
       );
+      this.filterQuestions(); // Appliquer le filtre initial
     });
   }
 
@@ -108,7 +110,17 @@ export class ModifpostComponent implements OnInit {
       }
     );
   }
-
+  filterQuestions() {
+    if (this.searchKeyword.trim() === '') {
+      this.filteredQuestions = this.userQuestions;
+    } else {
+      this.filteredQuestions = this.userQuestions.filter((question) =>
+        question.domaine.nom_domaine_question.toLowerCase().includes(this.searchKeyword.toLowerCase()) ||
+        question.nature.nom_nature_question.toLowerCase().includes(this.searchKeyword.toLowerCase())
+      );
+    }
+  }
+  
   openDeleteConfirmation(questionId: number) {
     this.onDeleteQuestionId = questionId;
     const dialogRef = this.dialog.open(this.deleteConfirmation, {
@@ -132,7 +144,7 @@ export class ModifpostComponent implements OnInit {
         Authorization: `Bearer ${authToken}`,
       }),
     };
-  
+
     return this.http.put(url, question, httpOptions).pipe(
       catchError((error) => {
         console.error(error);
@@ -140,51 +152,54 @@ export class ModifpostComponent implements OnInit {
       })
     );
   }
-  
 
   updateQuestion(questionId: number, formData: any) {
     const updatedQuestion = Object.assign({}, formData, {
       domaine: {
-        id_domaine_question: formData.domaine
+        id_domaine_question: formData.domaine,
       },
       nature: {
-        id_nature_question: formData.nature
-      }
+        id_nature_question: formData.nature,
+      },
     });
-  
+
     this.modifyQuestion(questionId, updatedQuestion).subscribe((result) => {
       console.log(result);
 
-         // Display success message and reload page
-    setTimeout(() => {
-      this.showSuccessMessage = true;
+      // Display success message and reload page
       setTimeout(() => {
-        location.reload();
+        this.showSuccessMessage = true;
+        setTimeout(() => {
+          location.reload();
+        }, 1500);
       }, 1500);
-    }, 1500);
     });
-  
-    const question = this.userQuestions.find((q) => q.id_question === questionId);
+
+    const question = this.userQuestions.find(
+      (q) => q.id_question === questionId
+    );
     if (question) {
       Object.assign(question, formData, {
         domaine: {
-          id_domaine_question: formData.domaine
+          id_domaine_question: formData.domaine,
         },
         nature: {
-          id_nature_question: formData.nature
-        }
+          id_nature_question: formData.nature,
+        },
       });
     }
   }
-  
+
   openEditDialog(questionId: number): void {
-    const question = this.userQuestions.find((q) => q.id_question === questionId);
+    const question = this.userQuestions.find(
+      (q) => q.id_question === questionId
+    );
     const dialogRef = this.dialog.open(this.editDialog, {
       width: '650px',
       height: '650px',
-      data: { questionId, question }
+      data: { questionId, question },
     });
-  
+
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'yes' && this.onEditquestionId !== null) {
         this.onDeleteQuestion(this.onEditquestionId);
