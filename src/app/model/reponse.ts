@@ -12,4 +12,6 @@ export interface Reponse {
     isVoted: boolean; // Nouvelle propriété pour représenter l'état du vote
     votes : number;
     nombreVotes: number;
+
+    voteCounts?: number
 }

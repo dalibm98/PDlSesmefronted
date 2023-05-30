@@ -21,7 +21,7 @@ export class MessageComponent implements OnInit, OnDestroy {
   messages: Message[] = [];
   webSocket: WebSocketSubject<any> | undefined;
   messageForm!: FormGroup;
-
+  selectedRecipientIdd :string | undefined;
   constructor(
     private messageService: MessageService,
     private authService: AuthenticationService,
@@ -75,6 +75,7 @@ export class MessageComponent implements OnInit, OnDestroy {
   }
   onUserSelect(user: User): void {
     this.selectedUser = user;
+    console.log(user)
     if (this.selectedUser && this.selectedUser.email) {
       this.messageService.getMessagesWithRecipient(this.selectedUser.id)
         .subscribe((messages) => {
@@ -82,7 +83,10 @@ export class MessageComponent implements OnInit, OnDestroy {
           if (messages.length > 0) {
             console.log(typeof messages[0].recipientId)
             this.selectedRecipientId = messages[0].recipientId;
+            
+
           }
+         console.log(messages)
         });
     }
   }
@@ -91,24 +95,29 @@ export class MessageComponent implements OnInit, OnDestroy {
       this.webSocket.complete();
     }
   }
-  onSubmit() {
-    if (this.currentUser && this.selectedRecipientId) {
+
+
+    onSubmit() {
+      if (this.currentUser && this.selectedUser) {
     
-      const message: Message = {
-     
-        recipientId: this.selectedRecipientId,
-        content: this.messageForm.get('content')?.value ?? '',
-      };
-      console.log(message)
-      this.messageService.sendMessage(message).subscribe(
-        (message) => {
-          this.messages.push(message);
-          this.messageForm.reset();
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+        const message: Message = {
+          recipientId: this.selectedUser.id,
+          content: this.messageForm.get('content')?.value ?? '',
+          
+          
+        };
+        console.log(this.currentUser)
+        console.log(message)
+        console.log(this.selectedRecipientId)
+        this.messageService.sendMessage(message).subscribe(
+          (message) => {
+            this.messages.push(message);
+            this.messageForm.reset();
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+      }
     }
-  }
 }

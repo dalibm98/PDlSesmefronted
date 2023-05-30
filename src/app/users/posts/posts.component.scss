@@ -27,6 +27,46 @@
     }
   }
 }
+.blue {
+  border-radius: 100px;
+  padding: 4px 13px;
+  font-size: 12px;
+  color: #ffffff;
+  background-color: #1389eb;
+}
+
+.cc {
+  border-radius: 50px;
+  padding: 4px 13px;
+  font-size: 12px;
+  color: #131313;
+  background-color: #DCDCDC ;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+}
+.jaune {
+  border-radius: 100px;
+  padding: 4px 13px;
+  font-size: 12px;
+  color: #ffffff;
+  background-color: #ffa500
+}
+.bluee {
+  border-radius: 100px;
+  padding: 4px 13px;
+  font-size: 12px;
+  color: #ffffff;
+  background-color: #74afdf;
+}
+.blueee {
+  border-radius: 100px;
+  padding: 4px 13px;
+  font-size: 12px;
+  color: #ffffff;
+  background-color: #e0e6eb;
+}
 .button-right {
   float: right;
   color: black;
@@ -43,7 +83,7 @@
 
 /* Style pour les cards des questions */
 .question-card {
-  background-color: #f0dede;
+  background-color:white;
   border-radius: 10px;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;

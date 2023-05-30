@@ -24,10 +24,11 @@ import { ListPostAdminComponent } from './admin/list-post-admin/list-post-admin.
 import { ListAnswersAdminComponent } from './admin/list-answers-admin/list-answers-admin.component';
 import { ChangermotpasseuserComponent } from './users/changermotpasseuser/changermotpasseuser.component';
 import { ChangermotpasseadminComponent } from './admin/changermotpasseadmin/changermotpasseadmin.component';
+import { DialogsComponent } from './users/dialogs/dialogs.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'auth', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   {path: 'auth', component:AuthComponent},
   { path: 'dashboard', component: DashboardComponent  },
@@ -41,7 +42,7 @@ const routes: Routes = [
   { path: 'answ', component: AnswersComponent },
   { path: 'listepost', component: ModifpostComponent },
   { path: 'usr', component: UsrComponent },
-  { path: 'listemessage', component: MessageComponent },
+  { path: 'listemessage', component: DialogsComponent },
   { path: 'homeA', component: HomeAComponent },
   { path: 'profileAdmin', component: AccountAdminComponent },
   { path: 'listdomaine', component: ListDomaineComponent },

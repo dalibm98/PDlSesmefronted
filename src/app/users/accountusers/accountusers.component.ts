@@ -10,7 +10,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class AccountusersComponent implements OnInit {
   private apiUrl = 'http://localhost:8081/api/v1/auth';
   currentUser!: User;
+  sideBarOpen = true;
 
+  sideBarToggler() {
+    this.sideBarOpen = !this.sideBarOpen;
+  }
   modifiedUser: User = {
     id: 0, // create a new object to store modified user info
     firstname: '',

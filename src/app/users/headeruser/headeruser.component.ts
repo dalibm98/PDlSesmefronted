@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component,EventEmitter , OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Notif } from 'src/app/model/notif';
@@ -13,16 +14,19 @@ import { AuthenticationService } from 'src/app/service/authentication.service';
 export class HeaderuserComponent  implements OnInit{
   notifications  : Notif [] = []
   currentUser: User | null = null;
+  currentUserr!: User;
 
   @Output() toggleSidebarForMe: EventEmitter<any> = new EventEmitter();
 
-  constructor(private router: Router , private authService: AuthenticationService) {}
+  private apiUrl = 'http://localhost:8081/api/v1/auth';
+  constructor(private router: Router , private authService: AuthenticationService , private http: HttpClient) {}
 
   ngOnInit(): void {
     const authToken = this.authService.getAuthToken();
     if (authToken) {
       this.authService.getCurrentUser(authToken).subscribe(user => {
         this.currentUser = user;
+        this.getUserImage(user.id);
       });
     }
 
@@ -48,6 +52,29 @@ export class HeaderuserComponent  implements OnInit{
         this.notifications = this.notifications.filter(notif => notif.id_notification !== notificationId);
       });
   } 
+
+  getUserImage(userId: number) {
+    const authToken = this.authService.getAuthToken();
+    if (!authToken) {
+      return;
+    }
+
+    const url = `${this.apiUrl}/users/${userId}/image`;
+    const headers = new HttpHeaders().set(
+      'Authorization',
+      `Bearer ${authToken}`
+    );
+
+    this.http
+      .get(url, { headers, responseType: 'blob' })
+      .subscribe((imageData: Blob) => {
+        // Create a blob URL for the image
+        const imageUrl = URL.createObjectURL(imageData);
+
+        // Assign the image URL to the currentUser.image_url property
+        this.currentUserr.image_url = imageUrl;
+      });
+  }
 }
 
 

@@ -12,7 +12,14 @@
         >Posts</span
       >
     </div>
+<head>
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  >
+</head>
     <div style="display: flex; justify-content: flex-end">
       <button
         mat-raised-button
@@ -83,31 +90,43 @@
               </ng-container>
             </div>
             <div class="author-info">
-              <span class="author-name"
-                >{{ question.auteur.firstname }}
-                {{ question.auteur.lastname }}
-                {{ question.date | date }}
+              <span class="author-name" class="blue">
+                <span >{{ question.auteur.firstname }}</span>
+                <span>{{ question.auteur.lastname }}</span>
+              
               </span>
+              <span class="blue">{{ question.auteur.status }}</span>
             </div>
+            
           </div>
 
           <div class="question-card-content">
             <div class="question-card-meta">
               <br />
               <h6>Sujet: {{ question.sujet }}</h6>
+
+         
               <br />
+            
             </div>
 
-            <span><h6>Continu:</h6></span>
 
             <h6 class="question-card-content-title"><{{ question.contenu }}</h6>
+
+            <span class="jaune">#{{ question.domaine. nom_domaine_question }}</span>
+
+            <span class="jaune">#{{ question.nature. nom_nature_question }}</span>
+
+            <span class="jaune">#{{ question.sujet }}</span>
             <br />
-            <div class="voir">
+            <div class="voir" >
               <i
-                class="el el-align-right"
-                (click)="showReponses(question.id_question)"
+              class="fas fa-comments"
+                (click)="showReponses(question.id_question)"  class="blueee"
                 >Comments</i
               >
+              <span class="bluee "><i class="far fa-calendar-alt" ></i> {{ question.date | date }}</span>
+
             </div>
             <div
               class="question-card-comments-container"
@@ -125,16 +144,16 @@
                     </div>
                   </div>
 
-                  <div class="comment-content">
-                    <div class="comment-header">
-                      <span class="author-name">{{
+                  <div class="comment-content" class="cc">
+                    <div class="comment-header" >
+                      <span class="author-name"class="blue"  >{{
                         reponse.auteur.firstname
                       }}</span>
-                      <span class="comment-date">{{
+                      <span class="comment-date" class="far fa-calendar-alt" class="bluee">{{
                         reponse.dateCreation | date
                       }}</span>
                     </div>
-                    <p class="comment-text">{{ reponse.contenu }}</p>
+                    <p class="comment-text" >{{ reponse.contenu }}</p>
                     <div class="comment-votes">
                       <button
                         mat-icon-button
