@@ -1,9 +1,9 @@
 <app-appc>
   <div class="container-fluid page" style="border: 10px solid #ece9e9">
-    <div class="d-flex page__box p-3 mt-2"></div>
+    <div class="d-flex page__box p-3 mt-2"    style="border: 3px solid #ffa500" ></div>
     <div
       class="page__content shadow p-3 position-relative"
-      style="border: 3px solid #ece9e9"
+      style="border: 3px solid #ffa500"
     >
       <head>
         <meta charset="UTF-8" />
@@ -18,7 +18,7 @@
           <section class="table__header">
             <h3>All My Question</h3>
             <div class="input-group">
-              <input type="search" placeholder="Search Data..." />
+              <input type="search" placeholder="Search Data..." [(ngModel)]="searchKeyword" (ngModelChange)="filterQuestions()" />
             </div>
           </section>
           <section class="table__body">
@@ -40,10 +40,12 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let question of userQuestions">
+                <tr *ngFor="let question of filteredQuestions">
                   <td>{{ question.id_question }}</td>
                   <td>{{ question.sujet }}</td>
-                  <td><small>{{ question.contenu }} </small></td>
+                  <td>
+                    <small>{{ question.contenu }} </small>
+                  </td>
                   <td>{{ question.date | date }}</td>
 
                   <td>
@@ -53,26 +55,96 @@
                   <td>{{ question.nature.nom_nature_question }}</td>
                   <td>{{ question.domaine.nom_domaine_question }}</td>
                   <td>
-                    <button mat-icon-button color="warn"(click)="onDeleteQuestion(question.id_question)">
+                    <button
+                      mat-icon-button
+                      color="warn"
+                      (click)="openDeleteConfirmation(question.id_question)"
+                    >
                       <mat-icon>delete</mat-icon>
                     </button>
-                    <button mat-icon-button color="primary">
+                    <button mat-icon-button color="primary" (click)="openEditDialog(question.id_question)">
                       <mat-icon>edit</mat-icon>
                     </button>
                   </td>
                 </tr>
               </tbody>
             </table>
+
+
+
+            <ng-template #editDialog let-data>
+              <br>
+              <br>
+             
+              <h2>Edit Question</h2>
+              <br>
+              <br>
+              <div *ngIf="showSuccessMessage" class="success-message">
+                La question a été modifier avec succès
+              </div>
+              <form #editForm="ngForm" (ngSubmit)="updateQuestion(data.questionId, editForm.value)">
+                <label for="sujet">Sujet:</label>
+                <input type="text" id="sujet" name="sujet" [(ngModel)]="data.question.sujet" required>
+            
+                <label for="contenu">Contenu:</label>
+                <textarea id="contenu" name="contenu" [(ngModel)]="data.question.contenu" required></textarea>
+            
+                <label for="domaine">Domaine:</label>
+                <select id="domaine" name="domaine" [(ngModel)]="data.question.domaine.id_domaine_question" required>
+                  <option *ngFor="let domaine of domaines" [value]="domaine.id_domaine_question">{{domaine.nom_domaine_question }}</option>
+                </select>
+            
+                <label for="nature">nature:</label>
+                <select id="nature" name="nature" [(ngModel)]="data.question.nature.id_nature_question" required>
+                  <option *ngFor="let nature of natures" [value]="nature.id_nature_question">{{ nature.nom_nature_question }}</option>
+                </select>
+            
+                <button type="submit">Update Question</button>
+              </form>
+            </ng-template>
+            
+            
+
+
+            <!-- Confirmation dialog template -->
+            <ng-template
+              #deleteConfirmation
+              let-dialogRef="dialogRef"
+              let-questionId="questionId"
+            >
+              <div class="delete-confirmation">
+                <p>Êtes-vous sûr de vouloir supprimer cette question ?</p>
+                <div class="delete-confirmation__buttons">
+                  <button
+                    mat-button
+                    color="primary"
+                    (click)="dialogRef.close('yes')"
+                    class="delete-confirmation__button"
+                  >
+                    <mat-icon>done</mat-icon>
+                    Oui
+                  </button>
+                  <button
+                    mat-button
+                    (click)="dialogRef.close('no')"
+                    class="delete-confirmation__button"
+                  >
+                    <mat-icon>close</mat-icon>
+                    Non
+                  </button>
+                </div>
+              </div>
+            </ng-template>
           </section>
         </main>
       </body>
       <mat-paginator
-      [length]="100"
-      [pageSize]="10"
-      [pageSizeOptions]="[5, 10, 25, 100]"
-      aria-label="Select page"
-    >
-    </mat-paginator>
+        [length]="100"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        aria-label="Select page"
+      >
+      </mat-paginator>
     </div>
   </div>
 </app-appc>

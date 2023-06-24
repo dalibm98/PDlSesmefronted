@@ -1,10 +1,10 @@
 .page {
   color: rgb(190, 186, 225);
   padding: 0 1rem;
-  background: rgb(190, 186, 225);
+  background: #0067ac;;
   &__box {
     min-height: px;
-    background:rgb(190, 186, 225);
+    background:#0067ac;
     margin: 0 -1rem;
     font-size: 36px;
   }
@@ -12,7 +12,7 @@
     min-height: calc(100vh - 178px);
     border-radius: 10px;
     margin-top: -2rem;
-    background: rgb(190, 186, 225);
+    background: #0067ac;
     color: black;
     font-size: 2rem;
     &-data {
@@ -145,5 +145,13 @@
   .icon-text i {
     margin-right: 8px;
     font-size: 24px;
+  }
+  .icon {
+    font-size: 24px;
+    color: blue;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
   }
   

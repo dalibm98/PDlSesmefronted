@@ -1,4 +1,11 @@
 <app-homeh>
+  <head>
+ 
+    <link
+    href="/assets/cc.css"
+    rel="stylesheet"
+  />
+  </head>
   <div class="container-fluid page" style="border: 10px solid #ece9e9">
     <div class="d-flex page__box p-3 mt-2"></div>
     <div
@@ -17,40 +24,42 @@
       </div>
       <br />
       
-      <mat-grid-list cols="3" rowHeight="300px" gutterSize="10px">
-        <mat-grid-tile *ngFor="let question of questions">
-          <mat-card class="example-card" class="mat-card">
-            <mat-card-header>
-              <div mat-card-avatar class="example-header-image"></div>
-              <mat-card-title>{{ question.auteur.firstname }}</mat-card-title>
-              <mat-card-subtitle>{{
-                question.auteur.lastname
-              }}</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content [ngClass]="'card-content'">
-              <h6>Sujet:{{ question.sujet }}</h6>
-              <h6>Contenu:</h6>
-              <p>{{ question.contenu }}</p>
-              <p class="question-date">
-                <strong>Date:</strong> {{ question.date | date }}
-              </p>
-            </mat-card-content>
-            <mat-card-actions>
-              <button mat-button (click)="openDialog(question)">
-                Comments
-              </button>
-            </mat-card-actions>
-          </mat-card>
-        </mat-grid-tile>
-      </mat-grid-list>
+      <div class="container">
+   
+      <div class="task" draggable="true"  *ngFor="let question of questions">
+        <div class="tags"  >
+          <span class="tag">{{ question.auteur.firstname }}  {{question.auteur.lastname}}</span>
+          <button class="options">
+            <svg    (click)="openDialog(question)" xml:space="preserve" viewBox="0 0 41.915 41.916" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Capa_1" version="1.1" fill="#000000"><g stroke-width="0" id="SVGRepo_bgCarrier"></g><g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M11.214,20.956c0,3.091-2.509,5.589-5.607,5.589C2.51,26.544,0,24.046,0,20.956c0-3.082,2.511-5.585,5.607-5.585 C8.705,15.371,11.214,17.874,11.214,20.956z"></path> <path d="M26.564,20.956c0,3.091-2.509,5.589-5.606,5.589c-3.097,0-5.607-2.498-5.607-5.589c0-3.082,2.511-5.585,5.607-5.585 C24.056,15.371,26.564,17.874,26.564,20.956z"></path> <path d="M41.915,20.956c0,3.091-2.509,5.589-5.607,5.589c-3.097,0-5.606-2.498-5.606-5.589c0-3.082,2.511-5.585,5.606-5.585 C39.406,15.371,41.915,17.874,41.915,20.956z"></path> </g> </g> </g></svg>
+          </button>
+        </div>
+        <p>{{ question.contenu }} </p>
+    
+
+        <div class="stats">
+          
+          <div>
+            <div><svg  (click)="openDialog(question)"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><g stroke-width="0" id="SVGRepo_bgCarrier"></g><g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g><g id="SVGRepo_iconCarrier"> <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" d="M16 10H16.01M12 10H12.01M8 10H8.01M3 10C3 4.64706 5.11765 3 12 3C18.8824 3 21 4.64706 21 10C21 15.3529 18.8824 17 12 17C11.6592 17 11.3301 16.996 11.0124 16.9876L7 21V16.4939C4.0328 15.6692 3 13.7383 3 10Z"></path> </g></svg> </div>
+            
+            <div><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><g stroke-width="0" id="SVGRepo_bgCarrier"></g><g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g><g id="SVGRepo_iconCarrier"> <path stroke-linecap="round" stroke-width="2" d="M12 8V12L15 15"></path> <circle stroke-width="2" r="9" cy="12" cx="12"></circle> </g></svg> {{ question.date | date }}</div>
+      
+          </div>
+         
+        </div>
+        
+      </div>
+      </div>
+
       <ng-template #dialogContentTemplate let-selectedQuestion>
         <div class="question-card" style="border: 10px solid #ece9e9">
           <div class="question-card-header">
             <div class="question-card-avatar">
               <img src="../../assets/profile.png" alt="avatar-image" />
+            
             </div>
+         
             <div class="author-info text-left-parent">
-              <span class="author-name text-left">{{ selectedQuestion.auteur.lastname }} {{ selectedQuestion.auteur.lastname }}</span>
+             
           </div>
           
             
@@ -64,14 +73,15 @@
           <div class="question-card-content" style="border: 6px solid #ece9e9">
             <div class="question-card-meta">
               <p>
-                <strong>Domaine:</strong>
-                {{ selectedQuestion?.domaine.nom_domaine_question }}
-              </p>
+          
+                <span class="jaune">#{{ selectedQuestion.domaine. nom_domaine_question }}</span>
 
+                <span class="jaune">#{{ selectedQuestion.nature. nom_nature_question }}</span>
+        
+                <span class="jaune">#{{ selectedQuestion.sujet }}</span>
               <p>
-                <strong>Nature:</strong>
-                {{ selectedQuestion?.nature.nom_nature_question }}
-              </p>
+         
+             
             </div>
             <h2 class="question-card-content-title">
               {{ selectedQuestion?.contenu }}
@@ -105,20 +115,22 @@
 
               <div class="question-card-new-comment">
                 <input type="text" placeholder="Add a comment" />
-                <button>Post</button>
+                <button  (click)="openDialogg()">Post</button>
               </div>
             </div>
           </div>
         </div>
       </ng-template>
 
-      <mat-paginator
-        [length]="100"
-        [pageSize]="10"
-        [pageSizeOptions]="[5, 10, 25, 100]"
-        aria-label="Select page"
-      >
-      </mat-paginator>
+  
     </div>
+
+    <mat-paginator
+    [length]="100"
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page"
+  >
+  </mat-paginator>
   </div>
 </app-homeh>

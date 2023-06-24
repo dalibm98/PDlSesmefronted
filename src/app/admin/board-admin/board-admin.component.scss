@@ -1,0 +1,83 @@
+
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+.page {
+    color: white;
+    padding: 0 1rem;
+    background: #f1f5f9;
+  
+    &__box {
+      min-height: 130px;
+      background-color: #0f1f2a;
+      color: #004f83;
+      margin: 0 -1rem;
+      font-size: 30px;
+    }
+  
+    &__content {
+      min-height: calc(100vh - 178px);
+      border-radius: 10px;
+      margin-top: -2rem;
+      background: white;
+      color: black;
+      font-size: 1.2rem;
+  
+      &-data {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+  :host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  mat-drawer {
+    width: 260px;
+  }
+  mat-drawer-container {
+    height: 100%;
+  }
+  
+  
+  mat-drawer {
+    background-color: #0f1f2a;
+    color: #004f83;
+  }
+  
+  body {
+    --color-second: #0067ac;
+    --color-white: #fff;
+    --color-body: #e4e9f7;
+    --color-light: #e0e0e0;
+  }
+  
+  
+
+  .my-card {
+    background-color: #d7946e;
+    border-radius: 4px;
+    box-shadow: 0 0 6px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.08);
+    margin: 16px;
+    max-width: 400px;
+    overflow: hidden;
+    position: relative;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .my-card:hover {
+    box-shadow: 0 0 10px 0 rgba(85, 72, 72, 0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  }
+  .cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    transition: transform 0.5s;
+  }
+  
+  .cards-container:hover {
+    transform: scale(1.1);
+  }
+    

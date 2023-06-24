@@ -1,0 +1,61 @@
+<app-appc>
+  <div class="container-fluid page" style="border: 3px solid #ebece9">
+    <div class="d-flex page__box p-3 mt-2" style="border: 3px solid #ffa500">
+      <span class="page__box-title" style="color: rgb(243, 243, 243)"
+        >All users</span
+      >
+    </div>
+    <div
+      class="page__content shadow p-3 position-relative"
+      style="border: 3px solid #ffa500"
+    >
+      <!-- Content of the page here -->
+      <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet"
+        />
+      </head>
+      <section class="container">
+        <div class="grid">
+        
+          <div class="card" *ngFor="let user of users">
+          
+            <mat-icon class="icon" (click)="openUserDialog(user)">aspect_ratio</mat-icon>
+
+            
+            <div class="image">
+              <img [src]="user.image_url || '../assets/profile.png'" alt="" />
+            </div>
+            <h2>{{ user.firstname }} {{ user.lastname}} </h2>
+        <br>
+        <div class="stars">
+          <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+          </svg>
+        </div>
+            <p>
+              <mat-icon>help_outline</mat-icon> Questions:
+              {{ user.stats?.questionCount || 0 }}
+            </p>
+            <p>
+              <mat-icon>comment</mat-icon> Answers:
+              {{ user.stats?.reponseCount || 0 }}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <mat-paginator
+        [length]="100"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        aria-label="Select page"
+      >
+      </mat-paginator>
+    </div>
+  </div>
+</app-appc>

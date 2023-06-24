@@ -52,6 +52,21 @@ import { AnswersComponent } from './users/answers/answers.component';
 import { EditanswersComponent } from './users/editanswers/editanswers.component';
 import { DialogquestionaddComponent } from './users/dialogquestionadd/dialogquestionadd.component';
 import { AuthInterceptorService } from './auth-interceptor.service';
+import { UsrComponent } from './users/usr/usr.component';
+import { MessageComponent } from './users/message/message.component';
+import { HomeAComponent } from './admin/home-a/home-a.component';
+import { SidenavAdminComponent } from './admin/sidenav-admin/sidenav-admin.component';
+import { HeaderAdminComponent } from './admin/header-admin/header-admin.component';
+import { ListDomaineComponent } from './admin/list-domaine/list-domaine.component';
+import { ListNatureComponent } from './admin/list-nature/list-nature.component';
+import { ListUsersComponent } from './admin/list-users/list-users.component';
+import { ListPostAdminComponent } from './admin/list-post-admin/list-post-admin.component';
+import { ListAnswersAdminComponent } from './admin/list-answers-admin/list-answers-admin.component';
+import { AccountAdminComponent } from './admin/account-admin/account-admin.component';
+import { SettingAdminComponent } from './admin/setting-admin/setting-admin.component';
+import { BoardAdminComponent } from './admin/board-admin/board-admin.component';
+import { ChangermotpasseuserComponent } from './users/changermotpasseuser/changermotpasseuser.component';
+import { ChangermotpasseadminComponent } from './admin/changermotpasseadmin/changermotpasseadmin.component';
 
 
 @NgModule({
@@ -81,6 +96,21 @@ import { AuthInterceptorService } from './auth-interceptor.service';
     AnswersComponent,
     EditanswersComponent,
     DialogquestionaddComponent,
+    UsrComponent,
+    MessageComponent,
+    HomeAComponent,
+    SidenavAdminComponent,
+    HeaderAdminComponent,
+    ListDomaineComponent,
+    ListNatureComponent,
+    ListUsersComponent,
+    ListPostAdminComponent,
+    ListAnswersAdminComponent,
+    AccountAdminComponent,
+    SettingAdminComponent,
+    BoardAdminComponent,
+    ChangermotpasseuserComponent,
+    ChangermotpasseadminComponent,
   
   ],
   imports: [

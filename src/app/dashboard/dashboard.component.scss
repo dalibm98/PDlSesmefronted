@@ -1,10 +1,10 @@
 .page {
-  color: rgb(190, 186, 225);
+  color: #0067ac;
   padding: 0 1rem;
-  background: rgb(190, 186, 225);
+  background: #0067ac;
   &__box {
     min-height: px;
-    background:rgb(190, 186, 225);
+    background:#0067ac;;
     margin: 0 -1rem;
     font-size: 36px;
   }
@@ -12,7 +12,7 @@
     min-height: calc(100vh - 178px);
     border-radius: 10px;
     margin-top: -2rem;
-    background: rgb(190, 186, 225);
+    background: #0067ac;
     color: black;
     font-size: 2rem;
     &-data {
@@ -22,6 +22,31 @@
     }
   }
 }
+.jaune {
+  border-radius: 100px;
+  padding: 4px 13px;
+  font-size: 12px;
+  color: #ffffff;
+  background-color: #ffa500
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.task {
+  width: 23%; /* Adjust the column width based on your needs */
+  margin-bottom: 20px;
+}
+
+.task p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
 
 .flex-container {
   display: flex;

@@ -17,7 +17,7 @@
     margin-top: -2rem;
     background: white;
     color: black;
-    font-size: 2rem;
+    font-size: 1.3  rem;
     background: url("/assets/mm.jpg") center / cover;
 
     &-data {
@@ -27,9 +27,49 @@
     }
   }
 }
+.blue {
+  border-radius: 100px;
+  padding: 4px 13px;
+  font-size: 12px;
+  color: #ffffff;
+  background-color: #1389eb;
+}
+
+.cc {
+  border-radius: 50px;
+  padding: 4px 13px;
+  font-size: 12px;
+  color: #131313;
+  background-color: #DCDCDC ;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+}
+.jaune {
+  border-radius: 100px;
+  padding: 4px 13px;
+  font-size: 12px;
+  color: #ffffff;
+  background-color: #ffa500
+}
+.bluee {
+  border-radius: 100px;
+  padding: 4px 13px;
+  font-size: 12px;
+  color: #ffffff;
+  background-color: #74afdf;
+}
+.blueee {
+  border-radius: 100px;
+  padding: 4px 13px;
+  font-size: 12px;
+  color: #ffffff;
+  background-color: #e0e6eb;
+}
 .button-right {
   float: right;
-  color: black;
+  color: rgb(254, 253, 253);
 
 }
 
@@ -39,9 +79,11 @@
   margin-bottom: 10px;
 }
 
+
+
 /* Style pour les cards des questions */
 .question-card {
-  background-color: #f0dede;
+  background-color:white;
   border-radius: 10px;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
@@ -152,17 +194,110 @@
 }
 
 
+.question-card-new-comment::placeholder {
+  font-size: 12px; /* Adjust the font size to your preference */
+}
 
 .question-card-new-comment input[type="text"] {
-  height: 38px; /* modifier la hauteur selon vos besoins */
+  height: 25px; /* modifier la hauteur selon vos besoins */
   resize: none; /* empêcher le redimensionnement */
   /* autres styles */
 }
 
-  .question-card:hover {
-    transform: scale(0.95);
-    -webkit-transform: scale(0.95);
-    -moz-transform: scale(0.95);
-    -ms-transform: scale(0.95);
-    -o-transform: scale(0.95);
+
+
+.comment-votes {
+  display: flex;
+  justify-content: flex-end; /* Aligner le contenu à droite */
+  align-items: center; /* Centrer verticalement */
+  margin-top: 10px; /* Ajouter un peu d'espace en haut */
 }
+
+.comment-votes button {
+  border: 1px solid #ccc;
+  background-color: #fff;
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-size: 20px;
+  margin-left: 10px;
+  width: 40px;
+}
+
+.comment-votes button.voted {
+  background-color: #0d6efd;
+  color: #fff;
+}
+
+.voted {
+  color: red;
+}
+.add-button {
+  display: inline-block;
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  background-color: #0056b3;
+}
+
+
+
+.search-input {
+  width: 200px;
+  height: 30px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.search-input::placeholder {
+  font-size: 12px; /* Adjust the font size to your preference */
+}
+
+.search-button {
+  height: 30px;
+  padding: 0 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+}
+
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+mat-drawer {
+  width: 260px;
+}
+mat-drawer-container {
+  height: 100%;
+}
+
+
+mat-drawer {
+  background-color: #0067ac;
+  color: #004f83;
+}
+
+body {
+  --color-second: #0067ac;
+  --color-white: #fff;
+  --color-body: #e4e9f7;
+  --color-light: #e0e0e0;
+}
+
+

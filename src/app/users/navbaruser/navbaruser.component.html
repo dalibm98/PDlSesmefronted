@@ -10,7 +10,8 @@
 
   <br>
   <br>
-
+<br>
+<br>
   <div style="display: flex; flex-direction: column; align-items: center;">
     <a mat-list-item routerLinkActive="list-item-active" routerLink="/listequestion" style="color: white !important; display: flex; align-items: center;">
       <mat-icon style="margin-right: 15px;">home</mat-icon> 
@@ -36,15 +37,15 @@
       <mat-icon style="margin-right: 15px;">question_answer</mat-icon>
       <span style="color: #fff;">Answers</span>
     </a>
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard" style="color: white !important; display: flex; align-items: center;">
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/listemessage" style="color: white !important; display: flex; align-items: center;">
       <mat-icon style="margin-right: 15px;">chat</mat-icon>
       <span style="color: #fff;">Chats</span>
     </a>
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard" style="color: white !important; display: flex; align-items: center;">
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/usr" style="color: white !important; display: flex; align-items: center;">
       <mat-icon style="margin-right: 15px;">people</mat-icon>
       <span style="color: #fff;">All Users</span>
     </a>
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard" style="color: white !important; display: flex; align-items: center;">
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/changermotuser" style="color: white !important; display: flex; align-items: center;">
       <mat-icon style="margin-right: 15px;">settings</mat-icon>
       <span style="color: #fff;">Setting</span>
     </a>
@@ -69,19 +70,24 @@
 
 
   
+<br>
+<br>
+<br>
+
 
 
 <mat-divider></mat-divider>
 
 <div class="logout-button">
-  <div>
-    <mat-icon>account_circle</mat-icon>
+  <div  routerLink="/account">
+    <mat-icon >account_circle</mat-icon>
   </div>
 
   <div>
-    <a mat-button>
+    <a mat-button (click)="logout()" >
       <mat-icon>exit_to_app</mat-icon>
-      <span style="margin-left:8px" >Logout</span>
+      <span style="margin-left:8px"  >Logout</span>
     </a>
   </div>
 </div>
+</mat-nav-list>

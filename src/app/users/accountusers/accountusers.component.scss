@@ -29,7 +29,33 @@
       }
     }
   }
-
+  :host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  mat-drawer {
+    width: 260px;
+  }
+  mat-drawer-container {
+    height: 100%;
+  }
+  
+  
+  mat-drawer {
+    background-color: #0067ac;
+    color: #004f83;
+  }
+  
+  body {
+    --color-second: #0067ac;
+    --color-white: #fff;
+    --color-body: #e4e9f7;
+    --color-light: #e0e0e0;
+  }
+  
+  
   /* Style pour les champs de formulaire */
 .example-full-width {
   width: 100%;
@@ -70,7 +96,7 @@ mat-card-subtitle {
 
 
 .mat-raised-button-danger:hover {
-  background-color: #0069d9;
+  background-color: #ced41b;
 }
 
 mat-card-actions button:hover {
@@ -96,12 +122,16 @@ mat-card-actions button {
 }
 
 .success-message {
-  margin-top: 10px;
-  padding: 6px;
-  background-color: #d4edda;
-  border: 1px solid rgb(158, 229, 174);
+  background-color: #dff0d8;
+  color: #3c763d;
+  padding: 10px;
+  border: 1px solid #d6e9c6;
   border-radius: 4px;
+  margin: 10px 0;
+  text-align: center;
+  font-size: 1.2em;
 }
+
 
 
 .mat-card-header-danger {
@@ -111,4 +141,20 @@ mat-card-actions button {
   background-color: rgb(236, 217, 193);
  }
 
- 
+ mat-card-avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+mat-card-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+

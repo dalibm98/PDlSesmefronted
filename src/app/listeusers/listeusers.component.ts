@@ -5,6 +5,8 @@ import { UserService } from '../service/user.service';
 import { AuthenticationService } from '../service/authentication.service';
 import { User } from '../model/user';
 import { UserStats } from '../model/user-stats';
+import { ListedesusersComponent } from '../users/listedesusers/listedesusers.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-listeusers',
@@ -17,7 +19,7 @@ export class ListeusersComponent implements OnInit {
   
     users: User[] = [];
 
-  constructor(private authService: AuthenticationService, private userService: UserService) { }
+  constructor(private authService: AuthenticationService, private userService: UserService,   private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.userService.getAllUsers().subscribe(users => {
@@ -31,6 +33,12 @@ export class ListeusersComponent implements OnInit {
           };
         });
       }
+    });
+  }
+
+  openUserDialog(user: User): void {
+    const dialogRef = this.dialog.open(ListedesusersComponent, {
+      data: user
     });
   }
 }
