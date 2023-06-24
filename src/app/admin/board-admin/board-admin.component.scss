@@ -1,3 +1,5 @@
+
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
 .page {
     color: white;
     padding: 0 1rem;
@@ -17,7 +19,7 @@
       margin-top: -2rem;
       background: white;
       color: black;
-      font-size: 2rem;
+      font-size: 1.2rem;
   
       &-data {
         top: 50%;
@@ -26,7 +28,33 @@
       }
     }
   }
-
+  :host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  mat-drawer {
+    width: 260px;
+  }
+  mat-drawer-container {
+    height: 100%;
+  }
+  
+  
+  mat-drawer {
+    background-color: #0f1f2a;
+    color: #004f83;
+  }
+  
+  body {
+    --color-second: #0067ac;
+    --color-white: #fff;
+    --color-body: #e4e9f7;
+    --color-light: #e0e0e0;
+  }
+  
+  
 
   .my-card {
     background-color: #d7946e;

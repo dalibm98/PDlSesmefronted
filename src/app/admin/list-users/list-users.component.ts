@@ -33,6 +33,12 @@ export class ListUsersComponent implements OnInit {
   dialogRef!: MatDialogRef<any>;
   showSuccessMessage: boolean = false;
 
+  sideBarOpenn = true;
+
+  sideBarTogglerr() {
+    this.sideBarOpenn = !this.sideBarOpenn;
+  }
+
   private apiUrl = 'http://localhost:8081/api/v1/auth';
   @ViewChild('dialogTemplate') dialogTemplate!: TemplateRef<any>;
   constructor(
@@ -70,8 +76,7 @@ onSubmit(userForm: NgForm): void {
       email: this.user.email!,
       password: this.user.password!,
     };
-    localStorage.removeItem('authToken');
-    this.authService.register(user).subscribe(
+    this.authService.addNewUser(user).subscribe(
       () => {
         // Reload the user list
         this.userService.getAllUsers().subscribe((users) => {

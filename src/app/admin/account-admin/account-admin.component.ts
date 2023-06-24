@@ -22,6 +22,14 @@ export class AccountAdminComponent
     status: '',
     image_url: '',
   };
+
+
+
+  sideBarOpenn = true;
+
+  sideBarTogglerr() {
+    this.sideBarOpenn = !this.sideBarOpenn;
+  }
   showSuccessMessage: boolean = false;
   modifiedUserr: User = {
     id: 0, // create a new object to store modified user info

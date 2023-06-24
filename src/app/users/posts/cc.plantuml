@@ -1,0 +1,26 @@
+@startuml
+
+left to right direction
+actor Utilisateur as U
+actor Admin as A
+
+rectangle "Plateforme de partage de connaissances" {
+  U -- (Accéder à la page d'accueil)
+  U -- (Effectuer une recherche par mots-clés)
+  U -- (S'inscrire)
+  U -- (Poser une question)
+  U -- (Suivre les sujets)
+  U -- (Répondre à une question)
+  U -- (Évaluer une réponse)
+  U -- (Envoyer un message)
+  U -- (Consulter l'historique)
+  
+  A -- (Authentification)
+  A -- (Gérer les utilisateurs)
+  A -- (Consulter les rapports statistiques)
+  A -- (Gérer les domaines et les natures)
+  A -- (Supprimer ou modérer les sujets ou réponses inappropriés)
+  A -- (Envoyer des notifications générales)
+}
+
+@enduml

@@ -22,6 +22,12 @@ export class ListNatureComponent implements OnInit {
 showErreurMessage = false ;
  showSuccessMessagee = false;
 
+ sideBarOpenn = true;
+
+ sideBarTogglerr() {
+   this.sideBarOpenn = !this.sideBarOpenn;
+ }
+
   constructor(private natureQuestionService: NatureQuestionService, private dialog: MatDialog) { }
 
   

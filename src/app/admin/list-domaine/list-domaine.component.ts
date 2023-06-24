@@ -21,6 +21,12 @@ export class ListDomaineComponent implements OnInit {
   showSuccessMessage = false;
 showErreurMessage = false ;
  showSuccessMessagee = false;
+
+ sideBarOpenn = true;
+
+ sideBarTogglerr() {
+   this.sideBarOpenn = !this.sideBarOpenn;
+ }
   constructor(private domaineQuestionService: DomaineQuestionService, private dialog: MatDialog) { }
 
   

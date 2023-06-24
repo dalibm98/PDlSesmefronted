@@ -12,6 +12,12 @@ import { QuestionService } from 'src/app/service/question.service';
 export class ListAnswersAdminComponent 
 implements OnInit {
   reponses: Reponse[] = [];
+
+  sideBarOpenn = true;
+
+  sideBarTogglerr() {
+    this.sideBarOpenn = !this.sideBarOpenn;
+  }
   constructor(
     private authService: AuthenticationService,
     private route: ActivatedRoute,

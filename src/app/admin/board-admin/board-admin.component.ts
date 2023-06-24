@@ -18,6 +18,19 @@ export class BoardAdminComponent implements OnInit {
   users: User[] = [];
   domaineQuestions?: DomaineQuestion[];
   natureQuestions?: NatureQuestion[];
+  nombreTotalCommentaires: number = 0;
+  nombreTotalQuestions: number = 0;
+  nombreTotalUsers: number = 0;
+  nombreTotaldomaines: number = 0;
+
+  nombreTotalnatures: number = 0;
+
+  sideBarOpenn = true;
+
+  sideBarTogglerr() {
+    this.sideBarOpenn = !this.sideBarOpenn;
+  }
+
   constructor(
     private authService: AuthenticationService,
     private userService: UserService ,
@@ -40,8 +53,26 @@ export class BoardAdminComponent implements OnInit {
       }
     });
   
+
+    this.userService.getAllUsers().subscribe((users) => {
+      this.nombreTotalUsers = users.length;
+    });
+
+
+    this.natureQuestionService.getAllNatureQuestions().subscribe(natureQuestions => {
+      this.nombreTotaldomaines = natureQuestions.length;
+    });
+
+
+    this.authService.getNombreTotalCommentaires().subscribe((total) => {
+      this.nombreTotalnatures = total;
+    });
     this.getAllDomaineQuestions();
     this.getAllNatureQuestions();
+
+
+    this.getNombreTotalCommentaires();
+    this.getNombreTotalQuestions();
   }
   
   getAllNatureQuestions() {
@@ -55,4 +86,18 @@ export class BoardAdminComponent implements OnInit {
       this.domaineQuestions = domaineQuestions;
     });
   }
+
+
+  getNombreTotalCommentaires() {
+    this.authService.getNombreTotalCommentaires().subscribe((total) => {
+      this.nombreTotalCommentaires = total;
+    });
+  }
+
+  getNombreTotalQuestions() {
+    this.authService.getNombreTotalQuestions().subscribe((total) => {
+      this.nombreTotalQuestions = total;
+    });
+  }
+
 }  

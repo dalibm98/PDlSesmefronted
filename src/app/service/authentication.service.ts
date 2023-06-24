@@ -32,8 +32,18 @@ export class AuthenticationService {
       authenticationRequest
     );
   }
+  addNewUser(request: RegisterRequest): Observable<AuthenticationResponse> {
+    return this.http.post<AuthenticationResponse>(`${this.apiUrl}/userss`, request);
+  }
 
 
+  getNombreTotalCommentaires(): Observable<number> {
+    return this.http.get<number>('http://localhost:8081/votes/commentaires/total');
+  }
+
+  getNombreTotalQuestions(): Observable<number> {
+    return this.http.get<number>('http://localhost:8081/votes/questions/total');
+  }
   changePassword(newPassword: string): Observable<AuthenticationResponse> {
     const authToken = this.getAuthToken();
     if (!authToken) {

@@ -45,7 +45,7 @@ export class LoginComponent {
           this.authService.getCurrentUser(authToken).subscribe(
             (user) => {
               if (user.role === 'ADMIN') {
-                this.router.navigate(['/profileAdmin']);
+                this.router.navigate(['/boardadmin']);
               } else {
                 this.router.navigate(['/listequestion']);
               }

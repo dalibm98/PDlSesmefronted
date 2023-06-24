@@ -22,6 +22,13 @@ export class ListPostAdminComponent implements OnInit {
   natures!: any[];
   domaines!: any[];
   onEditquestionId: number | null = null;
+
+
+  sideBarOpenn = true;
+
+  sideBarTogglerr() {
+    this.sideBarOpenn = !this.sideBarOpenn;
+  }
   //formData :  Question[] = [];
   editForm!: FormGroup;
   formData = {

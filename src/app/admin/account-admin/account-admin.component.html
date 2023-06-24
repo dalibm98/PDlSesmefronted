@@ -1,4 +1,10 @@
-<app-home-a>
+<mat-drawer-container>
+  <mat-drawer mode="side" [opened]="sideBarOpenn">
+    <!-- <mat-drawer mode="side" opened="true"> -->
+ <app-sidenav-admin></app-sidenav-admin>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-header-admin> (toggleSidebarForMee)="sideBarTogglerr()"></app-header-admin>
     <div class="container-fluid page" style="border: 3px solid #ebece9">
       <div class="d-flex page__box p-3 mt-2" style="border: 3px solid #c0bdb9">
         <span class="page__box-title" style="color: rgb(243, 243, 243)"
@@ -216,4 +222,5 @@
         </div>
       </div>
     </div>
-</app-home-a>
+  </mat-drawer-content>
+</mat-drawer-container>

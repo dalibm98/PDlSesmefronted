@@ -11,6 +11,7 @@
       <span class="page__box-title" style="color: rgb(243, 243, 243)"
         >Posts</span
       >
+      
     </div>
 <head>
 
@@ -20,13 +21,13 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
   >
 </head>
-    <div style="display: flex; justify-content: flex-end">
+    <div style="display: flex; justify-content: flex-end" >
       <button
         mat-raised-button
         color="primary"
         (click)="getMeilleuresReponsesTrieParVotes()"
       >
-        Les plus notées
+       Top Rated
       </button>
     </div>
 
@@ -63,6 +64,14 @@
     >
       Search
     </button>
+    <button
+    mat-raised-button
+    color="primary"
+    class="button-right"
+    (click)="openDialog()"
+  >
+    Add
+  </button>
 
     <br />
     <br />
@@ -71,14 +80,7 @@
     <div class="page__content shadow p-3" style="border: 3px solid #ffa500">
       <ng-container *ngFor="let question of filteredQuestions">
         <div class="question-card">
-          <button
-            mat-raised-button
-            color="primary"
-            class="button-right"
-            (click)="openDialog()"
-          >
-            Add
-          </button>
+
 
           <div class="question-card-header">
             <div class="question-card-avatar author-name">
